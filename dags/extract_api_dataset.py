@@ -32,6 +32,14 @@ def get_live_traffic_incidents():
     # === CONVERT TO DATAFRAME ===
     df = pd.DataFrame(incidents)
     df["collected_at"]= timestamp
+    
+    # === RENAME COLUMNS ===
+    df.rename(columns={
+        "Type": "type",
+        "Latitude": "latitude",
+        "Longitude": "longitude",
+        "Message": "message",
+    }, inplace=True)
     # === SHOW RESULT ===
     print(df[["type", "latitude", "longitude", "message"]].head())
 
@@ -121,6 +129,8 @@ def save_to_postgres_rainfall(df):
             SELECT EXISTS (
                 SELECT 1 FROM {table_name} WHERE station = %s AND latitude = %s AND longitude = %s AND rainfall = %s AND collected_at = %s
             )""", (row['station'], row['latitude'], row['longitude'], row['rainfall'], row['collected_at']))
+        # Check if the record already exists
+        hasExist = cursor.fetchone()[0]
         if hasExist:
             print(f"Record already exists in {table_name}: {row['station']}, {row['latitude']}, {row['longitude']}, {row['rainfall']}, {row['collected_at']}")
             continue
@@ -155,7 +165,8 @@ def save_to_postgres_live_traffic(df):
                 SELECT 1 FROM {table_name} WHERE type = %s AND latitude = %s AND longitude = %s AND message = %s
             )
         """, (row['type'], row['latitude'], row['longitude'], row['message']))
-
+        # Check if the record already exists
+        hasExist = cursor.fetchone()[0]
         if hasExist:
             print(f"Record already exists in {table_name}: {row['type']}, {row['latitude']}, {row['longitude']}, {row['message']}")
             continue
