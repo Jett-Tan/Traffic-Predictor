@@ -1,0 +1,2 @@
+*.csv
+!rainfall_data_postgres.csv

@@ -1,0 +1,2 @@
+*.csv
+!live_traffic_incidents_postgres.csv
