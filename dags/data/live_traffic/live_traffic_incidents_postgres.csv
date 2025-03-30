@@ -58,3 +58,42 @@ id,type,latitude,longitude,message
 57,Vehicle breakdown,1.3484655724841934,103.78988100422607,(30/3)14:30 Vehicle breakdown on PIE (towards Changi Airport) after BKE.
 58,Vehicle breakdown,1.388480854064063,103.91210725416798,(30/3)14:29 Vehicle breakdown on TPE (towards PIE) after Punggol Rd Exit.
 59,Roadwork,1.4107043414838254,103.80724090020978,(30/3)8:40 Roadworks on SLE (towards CTE) after Mandai Ave Exit. Avoid lane 1.
+60,Vehicle breakdown,1.329677354620664,103.88498678738833,(30/3)14:52 Vehicle breakdown on KPE (towards ECP) after Airport Rd Entrance.
+61,Roadwork,1.3846671266364865,103.91529609001286,(30/3)14:47 Roadworks on TPE (towards SLE) at Halus Link Entrance.
+62,Roadwork,1.2708733802971581,103.85657194138966,(30/3)14:42 Roadworks on MCE (towards ECP) before Central Blvd Exit. Avoid lane 1.
+63,Roadwork,1.4068419100007015,103.80872927725318,(30/3)14:36 Roadworks on SLE (towards BKE) after Upper Thomson Rd Exit. Avoid lane 3.
+64,Roadwork,1.3393262786090887,103.94430341069278,(30/3)14:00 Roadworks on PIE (towards Changi Airport) before Simei Ave.
+65,Vehicle breakdown,1.2782280004013697,103.82421757279717,(30/3)13:51 Vehicle breakdown on AYE (towards Tuas) after Lower Delta Rd Exit. Avoid lane 4.
+66,Roadwork,1.3368539755562228,103.98101218386327,(30/3)13:30 Roadworks on PIE (towards Tuas) after ECP Entrance. Avoid lane 1.
+67,Roadwork,1.3944118618631625,103.77398114591455,(30/3)12:34 Roadworks on BKE (towards PIE) after KJE Exit. Avoid lane 1.
+68,Roadwork,1.3637301885468553,103.95792544285437,(30/3)10:44 Roadworks on TPE (towards PIE) at Loyang Ave Exit.
+69,Roadwork,1.4007155109223586,103.86926966482747,(30/3)9:30 Roadworks on TPE (towards SLE) at Yio Chu Kang Rd Exit.
+70,Roadwork,1.281754759332948,103.83213061244899,(30/3)8:36 Roadworks on CTE (towards SLE) after AYE Entrance. Avoid lane 3.
+71,Roadwork,1.3260784319907994,103.73052897079995,(30/3)8:19 Roadworks on AYE (towards MCE) after Yuan Ching Exit. Avoid lane 1.
+72,Obstacle,1.3552548240096682,103.78512370244185,(30/3)15:50 Obstacle on BKE (towards PIE) before PIE Exit. Avoid lane 1.
+73,Vehicle breakdown,1.3177365953729707,103.84973914612328,(30/3)15:47 Vehicle breakdown on CTE (towards AYE) after Moulmein Rd Exit. Avoid lane 4.
+74,Roadwork,1.3294505389589073,103.67052821057581,(30/3)15:33 Roadworks on PIE (towards Tuas) after Upper Jurong Rd. Avoid lane 4.
+75,Roadwork,1.340518066394603,103.97182005978986,(30/3)14:00 Roadworks on PIE (towards Changi Airport) after TPE.
+76,Roadwork,1.3829155634123134,103.77541511773106,(30/3)12:34 Roadworks on BKE (towards PIE) after KJE Exit. Avoid lane 1.
+77,Roadwork,1.325759760377457,103.9724075438639,(30/3)9:55 Roadworks on ECP (towards Changi Airport) at Tanah Merah Coast Rd Entrance.
+78,Roadwork,1.3272609153497295,103.73566369623086,(30/3)8:19 Roadworks on AYE (towards MCE) after Yuan Ching. Avoid lane 1.
+79,Vehicle breakdown,1.406830007536119,103.77239258656638,(30/3)16:51 Vehicle breakdown on BKE (towards PIE) after Mandai Rd Exit.
+80,Accident,1.407181217535897,103.80865747680612,(30/3)16:49 Accident on SLE (towards CTE) after Mandai Ave Exit. Avoid lanes 1 and 2.
+81,Accident,1.4069013997999658,103.8087991775008,(30/3)16:43 Accident on SLE (towards CTE) after Mandai Ave Exit. Avoid lane 2.
+82,Roadwork,1.3274231958626175,103.66700162012673,(30/3)15:33 Roadworks on PIE (towards Tuas) before AYE Exit. Avoid lane 4.
+83,Accident,1.407181217535897,103.80865747680612,(30/3)16:49 Accident on SLE (towards CTE) after Mandai Ave Exit.
+84,Vehicle breakdown,1.329677354620664,103.88498678738831,(30/3)14:52 Vehicle breakdown on KPE (towards ECP) after Airport Rd Entrance.
+85,Roadwork,1.270873380297158,103.85657194138966,(30/3)14:42 Roadworks on MCE (towards ECP) before Central Blvd Exit. Avoid lane 1.
+86,Vehicle breakdown,1.2782280004013695,103.82421757279717,(30/3)13:51 Vehicle breakdown on AYE (towards Tuas) after Lower Delta Rd Exit. Avoid lane 4.
+87,Obstacle,1.3552548240096682,103.78512370244184,(30/3)15:50 Obstacle on BKE (towards PIE) before PIE Exit. Avoid lane 1.
+88,Roadwork,1.3294505389589073,103.6705282105758,(30/3)15:33 Roadworks on PIE (towards Tuas) after Upper Jurong Rd. Avoid lane 4.
+89,Roadwork,1.3272609153497297,103.73566369623086,(30/3)8:19 Roadworks on AYE (towards MCE) after Yuan Ching. Avoid lane 1.
+90,Roadwork,1.3274231958626177,103.66700162012673,(30/3)15:33 Roadworks on PIE (towards Tuas) before AYE Exit. Avoid lane 4.
+91,Vehicle breakdown,1.278835631042915,103.82128537297807,(30/3)18:53 Vehicle breakdown on AYE (towards Tuas) after Lower Delta Rd Exit. Avoid lane 3.
+92,Vehicle breakdown,1.400685317313278,103.86847380842805,(30/3)18:43 Vehicle breakdown on TPE (towards SLE) at Yio Chu Kang Rd Exit.
+93,Vehicle breakdown,1.3999962221374649,103.89592967386501,(30/3)18:34 Vehicle breakdown on TPE (towards PIE) after Punggol Rd Exit.
+94,Accident,1.3445802314235735,103.98326837783151,(30/3)19:51 Accident on T4 Way (towards T4 Boulevard) after Airport Boulevard.
+95,Vehicle breakdown,1.278835631042915,103.82128537297808,(30/3)18:53 Vehicle breakdown on AYE (towards Tuas) after Lower Delta Rd Exit. Avoid lane 3.
+96,Vehicle breakdown,1.400685317313278,103.86847380842804,(30/3)18:43 Vehicle breakdown on TPE (towards SLE) at Yio Chu Kang Rd Exit.
+97,Vehicle breakdown,1.3999962221374649,103.895929673865,(30/3)18:34 Vehicle breakdown on TPE (towards PIE) after Punggol Rd Exit.
+98,Accident,1.3445802314235735,103.98326837783152,(30/3)19:51 Accident on T4 Way (towards T4 Boulevard) after Airport Boulevard.
