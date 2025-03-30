@@ -97,3 +97,15 @@ id,type,latitude,longitude,message
 96,Vehicle breakdown,1.400685317313278,103.86847380842804,(30/3)18:43 Vehicle breakdown on TPE (towards SLE) at Yio Chu Kang Rd Exit.
 97,Vehicle breakdown,1.3999962221374649,103.895929673865,(30/3)18:34 Vehicle breakdown on TPE (towards PIE) after Punggol Rd Exit.
 98,Accident,1.3445802314235735,103.98326837783152,(30/3)19:51 Accident on T4 Way (towards T4 Boulevard) after Airport Boulevard.
+99,Vehicle breakdown,1.3802637038606207,103.91977170560072,(30/3)20:54 Vehicle breakdown on TPE (towards SLE) after KPE(MCE) Exit.
+100,Accident,1.34485181984484,103.98327386662164,(30/3)19:51 Accident on Airport Boulevard (towards South Perimeter Road) after T3 Departure Drive. Avoid left lane.
+101,Accident,1.319025373964239,103.87482875678154,(30/3)21:46 Accident on KPE (towards TPE) at PIE(Tuas) Exit.
+102,Vehicle breakdown,1.3221599347366517,103.70245380657683,(30/3)22:53 Vehicle breakdown on AYE (towards MCE) after Pioneer Rd Exit. Avoid lane 4.
+103,Accident,1.312692983262453,103.87504946164394,(30/3)22:15 Accident on KPE (towards TPE) after Nicoll Highway Entrance. Avoid lane 4.
+104,Heavy Traffic,1.3176555296143886,103.89711283262008,(30/3)22:04 Heavy Traffic on Sims Avenue (toward Changi) after Paya Lebar Road.
+105,Heavy Traffic,1.3154720898306766,103.89412561960484,(30/3)22:02 Heavy Traffic on Geylang Road (toward City) after Tanjong Katong Road.
+106,Vehicle breakdown,1.3424370728118926,103.7812045980858,(30/3)23:49 Vehicle breakdown on PIE (towards Changi Airport) after Bukit Timah Rd exit.
+107,Roadwork,1.3597153744733854,103.90350257984352,(30/3)23:47 Roadworks on KPE (towards ECP) at Tampines Road Entrance.
+108,Roadwork,1.3239403435815607,103.87247897761709,(31/3)0:02 Roadworks on PIE (towards Tuas) after KPE Exit. Avoid lanes 1 and 2.
+109,Vehicle breakdown,1.3221599347366515,103.70245380657684,(30/3)22:53 Vehicle breakdown on AYE (towards MCE) after Pioneer Rd Exit. Avoid lane 4.
+110,Roadwork,1.3239403435815609,103.87247897761708,(31/3)0:02 Roadworks on PIE (towards Tuas) after KPE Exit. Avoid lanes 1 and 2.
