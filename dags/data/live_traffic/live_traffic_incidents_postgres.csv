@@ -200,3 +200,24 @@ id,type,latitude,longitude,message
 199,Accident,1.3854513089122913,103.7750520316048,(31/3)21:23 Accident on BKE (towards Woodlands) before KJE Exit. Avoid lane 3.
 200,Roadwork,1.3543901541289478,103.96370584749609,(31/3)22:09 Roadworks on TPE (towards PIE) before PIE Exit. Avoid lane 2.
 201,Roadwork,1.355185116949151,103.71900214572705,(31/3)22:05 Roadworks on PIE (towards Tuas) at Jurong West Ave 2 Exit. Jurong West Ave 2 Exit closed.
+202,Roadwork,1.2998545249913003,103.84366702265771,(31/3)23:55 Roadworks in CTE Tunnel (towards AYE) after Orchard Rd Exit. Avoid lanes 1 and 3.
+203,Roadwork,1.2995514721335533,103.84371949644462,(31/3)23:54 Roadworks in CTE Tunnel (towards AYE) after Orchard Rd Exit. Avoid lane 3.
+204,Roadwork,1.3817238227352913,103.73591248727831,(31/3)23:53 Roadworks on KJE (towards PIE) after Choa Chu Kang Dr Exit.
+205,Roadwork,1.3350535857734143,103.89280662887526,(31/3)23:48 Roadworks on KPE (towards TPE) between Upper Paya Lebar Rd Exit and Bartley Rd East Exit. Avoid lane 3.
+206,Roadwork,1.3264413976542875,103.8708585641408,(31/3)23:25 Roadworks on PIE (towards Changi Airport) at MacPherson Rd Entrance.
+207,Roadwork,1.2814462946120688,103.87541682053227,(31/3)23:20 Roadworks on MCE (towards ECP) after Marina Blvd Entrance. Avoid lanes 4 and 5.
+208,Roadwork,1.294699252669682,103.87591564838063,(31/3)23:15 Roadworks on MCE (towards KPE) after ECP (Changi) Exit. Avoid lane 1.
+209,Roadwork,1.3451276971758692,103.70114941340742,(31/3)23:13 Roadworks on Jurong West Avenue 4 (towards Jurong West Street 72) after Jurong West Street 64. Jurong West Avenue 4 closed after Jurong West Street 64.
+210,Roadwork,1.3452044621004782,103.70119847059078,(31/3)23:13 Roadworks on Jurong West Avenue 4 (towards Jurong West Street 64) after Jurong West Street 72. Jurong West Avenue 4 closed after Jurong West Street 72.
+211,Roadwork,1.347648120260615,103.89844750981516,(31/3)23:08 Roadworks on KPE (towards ECP) before Airport Rd Exit. Avoid lane 3.
+212,Roadwork,1.2889886781024058,103.84205105129874,(1/4)0:29 Roadworks in CTE Tunnel (towards AYE) at Havelock Road Exit. Havelock Road Exit closed.
+213,Roadwork,1.3072480513302862,103.8770183493793,(1/4)0:23 Roadworks on KPE (towards ECP) at Nicoll Highway Exit.
+214,Roadwork,1.3198653164763832,103.87612598304142,(1/4)0:11 Roadworks on KPE (towards TPE) between Nicoll Highway Entrance and PIE Exit. Avoid lane 1.
+215,Roadwork,1.3136741484399683,103.87492543313319,(31/3)23:48 Roadworks on KPE (towards ECP) between Airport Rd Exit and Nicoll Highway Exit. Avoid lane 3.
+216,Roadwork,1.2998545249913005,103.84366702265773,(31/3)23:55 Roadworks in CTE Tunnel (towards AYE) after Orchard Rd Exit. Avoid lanes 1 and 3.
+217,Roadwork,1.3817238227352913,103.73591248727833,(31/3)23:53 Roadworks on KJE (towards PIE) after Choa Chu Kang Dr Exit.
+218,Roadwork,1.3350535857734145,103.89280662887526,(31/3)23:48 Roadworks on KPE (towards TPE) between Upper Paya Lebar Rd Exit and Bartley Rd East Exit. Avoid lane 3.
+219,Roadwork,1.3264413976542877,103.8708585641408,(31/3)23:25 Roadworks on PIE (towards Changi Airport) at MacPherson Rd Entrance.
+220,Roadwork,1.2814462946120688,103.87541682053228,(31/3)23:20 Roadworks on MCE (towards ECP) after Marina Blvd Entrance. Avoid lanes 4 and 5.
+221,Roadwork,1.294699252669682,103.87591564838064,(31/3)23:15 Roadworks on MCE (towards KPE) after ECP (Changi) Exit. Avoid lane 1.
+222,Roadwork,1.3136741484399683,103.8749254331332,(31/3)23:48 Roadworks on KPE (towards ECP) between Airport Rd Exit and Nicoll Highway Exit. Avoid lane 3.
