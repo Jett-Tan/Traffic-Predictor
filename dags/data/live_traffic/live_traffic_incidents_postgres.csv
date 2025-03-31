@@ -166,3 +166,37 @@ id,type,latitude,longitude,message
 165,Roadwork,1.2818632831969945,103.83229442497904,(31/3)9:10 Roadworks on CTE (towards SLE) after AYE Entrance. Avoid lane 3.
 166,Roadwork,1.396509355154988,103.8479665082773,(31/3)9:33 Roadworks on SLE (towards BKE) after TPE Entrance. Avoid lane 1.
 167,Obstacle,1.3223367217255857,103.70013050494371,(31/3)16:50 Obstacle on AYE (towards Tuas) after Pioneer Rd Exit.
+168,Obstacle,1.39097274680056,103.7640494410119,(31/3)17:55 Obstacle on KJE (towards BKE) at BKE(W`lands) Exit.
+169,Heavy Traffic,1.3228939230586403,103.89085868908606,(31/3)17:54 Heavy Traffic on PIE (towards Changi Airport) between Kallang and Paya Lebar Rd.
+170,Vehicle breakdown,1.3191598174785955,103.75608455895197,(31/3)18:51 Vehicle breakdown on AYE (towards Tuas) before Jurong Town Hall Exit.
+171,Accident,1.3379462663021027,103.98066503827113,(31/3)18:50 Accident on PIE (towards Changi Airport) at ECP(City) Exit.
+172,Vehicle breakdown,1.401676892591708,103.77353841190028,(31/3)19:57 Vehicle breakdown on BKE (towards Woodlands) before Mandai Rd Exit.
+173,Vehicle breakdown,1.3905380938807468,103.76291004847769,(31/3)19:54 Vehicle breakdown on KJE (towards BKE) after Woodlands Rd Exit.
+174,Vehicle breakdown,1.3205531082833566,103.88082349016669,(31/3)19:43 Vehicle breakdown on PIE (towards Tuas) before KPE Exit. Avoid lane 4.
+175,Roadwork,1.3553403751275799,103.72281456261973,(31/3)20:50 Roadworks on PIE (towards Tuas) before Jurong West Ave 2. Avoid lane 3.
+176,Vehicle breakdown,1.3397198608970033,103.80579444266387,(31/3)20:32 Vehicle breakdown on PIE (towards Tuas) after Eng Neo Ave.
+177,Accident,1.3906672707256877,103.77012734779525,(31/3)20:07 Accident on KJE (towards BKE) at BKE(Woodlands) Exit.
+178,Vehicle breakdown,1.2814462946120688,103.87541682053227,(31/3)21:50 Vehicle breakdown on MCE (towards AYE) before Central Blvd Exit.
+179,Vehicle breakdown,1.3241120720027557,103.8839675508204,(31/3)21:48 Vehicle breakdown on KPE (towards ECP) before PIE(Tuas) Exit.
+180,Vehicle breakdown,1.3324436587618722,103.76868173065205,(31/3)21:46 Vehicle breakdown on PIE (towards Changi Airport) after Clementi Ave 6.
+181,Accident,1.284697721813528,103.84393537315992,(31/3)21:43 Accident on New Bridge Road (towards Mosque Street) after Upper Cross Street.
+182,Accident,1.3854513089122913,103.77505203160479,(31/3)21:23 Accident on BKE (towards Woodlands) before KJE Exit. Avoid lane 3.
+183,Roadwork,1.3858770623111676,103.740802004277,(31/3)22:57 Roadworks on KJE (towards PIE) after Choa Chu Kang Dr Exit.
+184,Vehicle breakdown,1.283116874909431,103.85988353595611,(31/3)22:46 Vehicle breakdown on Bayfront Avenue (towards Sheares Link) after Raffles Avenue. Avoid left lane.
+185,Vehicle breakdown,1.3376516734600252,103.942422404334,(31/3)22:33 Vehicle breakdown on PIE (towards Tuas) after Tampines.
+186,Roadwork,1.3543901541289478,103.96370584749607,(31/3)22:09 Roadworks on TPE (towards PIE) before PIE Exit. Avoid lane 2.
+187,Roadwork,1.3551851169491507,103.71900214572703,(31/3)22:05 Roadworks on PIE (towards Tuas) at Jurong West Ave 2 Exit. Jurong West Ave 2 Exit closed.
+188,Heavy Traffic,1.3228939230586405,103.89085868908606,(31/3)17:54 Heavy Traffic on PIE (towards Changi Airport) between Kallang and Paya Lebar Rd.
+189,Vehicle breakdown,1.3191598174785957,103.75608455895195,(31/3)18:51 Vehicle breakdown on AYE (towards Tuas) before Jurong Town Hall Exit.
+190,Accident,1.337946266302103,103.98066503827113,(31/3)18:50 Accident on PIE (towards Changi Airport) at ECP(City) Exit.
+191,Vehicle breakdown,1.3905380938807468,103.76291004847768,(31/3)19:54 Vehicle breakdown on KJE (towards BKE) after Woodlands Rd Exit.
+192,Vehicle breakdown,1.3205531082833566,103.88082349016668,(31/3)19:43 Vehicle breakdown on PIE (towards Tuas) before KPE Exit. Avoid lane 4.
+193,Roadwork,1.35534037512758,103.72281456261972,(31/3)20:50 Roadworks on PIE (towards Tuas) before Jurong West Ave 2. Avoid lane 3.
+194,Vehicle breakdown,1.3397198608970031,103.80579444266388,(31/3)20:32 Vehicle breakdown on PIE (towards Tuas) after Eng Neo Ave.
+195,Accident,1.3906672707256875,103.77012734779524,(31/3)20:07 Accident on KJE (towards BKE) at BKE(Woodlands) Exit.
+196,Vehicle breakdown,1.2814462946120688,103.87541682053228,(31/3)21:50 Vehicle breakdown on MCE (towards AYE) before Central Blvd Exit.
+197,Vehicle breakdown,1.3241120720027555,103.8839675508204,(31/3)21:48 Vehicle breakdown on KPE (towards ECP) before PIE(Tuas) Exit.
+198,Vehicle breakdown,1.3324436587618722,103.76868173065203,(31/3)21:46 Vehicle breakdown on PIE (towards Changi Airport) after Clementi Ave 6.
+199,Accident,1.3854513089122913,103.7750520316048,(31/3)21:23 Accident on BKE (towards Woodlands) before KJE Exit. Avoid lane 3.
+200,Roadwork,1.3543901541289478,103.96370584749609,(31/3)22:09 Roadworks on TPE (towards PIE) before PIE Exit. Avoid lane 2.
+201,Roadwork,1.355185116949151,103.71900214572705,(31/3)22:05 Roadworks on PIE (towards Tuas) at Jurong West Ave 2 Exit. Jurong West Ave 2 Exit closed.
