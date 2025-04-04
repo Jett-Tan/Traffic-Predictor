@@ -1,1 +1,6 @@
 /logs
+# Ignore Python cache and DS_Store
+__pycache__/
+*.pyc
+.DS_Store
+
