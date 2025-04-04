@@ -47,7 +47,7 @@ def get_latest_rainfall():
 
 default_args = {
     'owner': 'airflow',
-    'start_date': datetime(2025, 4, 29),
+    'start_date': datetime(2025, 3, 29),
 }
 
 with DAG(
