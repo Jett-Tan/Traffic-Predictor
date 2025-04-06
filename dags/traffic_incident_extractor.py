@@ -8,25 +8,28 @@ import json
 # Constants
 LTA_API_URL = "https://datamall2.mytransport.sg/ltaodataservice/TrafficIncidents"
 API_KEY = "tLB/oJ67QO+OA992i/dU7Q=="
-OUTPUT_FOLDER = "./traffic_incidents"
+SAVE_DIR = "/opt/airflow/data"
 
 def fetch_lta_data():
-    headers = {"AccountKey": API_KEY , "accept": "application/json"}
+    headers = {"AccountKey": API_KEY, "accept": "application/json"}
     response = requests.get(LTA_API_URL, headers=headers)
-    
+
     if response.status_code == 200:
         data = response.json()
-        
-        # Ensure the directory exists
-        os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
-        filename = f"{OUTPUT_FOLDER}/lta_data_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        # Ensure target directory exists
+        os.makedirs(SAVE_DIR, exist_ok=True)
+
+        filename = os.path.join(
+            SAVE_DIR,
+            f"lta_data_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        )
         with open(filename, "w") as f:
             json.dump(data, f, indent=4)
-        
-        print(f"Data saved to {filename}")
+
+        print(f"✅ Data saved to {filename}")
     else:
-        print(f"Failed to fetch data: {response.status_code}")
+        print(f"❌ Failed to fetch data: {response.status_code}")
 
 
 # Define DAG
