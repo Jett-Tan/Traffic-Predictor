@@ -63,28 +63,28 @@ def angle_between(p1, p2):
 def classify_junction(angles):
     n = len(angles)
     if n < 2:
-        return "No Junction"
+        return "no_junction"
     angles = sorted(angles)
     if n == 2:
-        return "No Junction"
+        return "no_junction"
     elif n == 3:
         diffs = [abs((angles[i] - angles[j]) % 360) for i in range(n) for j in range(i+1, n)]
         if any(abs(d - 180) < 30 for d in diffs):
-            return "T Shape"
+            return "t_shape"
         elif all(abs(d - 120) < 30 for d in diffs):
-            return "Y Shape"
+            return "t_shape"
         else:
-            return "Other"
+            return "other"
     elif n == 4:
         diffs = [(angles[i+1] - angles[i]) % 360 for i in range(3)]
         diffs.append((360 + angles[0] - angles[-1]) % 360)
         if all(abs(d - 90) < 30 for d in diffs):
-            return "X Shape"
+            return "x_shape"
         else:
-            return "Crossing"
+            return "crossing"
     elif n > 4:
-        return "O Shape"
-    return "Unknown"
+        return "o_shape"
+    return "unknown"
 
 def extract_road_metadata():
     gdf = gpd.read_file("/opt/airflow/dags/data/singapore_highways.geojson")
@@ -173,7 +173,7 @@ with DAG("get_road_type_dag",
          schedule_interval="@daily",
          start_date=datetime(2025, 1, 1),
          catchup=False,
-         tags=["traffic", "geocoding"]) as dag:
+         tags=["traffic", "geocoding","IS3107"]) as dag:
 
     download_all_singapore_roads = PythonOperator(
         task_id="download_all_singapore_roads",

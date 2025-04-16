@@ -187,7 +187,7 @@ with DAG(
     schedule_interval='@once',  
     catchup=False,  # Prevents backfill
     description='DAG to load RTA Dataset to postgres db',
-    tags=['rta', 'traffic', 'postgres'],
+    tags=['rta', 'traffic', 'postgres',"IS3107"],
 ) as dag:
     drop_RTA_table = PythonOperator(
         task_id='drop_RTA_table_python',

@@ -270,7 +270,7 @@ with DAG(
     schedule_interval='@once',  # Run once
     catchup=False,  # Prevents backfill
     description='fetch live traffic incidents from LTA API',
-    tags=['rta', 'traffic', 'api'],
+    tags=['rta', 'traffic', 'api',"IS3107"],
 ) as dag:
     
     upload_csv_to_postgres_python = PythonOperator(

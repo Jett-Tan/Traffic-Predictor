@@ -32,7 +32,7 @@ with DAG(
     schedule_interval='@once',  
     catchup=False,  # Prevents backfill
     description='DAG to extract RTA Dataset from Kaggle',
-    tags=['kaggle', 'rta', 'traffic', 'extract'],
+    tags=['kaggle', 'rta', 'traffic', 'extract',"IS3107"],
 ) as dag:
 
     download_task = PythonOperator(

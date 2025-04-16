@@ -121,7 +121,7 @@ with DAG("get_road_type_dag",
          schedule_interval="@daily",
          start_date=datetime(2025, 1, 1),
          catchup=False,
-         tags=["traffic", "geocoding"]) as dag:
+         tags=["traffic", "geocoding","IS3107"]) as dag:
 
     train_model = PythonOperator(
         task_id="train_model",

@@ -31,7 +31,7 @@ with DAG(
     start_date=datetime(2025, 3, 24),
     schedule_interval='@once',
     catchup=False,
-    tags=['rta', 'data_cleaning', 'data_exploration']
+    tags=['rta', 'data_cleaning', 'data_exploration',"IS3107"]
 ) as dag:
     clean_task = PythonOperator(
         task_id='clean_data',

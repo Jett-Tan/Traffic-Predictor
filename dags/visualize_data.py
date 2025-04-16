@@ -123,7 +123,7 @@ with DAG(
     schedule_interval='@once',  # or '0 12 * * *' for daily at noon, etc.
     catchup=False,
     description='DAG to generate data visualizations from the RTA dataset',
-    tags=['rta', 'visualization']
+    tags=['rta', 'visualization',"IS3107"]
 ) as dag:
 
     visualize_task = PythonOperator(
