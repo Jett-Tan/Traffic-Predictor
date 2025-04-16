@@ -161,8 +161,8 @@ def extract_junction_type() :
           "latitude": coord[1],
           "junction_type": jtype,
           "num_roads": len(connected_roads),
-          "connected_road_indices": connected_roads
       })
+        #   "connected_road_indices": connected_roads
 
   junctions_df = pd.DataFrame(junction_data)
   junctions_df.to_csv("/opt/airflow/dags/data/junctions_from_geojson.csv", index=False)
@@ -170,7 +170,8 @@ def extract_junction_type() :
 
 with DAG("get_road_type_dag",
          default_args=default_args,
-         schedule_interval=None,
+         schedule_interval="@daily",
+         start_date=datetime(2025, 1, 1),
          catchup=False,
          tags=["traffic", "geocoding"]) as dag:
 
