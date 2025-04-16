@@ -86,7 +86,7 @@ def classify_junction(angles):
 
 def extract_junction_type() :
    # Step 1: Load GeoJSON
-  gdf = gpd.read_file("singapore_highways.geojson")  # replace with your filename
+  gdf = gpd.read_file("/opt/airflow/dags/data/singapore_highways.geojson")  # replace with your filename
 
   # Step 2: Extract all node coordinates from line endpoints
   point_map = {}  # key = Point(x, y), value = list of road indices
