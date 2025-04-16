@@ -2,3 +2,4 @@ kaggle
 pandas
 numpy
 apache-airflow-providers-postgres
+seaborn
