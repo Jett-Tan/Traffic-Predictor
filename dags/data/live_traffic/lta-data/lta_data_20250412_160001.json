@@ -1,0 +1,77 @@
+{
+    "odata.metadata": "http://datamall2.mytransport.sg/ltaodataservice/$metadata#IncidentSet",
+    "value": [
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.4291614864154023,
+            "Longitude": 103.76964115058738,
+            "Message": "(12/4)23:47 Vehicle breakdown on BKE (towards PIE) before SLE Exit."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.311386172137461,
+            "Longitude": 103.85575373112958,
+            "Message": "(12/4)23:40 Accident on Kitchener Road (towards Serangoon Road) after Verdun Road."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.4363101656653072,
+            "Longitude": 103.76851734078458,
+            "Message": "(12/4)23:28 Heavy Traffic on BKE (towards Woodlands) before Woodlands Checkpoint."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3614370482256015,
+            "Longitude": 103.96040059324086,
+            "Message": "(12/4)23:21 Roadworks on TPE (towards PIE) at PIE(TUAS) Exit."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3947454295566966,
+            "Longitude": 103.83437360111307,
+            "Message": "(12/4)23:11 Roadworks on SLE (towards CTE) at Lentor Ave Entrance."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.2959974078858272,
+            "Longitude": 103.8439603006135,
+            "Message": "(12/4)22:58 Roadworks in CTE Tunnel (towards SLE) after Merchant Rd Exit. Avoid lane 3."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3560748373772318,
+            "Longitude": 103.90140218792493,
+            "Message": "(12/4)22:58 Roadworks on KPE (towards TPE) before Tampines Rd Exit. Avoid lane 3."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3925237637690202,
+            "Longitude": 103.77418428986408,
+            "Message": "(12/4)22:50 Roadworks on BKE (towards PIE) after KJE Exit."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3046086400719872,
+            "Longitude": 103.85086207319581,
+            "Message": "(12/4)22:44 Roadworks on Rochor Canal Road (towards Selegie Road) after Short Street."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3046141677490735,
+            "Longitude": 103.85057318151476,
+            "Message": "(12/4)22:40 Roadworks on Selegie Road (towards Rochor Canal Road) after Albert Street."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3254435356155827,
+            "Longitude": 103.90398067547909,
+            "Message": "(12/4)22:28 Roadworks on PIE (towards Tuas) at Jalan Eunos Entrance."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3228855061450526,
+            "Longitude": 103.74552008438042,
+            "Message": "(12/4)21:58 Accident on AYE (towards Tuas) at Jurong Town Hall Entrance."
+        }
+    ]
+}

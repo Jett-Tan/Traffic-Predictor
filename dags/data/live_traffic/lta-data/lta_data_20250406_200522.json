@@ -1,0 +1,77 @@
+{
+    "odata.metadata": "http://datamall2.mytransport.sg/ltaodataservice/$metadata#IncidentSet",
+    "value": [
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.2819383546052945,
+            "Longitude": 103.83249901321923,
+            "Message": "(7/4)3:53 Roadworks in CTE Tunnel (towards SLE) after AYE Entrance."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.301750891872944,
+            "Longitude": 103.8425466428243,
+            "Message": "(7/4)0:26 Roadworks in CTE Tunnel (towards SLE) before Kramat Rd Entrance. Avoid lanes 1 and 3."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.2758097579593437,
+            "Longitude": 103.86770076357472,
+            "Message": "(7/4)0:20 Roadworks on MCE (towards AYE) at Central Boulevard Exit. Central Boulevard Exit closed."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.2904057160361362,
+            "Longitude": 103.84270266952,
+            "Message": "(7/4)0:03 Roadworks in CTE Tunnel (towards SLE) after Merchant Rd Exit. Avoid lane 3."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3135646270524017,
+            "Longitude": 103.87509530212316,
+            "Message": "(7/4)0:01 Roadworks on KPE (towards ECP) at PIE Entrance. PIE Entrance closed."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.2879190081278753,
+            "Longitude": 103.8408814171637,
+            "Message": "(7/4)0:00 Roadworks in CTE Tunnel (towards SLE) at Merchant Road Exit. Merchant Road Exit closed."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.288854462692255,
+            "Longitude": 103.84404724969995,
+            "Message": "(7/4)0:00 Roadworks in CTE Tunnel (towards AYE) at Merchant Road Entrance. Merchant Road Entrance closed."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.2883426006794871,
+            "Longitude": 103.84180279123667,
+            "Message": "(7/4)0:00 Roadworks in CTE Tunnel (towards AYE) at Havelock Road Exit. Havelock Road Exit closed."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.2871707296098418,
+            "Longitude": 103.84016571847435,
+            "Message": "(6/4)23:59 Roadworks in CTE Tunnel (towards AYE) before Outram Rd Exit. Avoid lane 3."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.2906433102718555,
+            "Longitude": 103.84283656208896,
+            "Message": "(6/4)23:34 Roadworks in CTE Tunnel (towards SLE) after Merchant Rd Exit. Avoid lane 3."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3381398959446091,
+            "Longitude": 103.94297843502869,
+            "Message": "(6/4)22:36 Roadworks on PIE (towards Tuas) after Tampines. Avoid lane 3."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3226667467817093,
+            "Longitude": 103.67896855080082,
+            "Message": "(6/4)22:31 Roadworks on AYE (towards Tuas) after Benoi Rd Exit. Avoid lane 1."
+        }
+    ]
+}

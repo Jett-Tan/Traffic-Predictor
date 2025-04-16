@@ -1,0 +1,17 @@
+{
+    "odata.metadata": "http://datamall2.mytransport.sg/ltaodataservice/$metadata#IncidentSet",
+    "value": [
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.3384306002247905,
+            "Longitude": 103.97697695351852,
+            "Message": "(12/4)6:23 Vehicle breakdown on PIE (towards Changi Airport) at ECP(Airport) Exit."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3377228102467664,
+            "Longitude": 103.90664588700622,
+            "Message": "(12/4)5:59 Accident on Bartley Viaduct (towards Tampines Avenue 10) after Kaki Bukit Avenue 4. Avoid right lane."
+        }
+    ]
+}

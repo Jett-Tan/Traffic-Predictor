@@ -1,0 +1,23 @@
+{
+    "odata.metadata": "http://datamall2.mytransport.sg/ltaodataservice/$metadata#IncidentSet",
+    "value": [
+        {
+            "Type": "Accident",
+            "Latitude": 1.3247810599127035,
+            "Longitude": 103.87183661480312,
+            "Message": "(6/4)20:51 Accident on PIE (towards Tuas) after KPE Exit with congestion till Paya Lebar Rd. Avoid lane 1."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3553097374544192,
+            "Longitude": 103.72325584844909,
+            "Message": "(6/4)20:30 Roadworks on PIE (towards Tuas) before Jurong West Ave 2. Avoid lane 3."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2821981371224629,
+            "Longitude": 103.85925884443424,
+            "Message": "(6/4)20:29 Accident on Bayfront Avenue (towards Sheares Link) after Bayfront Link."
+        }
+    ]
+}

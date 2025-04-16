@@ -1,0 +1,59 @@
+{
+    "odata.metadata": "http://datamall2.mytransport.sg/ltaodataservice/$metadata#IncidentSet",
+    "value": [
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.333891031231776,
+            "Longitude": 103.67603802976278,
+            "Message": "(12/4)12:53 Vehicle breakdown on PIE (towards Changi Airport) after Pasir Laba."
+        },
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.364775748367625,
+            "Longitude": 103.85972750562107,
+            "Message": "(12/4)12:48 Vehicle breakdown on CTE (towards SLE) before AMK Ave 3 Exit. Avoid lane 5."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3200691225236363,
+            "Longitude": 103.89128444775194,
+            "Message": "(12/4)12:33 Accident on Geylang East Central towards Paya Lebar Road. Avoid right lane."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3446502110588572,
+            "Longitude": 103.86009192388175,
+            "Message": "(12/4)11:18 Heavy Traffic on CTE (towards AYE) at PIE(Changi) Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3264027717108038,
+            "Longitude": 103.84207058915553,
+            "Message": "(12/4)11:11 Heavy Traffic on Balestier Road between Thomson Road and Ah Hood Road."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3757787505664023,
+            "Longitude": 103.91002060362766,
+            "Message": "(12/4)10:33 Roadworks on KPE (towards ECP) at Buangkok Drive Entrance."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3222303750535138,
+            "Longitude": 103.88838933471749,
+            "Message": "(12/4)9:49 Roadworks on PIE (towards Tuas) at Paya Lebar Rd Entrance."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.331764511882021,
+            "Longitude": 103.86232856037105,
+            "Message": "(12/4)9:35 Roadworks on CTE (towards AYE) after PIE(Changi) Exit. Avoid lane 4."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3592520379137754,
+            "Longitude": 103.96140399543376,
+            "Message": "(12/4)9:34 Roadworks on TPE (towards SLE) at Tampines Ave 7 Exit."
+        }
+    ]
+}

@@ -1,0 +1,131 @@
+{
+    "odata.metadata": "http://datamall2.mytransport.sg/ltaodataservice/$metadata#IncidentSet",
+    "value": [
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.287192349639996,
+            "Longitude": 103.79601279742035,
+            "Message": "(11/4)18:21 Heavy Traffic on AYE (towards MCE) between Clementi Ave 2 Exit and Portsdown Ave Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3119192056740232,
+            "Longitude": 103.84507465828248,
+            "Message": "(11/4)18:21 Heavy Traffic in CTE Tunnel (towards AYE) at Bukit Timah Rd Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3586425952064225,
+            "Longitude": 103.96178251933931,
+            "Message": "(11/4)18:20 Heavy Traffic on TPE (towards SLE) at Tampines Ave 7 Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3051073679828133,
+            "Longitude": 103.92354755857262,
+            "Message": "(11/4)18:18 Heavy Traffic on ECP (towards City) between East Coast Park Carpark H Exit and Still Rd Sth Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.31061898686602,
+            "Longitude": 103.84409891812005,
+            "Message": "(11/4)18:10 Heavy Traffic on Bukit Timah Road (towards City) between Chancery Lane and Newton Circus."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.348461403829835,
+            "Longitude": 103.78990687390589,
+            "Message": "(11/4)18:10 Heavy Traffic on PIE (towards Changi Airport) between Upper Bukit Timah Rd and BKE."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.4336958533764936,
+            "Longitude": 103.76861438166794,
+            "Message": "(11/4)18:10 Accident on BKE (towards PIE) after Woodlands Checkpoint. Avoid lane 3."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.39231826057801,
+            "Longitude": 103.90870984899843,
+            "Message": "(11/4)18:01 Heavy Traffic on TPE (towards SLE) between Tampines Ave 7 Exit and Punggol Rd Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3839278782365316,
+            "Longitude": 103.73826478423766,
+            "Message": "(11/4)18:01 Heavy Traffic on KJE (towards BKE) at Choa Chu Kang Way Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3227749632093728,
+            "Longitude": 103.8820306482252,
+            "Message": "(11/4)17:59 Heavy Traffic on KPE (towards ECP) at PIE(Tuas) Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3839114676166797,
+            "Longitude": 103.91478067755124,
+            "Message": "(11/4)17:55 Heavy Traffic on KPE (towards TPE) at TPE(SLE) Exit."
+        },
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.3506132832291213,
+            "Longitude": 103.96034323976686,
+            "Message": "(11/4)17:50 Vehicle breakdown on PIE (towards Changi Airport) before TPE."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3051194147278973,
+            "Longitude": 103.92302774132136,
+            "Message": "(11/4)17:45 Heavy Traffic on ECP (towards Changi Airport) between Tg Katong Rd Exit and Marine Vista Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.4188560218935617,
+            "Longitude": 103.77094358690657,
+            "Message": "(11/4)17:38 Heavy Traffic on BKE (towards Woodlands) at SLE Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.4177070238688927,
+            "Longitude": 103.8023887052539,
+            "Message": "(11/4)17:34 Heavy Traffic on SLE (towards CTE) between Woodlands Ave 2 Exit and Mandai Ave Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3290522956410793,
+            "Longitude": 103.86593820493009,
+            "Message": "(11/4)17:09 Heavy Traffic on PIE (towards Changi Airport) between Eng Neo Ave and Kallang Way."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3455527802605989,
+            "Longitude": 103.85967986248568,
+            "Message": "(11/4)16:55 Heavy Traffic on CTE (towards AYE) between AMK Ave 1 Exit and PIE(Changi) Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3239509428211715,
+            "Longitude": 103.87247339776705,
+            "Message": "(11/4)16:43 Heavy Traffic on PIE (towards Tuas) between Bedok North Avenue 3 exit and KPE Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3227090347428092,
+            "Longitude": 103.88889091737644,
+            "Message": "(11/4)16:26 Heavy Traffic on PIE (towards Changi Airport) at Paya Lebar Rd Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.363674056107668,
+            "Longitude": 103.85933958181872,
+            "Message": "(11/4)15:52 Heavy Traffic on CTE (towards SLE) between Braddell Rd Exit and AMK Ave 3 Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.4370343578784552,
+            "Longitude": 103.76838650285242,
+            "Message": "(11/4)14:39 Heavy Traffic on BKE (towards Woodlands) at Woodlands Rd Exit."
+        }
+    ]
+}

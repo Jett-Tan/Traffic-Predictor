@@ -1,0 +1,53 @@
+{
+    "odata.metadata": "http://datamall2.mytransport.sg/ltaodataservice/$metadata#IncidentSet",
+    "value": [
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.331764511882021,
+            "Longitude": 103.86232856037105,
+            "Message": "(12/4)9:35 Roadworks on CTE (towards AYE) after PIE(Changi) Exit."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.362495219889066,
+            "Longitude": 103.95911292351906,
+            "Message": "(12/4)9:34 Roadworks on TPE (towards SLE) after Tampines Ave 7 Exit. Avoid lane 3."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3592520379137754,
+            "Longitude": 103.96140399543376,
+            "Message": "(12/4)9:34 Roadworks on TPE (towards SLE) at Tampines Ave 7 Exit."
+        },
+        {
+            "Type": "Unattended Vehicle",
+            "Latitude": 1.393068643159809,
+            "Longitude": 103.82842483605981,
+            "Message": "(12/4)9:34 Stationary Vehicle on SLE (towards CTE) before Lentor Ave Exit."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.342817301282912,
+            "Longitude": 103.74662550493669,
+            "Message": "(12/4)9:34 Roadworks on PIE (towards Tuas) after Toh Guan Rd Exit. Avoid lane 1."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.2956421615042675,
+            "Longitude": 103.890907838236,
+            "Message": "(12/4)9:34 Roadworks on ECP (towards Changi Airport) before Tg Katong Rd Exit. Avoid lane 4."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.368116286527727,
+            "Longitude": 103.71450420437506,
+            "Message": "(12/4)9:32 Roadworks on KJE (towards PIE) before PIE(Changi) Exit. Avoid lane 1."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3637191730972262,
+            "Longitude": 103.95793155253646,
+            "Message": "(12/4)9:32 Roadworks on TPE (towards PIE) at Loyang Ave Exit."
+        }
+    ]
+}

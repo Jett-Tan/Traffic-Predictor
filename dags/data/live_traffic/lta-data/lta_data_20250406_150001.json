@@ -1,0 +1,59 @@
+{
+    "odata.metadata": "http://datamall2.mytransport.sg/ltaodataservice/$metadata#IncidentSet",
+    "value": [
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.3443357367715238,
+            "Longitude": 103.9688238699522,
+            "Message": "(6/4)22:57 Vehicle breakdown on PIE (towards Changi Airport) at Changi North Crescent Entrance."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.2822554341292975,
+            "Longitude": 103.83325847606723,
+            "Message": "(6/4)22:57 Roadworks in CTE Tunnel (towards SLE) before Outram Rd Exit."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3227428862253838,
+            "Longitude": 103.68776346390945,
+            "Message": "(6/4)22:37 Roadworks on AYE (towards MCE) before Pioneer Rd Exit. Avoid lane 3."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3381398959446091,
+            "Longitude": 103.94297843502869,
+            "Message": "(6/4)22:36 Roadworks on PIE (towards Tuas) after Tampines. Avoid lane 1."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.2887018606360299,
+            "Longitude": 103.86160231377328,
+            "Message": "(6/4)22:30 Roadworks on ECP (towards Changi Airport) before Ophir Rd Entrance. Avoid lane 2."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3552180530692195,
+            "Longitude": 103.71936741010519,
+            "Message": "(6/4)22:30 Roadworks on PIE (towards Tuas) at Jurong West Ave 2 Exit. Jurong West Ave 2 Exit closed."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3247157139817651,
+            "Longitude": 103.89970417965903,
+            "Message": "(6/4)22:29 Roadworks on PIE (towards Tuas) after Jalan Eunos. Avoid lane 1."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3261012079960008,
+            "Longitude": 103.8313891942217,
+            "Message": "(6/4)22:18 Roadworks on PIE (towards Changi Airport) after Stevens Rd Exit. Avoid lane 4."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3553097374544192,
+            "Longitude": 103.72325584844909,
+            "Message": "(6/4)20:30 Roadworks on PIE (towards Tuas) before Jurong West Ave 2. Avoid lanes 2 and 3."
+        }
+    ]
+}

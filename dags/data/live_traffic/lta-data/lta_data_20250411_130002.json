@@ -1,0 +1,47 @@
+{
+    "odata.metadata": "http://datamall2.mytransport.sg/ltaodataservice/$metadata#IncidentSet",
+    "value": [
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3681216946145327,
+            "Longitude": 103.71450420410898,
+            "Message": "(11/4)20:55 Roadworks on KJE (towards PIE) before PIE(Changi) Exit. Avoid lane 1."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3487266756996652,
+            "Longitude": 103.69307547811046,
+            "Message": "(11/4)20:53 Roadworks on PIE (towards Changi Airport) before Jalan Bahar. Avoid lane 5."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.4010391747164819,
+            "Longitude": 103.86920426197902,
+            "Message": "(11/4)20:51 Accident on TPE (towards SLE) after Jalan Kayu Exit."
+        },
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.2731781662692618,
+            "Longitude": 103.85298251908334,
+            "Message": "(11/4)20:50 Vehicle breakdown on MCE (towards ECP) before Maxwell Rd Entrance."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3553528716016778,
+            "Longitude": 103.7233671784984,
+            "Message": "(11/4)20:30 Roadworks on PIE (towards Tuas) before Jurong West Ave 2. Avoid lane 3."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.4334598684312305,
+            "Longitude": 103.76860001977549,
+            "Message": "(11/4)19:36 Heavy Traffic on BKE (towards Woodlands) after Woodlands Ave 3 Exit."
+        },
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.3548578894721948,
+            "Longitude": 103.71688550610587,
+            "Message": "(11/4)18:48 Vehicle breakdown on Jurong West Avenue 2 (towards PIE) after Corporation Road. Avoid left lane."
+        }
+    ]
+}

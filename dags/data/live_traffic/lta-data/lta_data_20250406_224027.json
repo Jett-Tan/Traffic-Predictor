@@ -1,0 +1,17 @@
+{
+    "odata.metadata": "http://datamall2.mytransport.sg/ltaodataservice/$metadata#IncidentSet",
+    "value": [
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.3511476654230243,
+            "Longitude": 103.79049978810461,
+            "Message": "(7/4)6:54 Vehicle breakdown on BKE (towards PIE) before PIE Exit."
+        },
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.2956601392248825,
+            "Longitude": 103.87596396111715,
+            "Message": "(7/4)6:48 Vehicle breakdown on MCE (towards ECP) at ECP (Changi) Exit."
+        }
+    ]
+}

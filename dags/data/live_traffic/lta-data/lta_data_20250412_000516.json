@@ -1,0 +1,35 @@
+{
+    "odata.metadata": "http://datamall2.mytransport.sg/ltaodataservice/$metadata#IncidentSet",
+    "value": [
+        {
+            "Type": "Accident",
+            "Latitude": 1.3218688438867527,
+            "Longitude": 103.70795492799363,
+            "Message": "(12/4)8:02 Accident on AYE (towards MCE) at Jalan Boon Lay Exit."
+        },
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.3887787393204072,
+            "Longitude": 103.75693375662577,
+            "Message": "(12/4)7:58 Vehicle breakdown on KJE (towards PIE) after Woodlands Rd Exit."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.420080236387967,
+            "Longitude": 103.76980386483342,
+            "Message": "(12/4)7:57 Accident on BKE (towards Woodlands) at SLE Exit."
+        },
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.329773765468423,
+            "Longitude": 103.84748224219729,
+            "Message": "(12/4)7:50 Vehicle breakdown on PIE (towards Changi Airport) after Thomson Rd."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.437473252653669,
+            "Longitude": 103.76832644629539,
+            "Message": "(12/4)7:15 Heavy Traffic on BKE (towards Woodlands) at Woodlands Rd Exit."
+        }
+    ]
+}

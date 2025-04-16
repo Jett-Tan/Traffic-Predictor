@@ -1,0 +1,53 @@
+{
+    "odata.metadata": "http://datamall2.mytransport.sg/ltaodataservice/$metadata#IncidentSet",
+    "value": [
+        {
+            "Type": "Accident",
+            "Latitude": 1.4130117669405013,
+            "Longitude": 103.77141163697289,
+            "Message": "(12/4)14:02 Accident on BKE (towards Woodlands) after Mandai Rd Entrance. Avoid lane 3."
+        },
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.3293182229970693,
+            "Longitude": 103.85338980142207,
+            "Message": "(12/4)13:50 Vehicle breakdown on PIE (towards Changi Airport) after Thomson Rd. Avoid lane 1."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3582395534183078,
+            "Longitude": 103.70098354841832,
+            "Message": "(12/4)13:43 Accident on PIE (towards Tuas) before Jalan Bahar. Avoid lanes 4 and 5."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3379269163951002,
+            "Longitude": 103.91807641931752,
+            "Message": "(12/4)13:37 Accident on Bedok Reservoir Road towards Bedok North Road."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3446502110588572,
+            "Longitude": 103.86009192388175,
+            "Message": "(12/4)11:18 Heavy Traffic on CTE (towards AYE) at PIE(Changi) Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3264027717108038,
+            "Longitude": 103.84207058915553,
+            "Message": "(12/4)11:11 Heavy Traffic on Balestier Road between Thomson Road and Ah Hood Road."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3757787505664023,
+            "Longitude": 103.91002060362766,
+            "Message": "(12/4)10:33 Roadworks on KPE (towards ECP) at Buangkok Drive Entrance."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.331764511882021,
+            "Longitude": 103.86232856037105,
+            "Message": "(12/4)9:35 Roadworks on CTE (towards AYE) after PIE(Changi) Exit. Avoid lane 4."
+        }
+    ]
+}

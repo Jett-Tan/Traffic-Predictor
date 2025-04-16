@@ -1,0 +1,29 @@
+{
+    "odata.metadata": "http://datamall2.mytransport.sg/ltaodataservice/$metadata#IncidentSet",
+    "value": [
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3225693362447746,
+            "Longitude": 103.68318823686656,
+            "Message": "(12/4)20:47 Roadworks on AYE (towards Tuas) at Benoi Rd Exit."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.433314646227993,
+            "Longitude": 103.76861555155757,
+            "Message": "(12/4)20:27 Accident on BKE (towards Woodlands) after Woodlands Ave 3 Exit. Avoid lane 1."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.337487390609788,
+            "Longitude": 103.77722742419103,
+            "Message": "(12/4)15:33 Roadworks on PIE (towards Changi Airport) after Bukit Timah Rd exit. Avoid lane 3."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3227380434053313,
+            "Longitude": 103.69141014063943,
+            "Message": "(12/4)14:00 Roadworks on AYE (towards MCE) after Pioneer Rd Exit. Avoid lane 1."
+        }
+    ]
+}

@@ -1,0 +1,53 @@
+{
+    "odata.metadata": "http://datamall2.mytransport.sg/ltaodataservice/$metadata#IncidentSet",
+    "value": [
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.406016014868039,
+            "Longitude": 103.77265293630951,
+            "Message": "(12/4)20:00 Vehicle breakdown on BKE (towards PIE) at Mandai Rd Entrance."
+        },
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.3842430426247996,
+            "Longitude": 103.91584177994288,
+            "Message": "(12/4)19:48 Vehicle breakdown on TPE (towards PIE) before KPE Exit."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2792695703498969,
+            "Longitude": 103.82913839307062,
+            "Message": "(12/4)19:40 Accident on CTE (towards SLE) after AYE Entrance. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.322497192215165,
+            "Longitude": 103.69781475191019,
+            "Message": "(12/4)19:09 Accident on AYE (towards Tuas) after Pioneer Rd Exit. Avoid lane 1."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.4372441997723364,
+            "Longitude": 103.76847410998741,
+            "Message": "(12/4)15:46 Heavy Traffic on BKE (towards Woodlands) at Woodlands Checkpoint Exit."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.337487390609788,
+            "Longitude": 103.77722742419103,
+            "Message": "(12/4)15:33 Roadworks on PIE (towards Changi Airport) after Bukit Timah Rd exit. Avoid lane 3."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.2954104551647878,
+            "Longitude": 103.87364871673246,
+            "Message": "(12/4)14:42 Roadworks on ECP (towards Changi Airport) before Fort Rd Exit. Avoid lane 3."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3227380434053313,
+            "Longitude": 103.69141014063943,
+            "Message": "(12/4)14:00 Roadworks on AYE (towards MCE) after Pioneer Rd Exit. Avoid lane 1."
+        }
+    ]
+}

@@ -1,0 +1,71 @@
+{
+    "odata.metadata": "http://datamall2.mytransport.sg/ltaodataservice/$metadata#IncidentSet",
+    "value": [
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3560748373772318,
+            "Longitude": 103.90140218792493,
+            "Message": "(12/4)22:58 Roadworks on KPE (towards TPE) before Tampines Rd Exit. Avoid lane 3."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3654341335272768,
+            "Longitude": 103.95387046991895,
+            "Message": "(12/4)22:54 Roadworks on TPE (towards PIE) after Pasir Ris Dr 8 Exit. Avoid lane 3."
+        },
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.3398059708739214,
+            "Longitude": 103.97326104405238,
+            "Message": "(12/4)22:53 Vehicle breakdown on PIE (towards Changi Airport) after TPE."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3925237637690202,
+            "Longitude": 103.77418428986408,
+            "Message": "(12/4)22:50 Roadworks on BKE (towards PIE) after KJE Exit."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3046086400719872,
+            "Longitude": 103.85086207319581,
+            "Message": "(12/4)22:44 Roadworks on Rochor Canal Road (towards Selegie Road) after Short Street."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3046141677490735,
+            "Longitude": 103.85057318151476,
+            "Message": "(12/4)22:40 Roadworks on Selegie Road (towards Rochor Canal Road) after Albert Street."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3254435356155827,
+            "Longitude": 103.90398067547909,
+            "Message": "(12/4)22:28 Roadworks on PIE (towards Tuas) at Jalan Eunos Entrance."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3228855061450526,
+            "Longitude": 103.74552008438042,
+            "Message": "(12/4)21:58 Accident on AYE (towards Tuas) at Jurong Town Hall Entrance."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.32155315173,
+            "Longitude": 103.6655169798004,
+            "Message": "(12/4)21:55 Roadworks on AYE (towards Tuas) at PIE Exit."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3580902606067022,
+            "Longitude": 103.70080609022999,
+            "Message": "(12/4)21:15 Roadworks on PIE (towards Tuas) before Jalan Bahar. Avoid lane 5."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.337487390609788,
+            "Longitude": 103.77722742419103,
+            "Message": "(12/4)15:33 Roadworks on PIE (towards Changi Airport) after Bukit Timah Rd exit. Avoid lane 3."
+        }
+    ]
+}

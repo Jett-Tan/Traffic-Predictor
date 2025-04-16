@@ -1,0 +1,83 @@
+{
+    "odata.metadata": "http://datamall2.mytransport.sg/ltaodataservice/$metadata#IncidentSet",
+    "value": [
+        {
+            "Type": "Accident",
+            "Latitude": 1.3170982591342533,
+            "Longitude": 103.87510588289634,
+            "Message": "(12/4)18:54 Accident on PIE (towards Tuas) at KPE(ECP) Exit."
+        },
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.3611957544939295,
+            "Longitude": 103.85848402055458,
+            "Message": "(12/4)18:52 Vehicle breakdown on CTE (towards AYE) before AMK Ave 1 Exit."
+        },
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.3151564551234103,
+            "Longitude": 103.84615247558969,
+            "Message": "(12/4)18:50 Vehicle breakdown in CTE Tunnel (towards AYE) before Bukit Timah Rd Exit."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3088075220098865,
+            "Longitude": 103.93405405784515,
+            "Message": "(12/4)18:41 Roadworks on ECP (towards City) before Still Rd Sth Exit. Avoid lane 1."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.4187993919701674,
+            "Longitude": 103.7709919145076,
+            "Message": "(12/4)17:35 Heavy Traffic on BKE (towards Woodlands) at SLE Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.4372441997723364,
+            "Longitude": 103.76847410998741,
+            "Message": "(12/4)15:46 Heavy Traffic on BKE (towards Woodlands) at Woodlands Checkpoint Exit."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.337487390609788,
+            "Longitude": 103.77722742419103,
+            "Message": "(12/4)15:33 Roadworks on PIE (towards Changi Airport) after Bukit Timah Rd exit. Avoid lane 3."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3780664478248188,
+            "Longitude": 103.7323464820248,
+            "Message": "(12/4)15:00 Roadworks on KJE (towards PIE) at Sungei Tengah Rd Entrance."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.348855603925994,
+            "Longitude": 103.73424418461413,
+            "Message": "(12/4)14:47 Roadworks on PIE (towards Tuas) after Jurong Town Hall Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.295606502585558,
+            "Longitude": 103.89246140029748,
+            "Message": "(12/4)14:45 Roadworks on ECP (towards Changi Airport) before Tg Katong Rd Exit. Avoid lane 4."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3667282823083289,
+            "Longitude": 103.70991169572785,
+            "Message": "(12/4)14:45 Roadworks on KJE (towards BKE) after PIE Entrance. Avoid lane 1."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.2954104551647878,
+            "Longitude": 103.87364871673246,
+            "Message": "(12/4)14:42 Roadworks on ECP (towards Changi Airport) before Fort Rd Exit. Avoid lane 3."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3227380434053313,
+            "Longitude": 103.69141014063943,
+            "Message": "(12/4)14:00 Roadworks on AYE (towards MCE) after Pioneer Rd Exit. Avoid lane 1."
+        }
+    ]
+}

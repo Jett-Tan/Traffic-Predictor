@@ -1,0 +1,41 @@
+{
+    "odata.metadata": "http://datamall2.mytransport.sg/ltaodataservice/$metadata#IncidentSet",
+    "value": [
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.2867798650605524,
+            "Longitude": 103.83939674659568,
+            "Message": "(7/4)5:30 Roadworks in CTE Tunnel (towards SLE) after Outram Rd Exit. Avoid lane 3."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3043755470661815,
+            "Longitude": 103.84012075637364,
+            "Message": "(7/4)5:10 Accident in CTE Tunnel (towards SLE) before Cairnhill Circle Entrance. Avoid lane 3."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.2904057160361362,
+            "Longitude": 103.84270266952,
+            "Message": "(7/4)0:03 Roadworks in CTE Tunnel (towards SLE) after Merchant Rd Exit. Avoid lane 3."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.288854462692255,
+            "Longitude": 103.84404724969995,
+            "Message": "(7/4)0:00 Roadworks in CTE Tunnel (towards AYE) at Merchant Road Entrance. Merchant Road Entrance closed."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.2883426006794871,
+            "Longitude": 103.84180279123667,
+            "Message": "(7/4)0:00 Roadworks in CTE Tunnel (towards AYE) at Havelock Road Exit. Havelock Road Exit closed."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.2871707296098418,
+            "Longitude": 103.84016571847435,
+            "Message": "(6/4)23:59 Roadworks in CTE Tunnel (towards AYE) before Outram Rd Exit. Avoid lane 3."
+        }
+    ]
+}

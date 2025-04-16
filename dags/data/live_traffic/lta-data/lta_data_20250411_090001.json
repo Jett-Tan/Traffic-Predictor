@@ -1,0 +1,83 @@
+{
+    "odata.metadata": "http://datamall2.mytransport.sg/ltaodataservice/$metadata#IncidentSet",
+    "value": [
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.4258790837963273,
+            "Longitude": 103.78793169749699,
+            "Message": "(11/4)16:57 Vehicle breakdown on SLE (towards BKE) before Woodlands Ave 2 Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3445735202125448,
+            "Longitude": 103.86015957570002,
+            "Message": "(11/4)16:55 Heavy Traffic on CTE (towards AYE) at PIE(Changi) Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3299033070523696,
+            "Longitude": 103.86346710740445,
+            "Message": "(11/4)16:44 Heavy Traffic on PIE (towards Tuas) at CTE(SLE) Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3239509428211715,
+            "Longitude": 103.87247339776705,
+            "Message": "(11/4)16:43 Heavy Traffic on PIE (towards Tuas) between Paya Lebar Rd and KPE Exit."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.285315742635271,
+            "Longitude": 103.79885473495024,
+            "Message": "(11/4)16:43 Accident on AYE (towards MCE) after Alexandra Rd Exit with congestion till Buona Vista Exit. Avoid lane 1."
+        },
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.3965403887879106,
+            "Longitude": 103.84366429427389,
+            "Message": "(11/4)16:37 Vehicle breakdown on SLE (towards CTE) after Lentor Ave Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3227090347428092,
+            "Longitude": 103.88889091737644,
+            "Message": "(11/4)16:26 Heavy Traffic on PIE (towards Changi Airport) at Paya Lebar Rd Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.363674056107668,
+            "Longitude": 103.85933958181872,
+            "Message": "(11/4)15:52 Heavy Traffic on CTE (towards SLE) between Braddell Rd Exit and AMK Ave 3 Exit."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3166933251155133,
+            "Longitude": 103.90526708041065,
+            "Message": "(11/4)15:33 Accident on Still Road (towards Eunos) after Koon Seng Road."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.4370343578784552,
+            "Longitude": 103.76838650285242,
+            "Message": "(11/4)14:39 Heavy Traffic on BKE (towards Woodlands) at Woodlands Rd Exit."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.409791642546315,
+            "Longitude": 103.80752442304491,
+            "Message": "(11/4)11:10 Roadworks on SLE (towards BKE) before Mandai Rd Exit. Avoid lane 1."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.364282898036236,
+            "Longitude": 103.95688941548796,
+            "Message": "(11/4)10:29 Roadworks on TPE (towards PIE) at Loyang Ave Exit."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3588406479994293,
+            "Longitude": 103.96166023523757,
+            "Message": "(11/4)9:45 Roadworks on TPE (towards SLE) at Tampines Ave 7 Exit."
+        }
+    ]
+}

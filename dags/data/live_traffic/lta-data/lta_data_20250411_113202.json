@@ -1,0 +1,143 @@
+{
+    "odata.metadata": "http://datamall2.mytransport.sg/ltaodataservice/$metadata#IncidentSet",
+    "value": [
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.329070306849739,
+            "Longitude": 103.66980885495461,
+            "Message": "(11/4)19:26 Vehicle breakdown on PIE (towards Tuas) after Upper Jurong Rd. Avoid lane 1."
+        },
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.2884562000465443,
+            "Longitude": 103.84115152015181,
+            "Message": "(11/4)19:25 Vehicle breakdown in CTE Tunnel (towards SLE) at Clemenceau Ave Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.344510385630873,
+            "Longitude": 103.86024125419836,
+            "Message": "(11/4)19:24 Heavy Traffic on CTE (towards AYE) at PIE(Changi) Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.32336118576878,
+            "Longitude": 103.8732201850133,
+            "Message": "(11/4)19:18 Heavy Traffic on PIE (towards Changi Airport) at KPE(ECP) Exit."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.3779141695741008,
+            "Longitude": 103.92525986674389,
+            "Message": "(11/4)19:12 Obstacle on TPE (towards SLE) before KPE(MCE) Exit. Avoid lane 4."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.42288655313022,
+            "Longitude": 103.77231795302986,
+            "Message": "(11/4)19:10 Accident on BKE (towards PIE) at SLE Exit."
+        },
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.3548578894721948,
+            "Longitude": 103.71688550610587,
+            "Message": "(11/4)18:48 Vehicle breakdown on Jurong West Avenue 2 (towards PIE) after Corporation Road. Avoid left lane."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.4263180168597596,
+            "Longitude": 103.78615455338462,
+            "Message": "(11/4)18:44 Accident on SLE (towards CTE) after Woodlands Ave 2 Exit with congestion till BKE Entrance. Avoid lane 1."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.32953519534719,
+            "Longitude": 103.85015042064522,
+            "Message": "(11/4)18:26 Heavy Traffic on PIE (towards Tuas) after Toa Payoh Exit"
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.287192349639996,
+            "Longitude": 103.79601279742035,
+            "Message": "(11/4)18:21 Heavy Traffic on AYE (towards MCE) between Clementi Ave 2 Exit and Portsdown Ave Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3119192056740232,
+            "Longitude": 103.84507465828248,
+            "Message": "(11/4)18:21 Heavy Traffic in CTE Tunnel (towards AYE) at Bukit Timah Rd Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3586425952064225,
+            "Longitude": 103.96178251933931,
+            "Message": "(11/4)18:20 Heavy Traffic on TPE (towards SLE) at Tampines Ave 7 Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3051073679828133,
+            "Longitude": 103.92354755857262,
+            "Message": "(11/4)18:18 Heavy Traffic on ECP (towards City) between East Coast Park Carpark H Exit and Still Rd Sth Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3839278782365316,
+            "Longitude": 103.73826478423766,
+            "Message": "(11/4)18:01 Heavy Traffic on KJE (towards BKE) at Choa Chu Kang Way Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3839114676166797,
+            "Longitude": 103.91478067755124,
+            "Message": "(11/4)17:55 Heavy Traffic on KPE (towards TPE) at TPE(SLE) Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3051194147278973,
+            "Longitude": 103.92302774132136,
+            "Message": "(11/4)17:45 Heavy Traffic on ECP (towards Changi Airport) between Tg Katong Rd Exit and Marine Vista Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.4188560218935617,
+            "Longitude": 103.77094358690657,
+            "Message": "(11/4)17:38 Heavy Traffic on BKE (towards Woodlands) at SLE Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.4177070238688927,
+            "Longitude": 103.8023887052539,
+            "Message": "(11/4)17:34 Heavy Traffic on SLE (towards CTE) between Woodlands Ave 2 Exit and Mandai Ave Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3290522956410793,
+            "Longitude": 103.86593820493009,
+            "Message": "(11/4)17:09 Heavy Traffic on PIE (towards Changi Airport) between Toa Payoh Lor 1 and Kallang Way."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3239509428211715,
+            "Longitude": 103.87247339776705,
+            "Message": "(11/4)16:43 Heavy Traffic on PIE (towards Tuas) between Bedok North Avenue 3 exit and KPE Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3227090347428092,
+            "Longitude": 103.88889091737644,
+            "Message": "(11/4)16:26 Heavy Traffic on PIE (towards Changi Airport) at Paya Lebar Rd Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.363674056107668,
+            "Longitude": 103.85933958181872,
+            "Message": "(11/4)15:52 Heavy Traffic on CTE (towards SLE) between Braddell Rd Exit and AMK Ave 3 Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.4370343578784552,
+            "Longitude": 103.76838650285242,
+            "Message": "(11/4)14:39 Heavy Traffic on BKE (towards Woodlands) at Woodlands Rd Exit."
+        }
+    ]
+}

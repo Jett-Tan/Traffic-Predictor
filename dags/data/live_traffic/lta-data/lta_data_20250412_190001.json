@@ -1,0 +1,2579 @@
+{
+    "odata.metadata": "http://datamall2.mytransport.sg/ltaodataservice/$metadata#IncidentSet",
+    "value": [
+        {
+            "Type": "Accident",
+            "Latitude": 1.3886319951366632,
+            "Longitude": 103.9118668078166,
+            "Message": "(13/4)02:38 Accident on TPE (towards SLE) before Punggol Rd. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3884908471346646,
+            "Longitude": 103.91196850000884,
+            "Message": "(13/4)02:29 Accident on TPE (towards SLE) before Punggol Rd. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.385584333205116,
+            "Longitude": 103.91443314579695,
+            "Message": "(13/4)01:40 Accident on TPE (towards SLE) before Punggol Rd. Avoid lane 1."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3889845986792506,
+            "Longitude": 103.91154936757167,
+            "Message": "(13/4)01:39 Accident on TPE (towards SLE) before Punggol Rd. Avoid lane 1."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3629677344354028,
+            "Longitude": 103.8592327656681,
+            "Message": "(12/4)23:03 Accident on CTE (towards AYE) before AMK Ave 1. Avoid lane 4."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3581274577240605,
+            "Longitude": 103.76867609124236,
+            "Message": "(12/4)22:20 Accident on Jalan Uji towards Jalan Asas. Jalan Uji closed."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3099310768722956,
+            "Longitude": 103.84376612874782,
+            "Message": "(11/4)16:04 Accident in CTE Tunnel (towards SLE) before Moulmein Rd. CTE Tunnel closed after Merchant Rd."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2882980429855113,
+            "Longitude": 103.84184768108321,
+            "Message": "(11/4)14:36 Accident in CTE Tunnel (towards AYE) at Havelock Exit."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2882980429855113,
+            "Longitude": 103.84184768108321,
+            "Message": "(11/4)14:41 Accident in CTE Tunnel (towards AYE) at Havelock Exit with congestion till Bukit Timah Rd."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2882980429855113,
+            "Longitude": 103.84184768108321,
+            "Message": "(11/4)14:59 Accident in CTE Tunnel (towards AYE) at Havelock Exit with congestion till PIE(Tuas)."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2882980429855113,
+            "Longitude": 103.84184768108321,
+            "Message": "(11/4)15:31 Accident in CTE Tunnel (towards AYE) at Havelock Exit. Havelock Exit Closed."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2882980429855113,
+            "Longitude": 103.84184768108321,
+            "Message": "(11/4)15:23 Accident in CTE Tunnel (towards AYE) at Havelock Exit with congestion till PIE(Tuas). Havelock Exit Closed."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2882980429855113,
+            "Longitude": 103.84184768108321,
+            "Message": "(11/4)15:36 Accident in CTE Tunnel (towards AYE) at Havelock Exit. Havelock Exit Closed."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.329403654045807,
+            "Longitude": 103.63939161755704,
+            "Message": "(11/4)13:53 Accident on Tuas Viaduct (towards AYE) before Tuas South Avenue 3. Avoid lane 1."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.328699649329409,
+            "Longitude": 103.63709164439993,
+            "Message": "(11/4)13:55 Accident on Tuas Viaduct (towards AYE) before Tuas South Avenue 3. Tuas Viaduct closed after Tuas Viaduct."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.328699649329409,
+            "Longitude": 103.63709164439993,
+            "Message": "(11/4)13:52 Accident on Tuas Viaduct (towards AYE) before Tuas South Avenue 3. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3974658813181062,
+            "Longitude": 103.85581751224937,
+            "Message": "(11/4)13:51 Accident on SLE (towards BKE) before Lentor Ave. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2827988260239114,
+            "Longitude": 103.83552464023796,
+            "Message": "(11/4)11:32 Accident on CTE (towards AYE) at Outram Road Entrance."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2827988260239114,
+            "Longitude": 103.83552464023796,
+            "Message": "(11/4)11:35 Accident on CTE (towards AYE) at Outram Road Entrance. Outram Road Entrance closed."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.306682084202998,
+            "Longitude": 103.84012100660179,
+            "Message": "(11/4)10:55 Accident in CTE Tunnel (towards SLE) at Cairnhill Circle Entrance."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.306682084202998,
+            "Longitude": 103.84012100660179,
+            "Message": "(11/4)11:01 Accident in CTE Tunnel (towards SLE) at Cairnhill Circle Entrance. Cairnhill Circle Entrance closed."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2892601291383752,
+            "Longitude": 103.84177910377889,
+            "Message": "(11/4)10:43 Accident in CTE Tunnel (towards SLE) at Upper Cross Street Entrance."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2892601291383752,
+            "Longitude": 103.84177910377889,
+            "Message": "(11/4)10:50 Accident in CTE Tunnel (towards SLE) at Upper Cross Street Entrance. Upper Cross Street Entrance closed."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2892601291383752,
+            "Longitude": 103.84177910377889,
+            "Message": "(11/4)10:42 Accident in CTE Tunnel (towards SLE) at Upper Cross Street Entrance."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3605081182058345,
+            "Longitude": 103.96104396446705,
+            "Message": "(10/4)14:58 Accident on TPE (towards PIE) before Upper Changi Rd East. Avoid lane 3."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2880531545777179,
+            "Longitude": 103.84125751414942,
+            "Message": "(9/4)17:10 Accident in CTE Tunnel (towards AYE) before Outram Rd. Avoid lane 1."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2819444106041205,
+            "Longitude": 103.8323527027053,
+            "Message": "(7/4)16:23 Accident on Central Expressway (towards SLE) before Outram Rd. Avoid lane 1.Testing for edit function"
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.328152492818222,
+            "Longitude": 103.83914856093244,
+            "Message": "(4/4)15:16 Accident on PIE (towards Changi) before Thomson Rd. Avoid lanes 2 and 3."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.329030422378807,
+            "Longitude": 103.91216209738649,
+            "Message": "(4/4)15:09 Accident on PIE (towards Changi) before Bedok North Rd. Avoid lane 1."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.329030422378807,
+            "Longitude": 103.91216209738649,
+            "Message": "(4/4)15:10 Accident on PIE (towards Changi) before Bedok North Rd. Avoid lane 1."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.329030422378807,
+            "Longitude": 103.91216209738649,
+            "Message": "(4/4)15:10 Accident on PIE (towards Changi) before Bedok North Ave 3. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.313777949411246,
+            "Longitude": 103.7095544821614,
+            "Message": "(4/4)15:06 Accident on Jurong Pier Road (towards AYE) before AYE. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.328932741255176,
+            "Longitude": 103.63739050048636,
+            "Message": "(4/4)14:59 Accident on Tuas Viaduct (towards AYE) before Tuas South Avenue 3. Avoid lane 1."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3230993572251317,
+            "Longitude": 103.64716008166246,
+            "Message": "(4/4)14:58 Accident on Tuas Viaduct (towards AYE) before Tuas South Avenue 3. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3230993572251317,
+            "Longitude": 103.64716008166246,
+            "Message": "(4/4)14:56 Accident on Tuas Viaduct (towards AYE) before Tuas South Avenue 3. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3230993572251317,
+            "Longitude": 103.64716008166246,
+            "Message": "(4/4)14:59 Accident on Tuas Viaduct (towards Tuas South) before Pioneer Road. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.30217164026845,
+            "Longitude": 103.88493126829577,
+            "Message": "(4/4)14:50 Accident on Mountbatten Road (towards Changi) before Fort Road. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.30217164026845,
+            "Longitude": 103.88493126829577,
+            "Message": "(4/4)14:43 Accident on Mountbatten Road (towards City) before Stadium Boulevard. Avoid lane 3."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.30217164026845,
+            "Longitude": 103.88493126829577,
+            "Message": "(4/4)14:45 Accident on Mountbatten Road (towards City) before Fort Road. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.30217164026845,
+            "Longitude": 103.88493126829577,
+            "Message": "(4/4)14:46 Accident on Mountbatten Road (towards City) before Fort Road. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.30217164026845,
+            "Longitude": 103.88493126829577,
+            "Message": "(4/4)14:53 Accident on Mountbatten Road (towards Wilkinson Road) after Old Airport Road. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.30217164026845,
+            "Longitude": 103.88493126829577,
+            "Message": "(4/4)14:52 Accident on Mountbatten Road (towards Changi) before Fort Road. Avoid lane 3."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3140162145094996,
+            "Longitude": 103.70943752533404,
+            "Message": "(4/4)15:05 Accident on Jurong Pier Circus (towards City) before AYE. Avoid lane 1."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3140162145094996,
+            "Longitude": 103.70943752533404,
+            "Message": "(4/4)14:42 Accident on Jurong Pier Road (towards AYE) before AYE. Avoid lane 1."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3421297923010047,
+            "Longitude": 103.89146855750374,
+            "Message": "(4/4)14:36 Accident on Hougang Avenue 3 (towards Bartley) before Hougang Avenue 3. Avoid lane 3."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3421297923010047,
+            "Longitude": 103.89146855750374,
+            "Message": "(4/4)14:39 Accident on Hougang Avenue 3 (towards Bartley) before Hougang Avenue 3 with congestion till Airport Road. Avoid lanes 3 and 4."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3421297923010047,
+            "Longitude": 103.89146855750374,
+            "Message": "(4/4)14:37 Accident on Hougang Avenue 3 (towards Bartley) before Hougang Avenue 3. Hougang Avenue 3 closed after Airport Road."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.314197047970919,
+            "Longitude": 103.71018080941373,
+            "Message": "(4/4)14:33 Accident on Jurong Pier Circus (towards Tuas) before Jurong Island Highway with congestion till AYE. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.314197047970919,
+            "Longitude": 103.71018080941373,
+            "Message": "(4/4)14:30 Accident on Jurong Pier Circus (towards Tuas) before Jurong Island Highway. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3128578933791515,
+            "Longitude": 103.83872786221681,
+            "Message": "(4/4)14:20 Accident at Newton Circus/Scotts Road with congestion till Cavenagh Road."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3128578933791515,
+            "Longitude": 103.83872786221681,
+            "Message": "(4/4)14:18 Accident at Newton Circus/Scotts Road."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3128578933791515,
+            "Longitude": 103.83872786221681,
+            "Message": "(4/4)14:22 Accident at Newton Circus/Scotts Road with congestion till Serangoon Road."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3128578933791515,
+            "Longitude": 103.83872786221681,
+            "Message": "(4/4)14:25 Accident at Newton Circus/Scotts Road with congestion till Serangoon Road."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3128578933791515,
+            "Longitude": 103.83872786221681,
+            "Message": "(4/4)14:25 Accident at Newton Circus/Scotts Road with congestion till Serangoon Road. Road Closure at Newton Circus/Scotts Road."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3452008929468244,
+            "Longitude": 103.86007782123538,
+            "Message": "(4/4)14:23 Accident on CTE (towards AYE) at Braddell Rd Exit. Braddell Rd Exit Closed."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3452008929468244,
+            "Longitude": 103.86007782123538,
+            "Message": "(4/4)14:14 Accident on CTE (towards AYE) at Braddell Rd Exit with congestion till AMK Ave 5."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3452008929468244,
+            "Longitude": 103.86007782123538,
+            "Message": "(4/4)14:10 Accident on CTE (towards AYE) at Braddell Rd Exit."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3452008929468244,
+            "Longitude": 103.86007782123538,
+            "Message": "(4/4)14:17 Accident on CTE (towards AYE) at Braddell Rd Exit. Braddell Rd Exit Closed."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3452008929468244,
+            "Longitude": 103.86007782123538,
+            "Message": "(4/4)14:15 Accident on CTE (towards AYE) at Braddell Rd Exit with congestion before AMK Ave 5. Braddell Rd Exit Closed."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3452008929468244,
+            "Longitude": 103.86007782123538,
+            "Message": "(4/4)14:15 Accident on CTE (towards AYE) at Braddell Rd Exit with congestion before AMK Ave 5."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2892849846731544,
+            "Longitude": 103.84225971159998,
+            "Message": "(4/4)14:05 Accident in CTE Tunnel (towards AYE) at Havelock Exit."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2892849846731544,
+            "Longitude": 103.84225971159998,
+            "Message": "(4/4)14:06 Accident in CTE Tunnel (towards AYE) at Havelock Exit with congestion till Moulmein Rd."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2892849846731544,
+            "Longitude": 103.84225971159998,
+            "Message": "(4/4)14:08 Accident in CTE Tunnel (towards AYE) at Havelock Exit with congestion till Moulmein Rd."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2901996787145653,
+            "Longitude": 103.84239275207408,
+            "Message": "(4/4)14:00 Accident in CTE Tunnel (towards SLE) at Upper Cross Street Entrance."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2901996787145653,
+            "Longitude": 103.84239275207408,
+            "Message": "(4/4)14:02 Accident in CTE Tunnel (towards SLE) at Upper Cross Street Entrance."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2901996787145653,
+            "Longitude": 103.84239275207408,
+            "Message": "(4/4)14:04 Accident in CTE Tunnel (towards SLE) at Upper Cross Street Entrance. Upper Cross Street Entrance closed."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2901996787145653,
+            "Longitude": 103.84239275207408,
+            "Message": "(4/4)14:03 Accident in CTE Tunnel (towards SLE) at Upper Cross Street Entrance. Upper Cross Street Entrance closed."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2875466591750737,
+            "Longitude": 103.84075843129622,
+            "Message": "(4/4)13:50 Accident in CTE Tunnel (towards AYE) at Merchant Road Entrance."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2875466591750737,
+            "Longitude": 103.84075843129622,
+            "Message": "(4/4)13:51 Accident in CTE Tunnel (towards AYE) before Outram Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2875466591750737,
+            "Longitude": 103.84075843129622,
+            "Message": "(4/4)13:52 Accident in CTE Tunnel (towards AYE) before Outram Rd with congestion till Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2875466591750737,
+            "Longitude": 103.84075843129622,
+            "Message": "(4/4)13:53 Accident in CTE Tunnel (towards AYE) before Outram Rd. CTE Tunnel closed after Havelock."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2875466591750737,
+            "Longitude": 103.84075843129622,
+            "Message": "(4/4)13:54 Accident in CTE Tunnel (towards AYE) before Outram Rd with congestion till Moulmein Rd. CTE Tunnel closed after Havelock."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.323155063357627,
+            "Longitude": 103.81651136099171,
+            "Message": "(4/4)12:00 Accident on Dunearn Road (City) at Dunearn Underpass. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.327730082660644,
+            "Longitude": 103.81386762663034,
+            "Message": "(4/4)11:57 Accident on Farrer Road (Lornie) at Farrer Flyover. Farrer Flyover closed after Empress Road."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3434090514438841,
+            "Longitude": 103.87059196524504,
+            "Message": "(4/4)11:58 Accident on Upper Serangoon Road (Sengkang) at Upper Serangoon Viaduct. Upper Serangoon Viaduct closed after Potong Pasir Avenue 1."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3434090514438841,
+            "Longitude": 103.87059196524504,
+            "Message": "(4/4)11:52 Accident on Upper Serangoon Road (Sengkang) at Upper Serangoon Viaduct. Avoid lane 1."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3434090514438841,
+            "Longitude": 103.87059196524504,
+            "Message": "(4/4)11:53 Accident on Upper Serangoon Road (Sengkang) at Upper Serangoon Viaduct with congestion till Potong Pasir Avenue 1. Avoid lane 1."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3189620048655328,
+            "Longitude": 103.84274206639637,
+            "Message": "(4/4)11:45 Accident on Newton Road (towards Upp Thomson/Thomson) before Thomson Road. Newton Road closed after Bukit Timah Road."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3189620048655328,
+            "Longitude": 103.84274206639637,
+            "Message": "(4/4)11:40 Accident on Newton Road (towards Upp Thomson/Thomson) before Thomson Road. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3189620048655328,
+            "Longitude": 103.84274206639637,
+            "Message": "(4/4)11:42 Accident on Newton Road (towards Upp Thomson/Thomson) before Thomson Road with congestion till Bukit Timah Road. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3189620048655328,
+            "Longitude": 103.84274206639637,
+            "Message": "(4/4)11:46 Accident on Newton Road (towards Upp Thomson/Thomson) before Thomson Road. Newton Road closed after Bukit Timah Road."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3189620048655328,
+            "Longitude": 103.84274206639637,
+            "Message": "(4/4)11:43 Accident on Newton Road (towards Upp Thomson/Thomson) before Thomson Road with congestion till Bukit Timah Road. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.380441865940977,
+            "Longitude": 103.73481289659492,
+            "Message": "(4/4)11:10 Accident on KJE (towards PIE) before PIE(Changi). Avoid lane 4."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.380441865940977,
+            "Longitude": 103.73481289659492,
+            "Message": "(4/4)11:14 Accident on KJE (towards PIE) at Sungei Tengah Exit. Sungei Tengah Exit Closed."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.380441865940977,
+            "Longitude": 103.73481289659492,
+            "Message": "(4/4)11:15 Accident on KJE (towards PIE) at Sungei Tengah Exit. Sungei Tengah Exit Closed."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.380441865940977,
+            "Longitude": 103.73481289659492,
+            "Message": "(4/4)11:14 Accident on KJE (towards PIE) at Sungei Tengah Exit with congestion till Woodlands Rd."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.380441865940977,
+            "Longitude": 103.73481289659492,
+            "Message": "(4/4)11:11 Accident on KJE (towards PIE) at Sungei Tengah Exit with congestion till Woodlands Rd."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.380441865940977,
+            "Longitude": 103.73481289659492,
+            "Message": "(4/4)11:10 Accident on KJE (towards PIE) at Sungei Tengah Exit."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3892631293614865,
+            "Longitude": 103.74702767021986,
+            "Message": "(4/4)11:02 Accident on KJE (towards PIE) at Choa Chu Kang Drive Exit."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3892631293614865,
+            "Longitude": 103.74702767021986,
+            "Message": "(4/4)11:06 Accident on KJE (towards PIE) at Choa Chu Kang Drive Exit with congestion till Woodlands Rd."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3892631293614865,
+            "Longitude": 103.74702767021986,
+            "Message": "(4/4)11:08 Accident on KJE (towards PIE) at Choa Chu Kang Drive Exit with congestion before Woodlands Rd."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3900745822020941,
+            "Longitude": 103.74683025988254,
+            "Message": "(4/4)11:01 Accident on KJE (towards BKE) at Choa Chu Kang Drive Entrance. Choa Chu Kang Drive Entrance closed."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3900745822020941,
+            "Longitude": 103.74683025988254,
+            "Message": "(4/4)10:57 Accident on KJE (towards BKE) at Choa Chu Kang Drive Entrance."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.389591326104523,
+            "Longitude": 103.74928860123406,
+            "Message": "(4/4)10:59 Accident on KJE (towards PIE) before Sungei Tengah with congestion till Woodlands Rd. KJE closed after Choa Chu Kang Drive."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.389591326104523,
+            "Longitude": 103.74928860123406,
+            "Message": "(4/4)10:54 Accident on KJE (towards PIE) before Sungei Tengah. KJE closed after Choa Chu Kang Drive."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3803624705240736,
+            "Longitude": 103.73415431238892,
+            "Message": "(4/4)10:52 Accident on KJE (towards BKE) before Sungei Tengah. Avoid lanes 3 and 4."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3803624705240736,
+            "Longitude": 103.73415431238892,
+            "Message": "(4/4)10:53 Accident on KJE (towards BKE) before Choa Chu Kang Way. KJE closed after Sungei Tengah."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3803624705240736,
+            "Longitude": 103.73415431238892,
+            "Message": "(4/4)10:52 Accident on KJE (towards BKE) before Sungei Tengah. KJE closed before Sungei Tengah."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3699485669568068,
+            "Longitude": 103.94233589770936,
+            "Message": "(4/4)10:50 Accident on TPE (towards PIE) before Pasir Ris Drive 8 with congestion till Punggol Rd. TPE closed after Elias Rd."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3699485669568068,
+            "Longitude": 103.94233589770936,
+            "Message": "(4/4)10:50 Accident on TPE (towards PIE) before Pasir Ris Drive 8. TPE closed after Elias Rd."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.373606252572477,
+            "Longitude": 103.93654388451534,
+            "Message": "(4/4)10:48 Accident on TPE (towards PIE) before Elias Rd with congestion till Punggol Rd. Avoid lane 1."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.373606252572477,
+            "Longitude": 103.93654388451534,
+            "Message": "(4/4)10:44 Accident on TPE (towards PIE) before Elias Rd with congestion till KPE. Avoid lane 1."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3734149478807638,
+            "Longitude": 103.93656073133293,
+            "Message": "(4/4)10:47 Accident on TPE (towards SLE) before Tampines Ave 10 with congestion till Tampines Ave 7. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3734149478807638,
+            "Longitude": 103.93656073133293,
+            "Message": "(4/4)10:43 Accident on TPE (towards SLE) before Tampines Ave 10 with congestion till Tampines Ave 7. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3734149478807638,
+            "Longitude": 103.93656073133293,
+            "Message": "(4/4)10:40 Accident on TPE (towards PIE) before Elias Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3734149478807638,
+            "Longitude": 103.93656073133293,
+            "Message": "(4/4)10:41 Accident on TPE (towards SLE) before Tampines Ave 10. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.4309105401465196,
+            "Longitude": 103.76898051136861,
+            "Message": "(4/4)10:39 Accident on BKE (towards W'lands) before Woodlands Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.4309105401465196,
+            "Longitude": 103.76898051136861,
+            "Message": "(4/4)10:46 Accident on BKE (towards W'lands) before Woodlands Rd with congestion till KJE. Avoid lane 3."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.4309105401465196,
+            "Longitude": 103.76898051136861,
+            "Message": "(4/4)10:45 Accident on BKE (towards W'lands) before Woodlands Rd with congestion till Mandai Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.318793020220948,
+            "Longitude": 103.83061963437677,
+            "Message": "(3/4)16:34 Accident on Bukit Timah Road (towards W'lands) before Stevens Road. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3188695897109115,
+            "Longitude": 103.83043895015514,
+            "Message": "(3/4)16:31 Accident on Bukit Timah Road (towards W'lands) before Stevens Road. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3188695897109115,
+            "Longitude": 103.83043895015514,
+            "Message": "(3/4)16:29 Accident on Bukit Timah Road (towards W'lands) before Stevens Road. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(3/4)16:27 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(3/4)16:26 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(3/4)16:25 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3011532038230154,
+            "Longitude": 103.85547665892466,
+            "Message": "(3/4)16:11 Accident on Rochor Road (towards Serangoon Rd) before Bencoolen Street. Avoid lanes 1,2 and 4."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2927592287385752,
+            "Longitude": 103.8439826928215,
+            "Message": "(3/4)16:09 Accident in CTE Tunnel (towards AYE) before Havelock. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3737654627095675,
+            "Longitude": 103.93587748344417,
+            "Message": "(3/4)16:02 Accident on TPE (towards SLE) before Tampines Ave 10. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(3/4)15:59 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.373867219422252,
+            "Longitude": 103.9360390107808,
+            "Message": "(3/4)15:56 Accident on TPE (towards PIE) before Elias Rd. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.397807156205702,
+            "Longitude": 103.90178884025394,
+            "Message": "(3/4)15:11 Accident on TPE (towards SLE) before Seletar Link. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3895572610716838,
+            "Longitude": 103.74700017896504,
+            "Message": "(3/4)15:09 Accident on KJE (towards PIE) before Sungei Tengah. Avoid lane 3."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.38971278485292,
+            "Longitude": 103.74677906682359,
+            "Message": "(3/4)15:08 Accident on KJE (towards BKE) before Woodlands Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3094024666229112,
+            "Longitude": 103.84353692392618,
+            "Message": "(3/4)14:49 Accident in CTE Tunnel (towards AYE) before Cairnhill Circle. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(3/4)14:49 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2972226595900893,
+            "Longitude": 103.89813117192314,
+            "Message": "(3/4)14:39 Accident on ECP (towards City) before Fort Rd. Avoid lanes 1 and 4."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3967155372952282,
+            "Longitude": 103.84541909109521,
+            "Message": "(3/4)14:36 Accident on SLE (towards CTE) before TPE. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3201064834171805,
+            "Longitude": 103.82636352901832,
+            "Message": "(3/4)11:33 Accident on Bukit Timah Road (towards W'lands) before Stevens Road. Avoid lane 1."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(3/4)11:32 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(3/4)11:31 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(3/4)11:30 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(3/4)11:25 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(3/4)11:24 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(3/4)11:23 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(3/4)11:22 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(3/4)11:17 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(3/4)11:16 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(3/4)11:15 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(3/4)11:14 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(3/4)11:06 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.308431508320985,
+            "Longitude": 103.84239628492735,
+            "Message": "(3/4)11:03 Accident in CTE Tunnel (towards AYE) before Orchard Rd. CTE Tunnel closed after Cairnhill Circle."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.29526855572721,
+            "Longitude": 103.87285461854788,
+            "Message": "(3/4)10:59 Accident on ECP (towards City) before Rochor Rd. Avoid lanes 1 and 3."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(3/4)10:57 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(3/4)09:39 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3310183823574244,
+            "Longitude": 103.68850510085895,
+            "Message": "(3/4)08:44 Accident on Upper Jurong Road (towards City) before Pioneer Road North. Avoid lane 1."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2969806890010922,
+            "Longitude": 103.84373452675923,
+            "Message": "(2/4)19:47 Accident in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)19:38 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)19:36 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)19:20 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)19:19 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)18:59 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)18:58 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)18:57 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)17:55 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)17:53 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)17:39 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)17:38 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)17:36 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)17:37 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)17:20 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)17:19 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)17:18 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)16:38 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)16:37 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)16:36 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)14:40 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)14:29 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)14:28 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)14:17 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)13:59 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)13:58 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)12:27 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)12:23 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)12:22 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)12:21 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)12:19 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)12:16 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)12:15 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)12:14 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)12:13 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)12:11 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)12:07 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)12:06 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)12:05 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)12:04 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)12:02 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)11:57 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)11:54 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)11:47 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(2/4)11:46 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(1/4)18:33 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(1/4)18:29 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(1/4)18:20 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(1/4)18:18 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(1/4)18:17 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(1/4)18:01 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(1/4)18:00 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(1/4)17:59 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(1/4)14:28 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(1/4)13:23 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(1/4)11:05 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.369721549520249,
+            "Longitude": 103.86096003585988,
+            "Message": "(1/4)10:28 Accident on CTE (towards AYE) before AMK Ave 1. Avoid lanes 3 and 4."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.369721549520249,
+            "Longitude": 103.86096003585988,
+            "Message": "(1/4)10:28 Accident on CTE (towards AYE) before AMK Ave 1 with congestion before AMK Ave 5. Avoid lanes 3 and 4."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.4370206585725698,
+            "Longitude": 103.76836242866136,
+            "Message": "(1/4)10:22 Accident on BKE (towards W'lands) at Woodlands Rd Exit."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3506515702172794,
+            "Longitude": 103.79091376994732,
+            "Message": "(30/3)05:51 Accident on BKE (towards PIE) at PIE Exit."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(28/3)14:01 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(27/3)19:00 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(27/3)18:00 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(27/3)16:38 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3262124898966343,
+            "Longitude": 103.83439034487103,
+            "Message": "(27/3)14:07 Accident on PIE (towards Tuas) before Stevens Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3226200916568271,
+            "Longitude": 103.88981694598262,
+            "Message": "(27/3)12:34 Accident on PIE (towards Tuas) before Kallang Way. Avoid lane 3."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3884299269614258,
+            "Longitude": 103.91203245259177,
+            "Message": "(19/3)09:55 Accident on TPE (towards SLE) before Punggol Rd. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(18/3)17:12 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(18/3)16:21 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.359993683062602,
+            "Longitude": 103.88479556939473,
+            "Message": "(18/3)15:44 Accident on Upper Serangoon Road (towards Sengkang) before Simon Road. Avoid lane 4."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(18/3)15:31 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.436724040600114,
+            "Longitude": 103.76847547845189,
+            "Message": "(17/3)18:24 Accident on BKE (towards W'lands) at Woodlands Crossing Exit."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.400997910991022,
+            "Longitude": 103.88779657741281,
+            "Message": "(16/3)02:05 Accident on TPE (towards SLE) before Seletar Link. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3885610723918484,
+            "Longitude": 103.91190664472501,
+            "Message": "(16/3)00:30 Accident on TPE (towards SLE) before Punggol Rd. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2952154425862197,
+            "Longitude": 103.87149277482963,
+            "Message": "(16/3)00:21 Accident on ECP (towards City) before Rochor Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2727058110582512,
+            "Longitude": 103.84886320303485,
+            "Message": "(16/3)00:19 Accident on AYE (towards Tuas) before Telok Blangah Rd. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3884432882638156,
+            "Longitude": 103.91201493180206,
+            "Message": "(16/3)00:14 Accident on TPE (towards SLE) before Punggol Rd. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2731425666128338,
+            "Longitude": 103.84933167593763,
+            "Message": "(16/3)00:11 Accident on AYE (towards MCE) before MCE. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3678457846105547,
+            "Longitude": 103.71379338027145,
+            "Message": "(27/3)11:25 Accident on KJE (towards PIE) before PIE(Changi). Avoid lanes 1,2 and 3."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3678457846105547,
+            "Longitude": 103.71379338027145,
+            "Message": "(14/3)19:04 Accident on KJE (towards PIE) before PIE(Changi). Avoid lane 3."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3928215526481642,
+            "Longitude": 103.82671930716305,
+            "Message": "(12/3)19:00 Accident on SLE (towards BKE) before Upper Thomson Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3605081182058345,
+            "Longitude": 103.96104396446705,
+            "Message": "(12/3)14:18 Accident on TPE (towards PIE) before Upper Changi Rd East. Avoid lane 1."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3737566482823966,
+            "Longitude": 103.93591623893228,
+            "Message": "(12/3)13:56 Accident on TPE (towards SLE) before Tampines Ave 10. Avoid lane 3."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.397435523002992,
+            "Longitude": 103.85727541604668,
+            "Message": "(12/3)10:25 Accident on SLE (towards CTE) at Tampines Expressway Entrance. Tampines Expressway Entrance closed."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3416924212677073,
+            "Longitude": 103.80363637158545,
+            "Message": "(10/3)17:25 Accident on PIE (towards Tuas) before BKE. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3479777958509769,
+            "Longitude": 103.79753384639686,
+            "Message": "(10/3)16:48 Accident on PIE (towards Tuas) before BKE. Avoid lane 4."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.384902363439493,
+            "Longitude": 103.9150690997666,
+            "Message": "(10/3)09:53 Accident on TPE (towards SLE) before Punggol Rd. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2979295059899718,
+            "Longitude": 103.78205694164359,
+            "Message": "(10/3)09:44 Accident on AYE (towards Tuas) before Clementi Rd. Avoid lanes 1 and 2. Edited 12 Mar"
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2875839643609737,
+            "Longitude": 103.79534526227152,
+            "Message": "(10/3)09:42 Accident on AYE (towards MCE) before Alexandra Rd. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(5/3)15:00 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(5/3)12:41 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(4/3)16:59 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3345312536777443,
+            "Longitude": 103.74353295354588,
+            "Message": "(4/3)15:40 Accident on Boon Lay Way (towards Tuas) before Jurong East Central. Avoid lane 3."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3345312536777443,
+            "Longitude": 103.74353295354588,
+            "Message": "(4/3)15:35 Accident on Boon Lay Way (towards Tuas) before Jurong East Central. Avoid lane 3. Testing 121pm"
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3345312536777443,
+            "Longitude": 103.74353295354588,
+            "Message": "(4/3)15:30 Accident on Boon Lay Way (towards Tuas) before Jurong East Central. Avoid lane 3."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3495258285879044,
+            "Longitude": 103.7907438215835,
+            "Message": "(4/3)15:20 Accident on PIE (towards Changi) at BKE Exit. BKE Exit Closed."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.3497124949073183,
+            "Longitude": 103.79235097578982,
+            "Message": "(4/3)15:19 Accident on BKE (towards PIE) at PIE Exit."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(4/3)14:59 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(4/3)14:57 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2807330662216743,
+            "Longitude": 103.81731941821778,
+            "Message": "(4/3)14:37 Accident on AYE (towards MCE) before Lower Delta Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2784786717946972,
+            "Longitude": 103.78522588990612,
+            "Message": "(3/3)18:13 Accident on West Coast Highway (towards West Coast Highway) after West Coast Highway. West Coast Highway closed after West Coast Highway."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.326650342737265,
+            "Longitude": 103.89066046515462,
+            "Message": "(3/3)11:10 Accident on Ubi Avenue 2 (towards Ubi Avenue 2/Circuit Link/Paya Lebar Road) after Ubi Avenue 2. Avoid lane 1."
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.2971695994697543,
+            "Longitude": 103.84697579553598,
+            "Message": "(3/3)10:50 Accident in Fort Canning Tunnel. Avoid lane 2. TESTING IN PROGRESS"
+        },
+        {
+            "Type": "Accident",
+            "Latitude": 1.289413198445118,
+            "Longitude": 103.84345147108682,
+            "Message": "(28/2)09:51 Accident in CTE Tunnel (towards SLE) at Merchant Rd Exit. Merchant Rd Exit Closed."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.2898889717074544,
+            "Longitude": 103.84219566861996,
+            "Message": "(11/4)15:53 Road Works in CTE Tunnel (towards SLE) at Merchant Rd Exit. Merchant Rd Exit Closed."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.2898889717074544,
+            "Longitude": 103.84219566861996,
+            "Message": "(11/4)15:37 Road Works in CTE Tunnel (towards SLE) at Merchant Rd Exit."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.2898889717074544,
+            "Longitude": 103.84219566861996,
+            "Message": "(11/4)15:48 Road Works in CTE Tunnel (towards SLE) at Merchant Rd Exit with congestion till Lower Delta Rd. Merchant Rd Exit Closed."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.2898889717074544,
+            "Longitude": 103.84219566861996,
+            "Message": "(11/4)15:41 Road Works in CTE Tunnel (towards SLE) at Merchant Rd Exit with congestion till Lower Delta Rd."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.311600576577237,
+            "Longitude": 103.84437894010433,
+            "Message": "(11/4)11:05 Road Works on CTE (towards SLE) at Bukit Timah Road Entrance."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.311600576577237,
+            "Longitude": 103.84437894010433,
+            "Message": "(11/4)11:07 Road Works on CTE (towards SLE) at Bukit Timah Road Entrance. Bukit Timah Road Entrance closed."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3074226442683585,
+            "Longitude": 103.84071470789195,
+            "Message": "(11/4)15:14 Road Works in CTE Tunnel (towards SLE) at Cairnhill Circle Entrance."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3074226442683585,
+            "Longitude": 103.84071470789195,
+            "Message": "(11/4)15:15 Road Works in CTE Tunnel (towards SLE) at Cairnhill Circle Entrance."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.329801470471804,
+            "Longitude": 103.84588235681079,
+            "Message": "(4/4)15:15 Accident on PIE (towards Changi) before Kim Keat Link. Avoid lane 3."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.329801470471804,
+            "Longitude": 103.84588235681079,
+            "Message": "(4/4)15:19 Road Works on PIE (towards Changi) before Kim Keat Link. Avoid lane 3."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.329801470471804,
+            "Longitude": 103.84588235681079,
+            "Message": "(4/4)15:16 Road Works on PIE (towards Changi) before Kim Keat Link. Avoid lane 3."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3109129481364243,
+            "Longitude": 103.84351528843432,
+            "Message": "(4/4)11:33 Road Works on Bukit Timah Road (towards City) before CTE with congestion till Kheam Hock Road. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3109129481364243,
+            "Longitude": 103.84351528843432,
+            "Message": "(4/4)11:35 Road Works on Bukit Timah Road (towards City) before CTE. Bukit Timah Road closed after Newton Road."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3109129481364243,
+            "Longitude": 103.84351528843432,
+            "Message": "(4/4)11:32 Road Works on Bukit Timah Road (towards W'lands) before Scotts Road. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3109129481364243,
+            "Longitude": 103.84351528843432,
+            "Message": "(4/4)11:36 Road Works on Bukit Timah Road (towards City) before CTE. Bukit Timah Road closed after Newton Road."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3745257940215785,
+            "Longitude": 103.9344374427368,
+            "Message": "(1/4)10:41 Road Works on TPE (towards SLE) before KPE(ECP) with congestion till Tampines Ave 7. Avoid lanes 2 and 3."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3745257940215785,
+            "Longitude": 103.9344374427368,
+            "Message": "(1/4)10:40 Road Works on TPE (towards SLE) before KPE(ECP). Avoid lanes 2 and 3."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3907158489710252,
+            "Longitude": 103.77308195012294,
+            "Message": "(30/3)05:47 Road Works on KJE (towards BKE) at BKE Exit."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3455619653612871,
+            "Longitude": 103.85973731141604,
+            "Message": "(30/3)05:41 Road Works on CTE (towards AYE) before PIE(Tuas). Avoid lane 4."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3455619653612871,
+            "Longitude": 103.85973731141604,
+            "Message": "(30/3)05:41 Road Works on CTE (towards AYE) before PIE(Changi). Avoid lane 5."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3736226921708936,
+            "Longitude": 103.93615858451466,
+            "Message": "(27/3)11:08 Road Works on TPE (towards SLE) before Tampines Ave 10. Avoid lane 3."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.4287531657479273,
+            "Longitude": 103.76970633697749,
+            "Message": "(27/3)10:53 Road Works on BKE (towards W'lands) before Woodlands Crossing. Avoid lane 3."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.343940539706146,
+            "Longitude": 103.8467128965256,
+            "Message": "(27/3)10:52 Road Works on Bishan Flyover (towards Queensway) before PIE. Avoid lane 2."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3347604223029268,
+            "Longitude": 103.81114571746936,
+            "Message": "(14/3)15:11 Road Works on PIE (towards Tuas) before Eng Neo Ave. Avoid lanes 3 and 4."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.3292539313604574,
+            "Longitude": 103.63807984974838,
+            "Message": "(12/3)14:38 Road Works on Tuas Viaduct (towards AYE) before Tuas South Avenue 3. Avoid lane 2."
+        },
+        {
+            "Type": "Roadwork",
+            "Latitude": 1.342840468436832,
+            "Longitude": 103.89047328637325,
+            "Message": "(6/3)01:18 Road Works on Bartley Viaduct (towards Portsdown/Still Rd S) before Bartley Road. Avoid lane 2."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.4223277636023341,
+            "Longitude": 103.77222803450503,
+            "Message": "(1/4)11:20 Heavy Traffic on SLE (towards CTE) before Woodlands Ave 2."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.389486211997373,
+            "Longitude": 103.85829062288974,
+            "Message": "(1/4)10:25 Heavy Traffic on CTE (towards AYE) before AMK Ave 1."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3482073639567356,
+            "Longitude": 103.79359751036252,
+            "Message": "(30/3)05:54 Heavy Traffic on BKE (towards PIE) at PIE Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.4227904080215499,
+            "Longitude": 103.77280483086821,
+            "Message": "(27/3)11:34 Heavy Traffic on SLE (towards CTE) before Woodlands Ave 2."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.389785220684867,
+            "Longitude": 103.85827883322213,
+            "Message": "(27/3)11:31 Heavy Traffic on CTE (towards AYE) before AMK Ave 1."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3031045744568341,
+            "Longitude": 103.83596206683131,
+            "Message": "(27/3)11:16 Heavy Traffic on Bideford Road (towards Cairnhill Road) after Orchard Link."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3033087301097468,
+            "Longitude": 103.8360620867886,
+            "Message": "(13/3)19:55 Heavy Traffic on Bideford Road (towards Cairnhill Road) after Orchard Link."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3902682428444497,
+            "Longitude": 103.77469787847664,
+            "Message": "(12/3)14:03 Heavy Traffic on KJE (towards PIE) before Woodlands Rd."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3902682428444497,
+            "Longitude": 103.77469787847664,
+            "Message": "(12/3)14:05 Heavy Traffic on KJE (towards PIE) before Choa Chu Kang Drive."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.342628463853053,
+            "Longitude": 103.86896114364723,
+            "Message": "(12/3)13:52 Heavy Traffic on Braddell Road (towards Queensway) between CTE and Upper Serangoon Road."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3121998386940823,
+            "Longitude": 103.83798366917252,
+            "Message": "(12/3)13:51 Heavy Traffic on Scotts Road (towards Orchard/Bras Basah) between Orchard Rd and Bukit Timah Road."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.303249141461153,
+            "Longitude": 103.83603189522898,
+            "Message": "(10/3)09:48 Heavy Traffic on Bideford Road (towards Bideford Road/Cairnhill Road/Bideford Road) after Orchard Link/Orchard Road/Orchard Road/Bideford Road."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3393272987658889,
+            "Longitude": 103.94439441633187,
+            "Message": "(7/3)00:37 Heavy Traffic on PIE (towards Tuas) between Jalan Eunos and Tampines."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3368590475760256,
+            "Longitude": 103.75763707041602,
+            "Message": "(5/3)23:59 Heavy Traffic on PIE (towards Changi) at Bukit Batok East Ave 3 Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3114544190866084,
+            "Longitude": 103.76344558843992,
+            "Message": "(4/3)10:23 Heavy Traffic on AYE (towards MCE) between Portsdown Ave and Clementi Ave 6."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.336935300498615,
+            "Longitude": 103.75747879217684,
+            "Message": "(3/3)13:08 Heavy Traffic on PIE (towards Changi) at Bukit Batok East Ave 3 Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.3370162796956904,
+            "Longitude": 103.75731070357166,
+            "Message": "(3/3)11:10 Heavy Traffic on PIE (towards Changi) at Bukit Batok East Ave 3 Exit."
+        },
+        {
+            "Type": "Heavy Traffic",
+            "Latitude": 1.303011922368442,
+            "Longitude": 103.83592982399516,
+            "Message": "(3/3)11:06 Heavy Traffic on Bideford Road (towards Bideford Road) after Orchard Road/Bideford Road/Orchard Link."
+        },
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.3026086052898684,
+            "Longitude": 103.84121616186553,
+            "Message": "(11/4)10:04 Vehicle Breakdown on Central Expressway (towards SLE) at Kramat Road Entrance."
+        },
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.3026086052898684,
+            "Longitude": 103.84121616186553,
+            "Message": "(11/4)10:08 Vehicle Breakdown on Central Expressway (towards SLE) at Kramat Road Entrance. Kramat Road Entrance closed."
+        },
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.303988861978238,
+            "Longitude": 103.83080337364954,
+            "Message": "(4/4)11:16 Vehicle Breakdown on Paterson Road (Away from Orchard/Bras Basah) before Grange Road. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.303988861978238,
+            "Longitude": 103.83080337364954,
+            "Message": "(4/4)11:24 Vehicle Breakdown on Paterson Road (Away from Orchard/Bras Basah) before Grange Road with congestion till Bukit Timah Road. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.436934520798725,
+            "Longitude": 103.76846704278474,
+            "Message": "(27/3)11:12 Vehicle Breakdown on BKE (towards W'lands) at Woodlands Checkpoint Exit."
+        },
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.436917768486195,
+            "Longitude": 103.76837194172207,
+            "Message": "(27/3)11:11 Vehicle Breakdown on BKE (towards W'lands) at Woodlands Crossing Exit."
+        },
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.3238056647736398,
+            "Longitude": 103.93006832632227,
+            "Message": "(14/3)09:04 Vehicle Breakdown on New Upper Changi Road (towards City) before Bedok South Road. Avoid lane 2."
+        },
+        {
+            "Type": "Vehicle breakdown",
+            "Latitude": 1.3236231423438298,
+            "Longitude": 103.81220442982003,
+            "Message": "(12/3)13:35 Vehicle Breakdown on Dunearn Road (City) at Dunearn Underpass. Avoid lane 3."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.3095708926768574,
+            "Longitude": 103.84346999031865,
+            "Message": "(11/4)16:16 Obstacle in CTE Tunnel (towards SLE) before Moulmein Rd with congestion till Merchant Rd. CTE Tunnel closed after Merchant Rd."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.304178975872177,
+            "Longitude": 103.8309909504755,
+            "Message": "(11/4)14:30 Obstacle on Paterson Road (Away from Orchard/Bras Basah) before Grange Road. Avoid lanes 4 and 5."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.2828421534709833,
+            "Longitude": 103.83435303713344,
+            "Message": "(11/4)14:33 Obstacle on Central Expressway (towards SLE) at Outram Rd Exit. Outram Rd Exit Closed."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.2828421534709833,
+            "Longitude": 103.83435303713344,
+            "Message": "(11/4)14:15 Obstacle on Central Expressway (towards SLE) at Outram Rd Exit with congestion till Lower Delta Rd."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.2828421534709833,
+            "Longitude": 103.83435303713344,
+            "Message": "(11/4)14:31 Obstacle on Central Expressway (towards SLE) at Outram Rd Exit with congestion till Lower Delta Rd. Outram Rd Exit Closed."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.2828421534709833,
+            "Longitude": 103.83435303713344,
+            "Message": "(11/4)14:11 Obstacle on Central Expressway (towards SLE) at Outram Rd Exit."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.2828421534709833,
+            "Longitude": 103.83435303713344,
+            "Message": "(11/4)14:35 Obstacle on Central Expressway (towards SLE) at Outram Rd Exit. Outram Rd Exit Closed."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.2881426983541109,
+            "Longitude": 103.84138254194727,
+            "Message": "(11/4)09:22 Obstacle in CTE Tunnel (towards AYE) at Merchant Road Entrance. Merchant Road Entrance closed."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.2881426983541109,
+            "Longitude": 103.84138254194727,
+            "Message": "(11/4)09:19 Obstacle in CTE Tunnel (towards AYE) at Merchant Road Entrance."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.2881426983541109,
+            "Longitude": 103.84138254194727,
+            "Message": "(11/4)09:17 Obstacle in CTE Tunnel (towards AYE) at Merchant Road Entrance."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.3042922004829922,
+            "Longitude": 103.84026284110833,
+            "Message": "(3/4)16:53 Obstacle on Central Expressway (towards AYE) before Orchard Rd. Avoid lanes 2 and 3."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.3672164467583752,
+            "Longitude": 103.94619814531276,
+            "Message": "(3/4)15:54 Obstacle on TPE (towards SLE) before Tampines Rd. Avoid lanes 1 and 3."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.3085771644678015,
+            "Longitude": 103.8425954987105,
+            "Message": "(3/4)14:42 Obstacle in CTE Tunnel (towards AYE) before Orchard Rd. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.364771051885839,
+            "Longitude": 103.95536559728131,
+            "Message": "(3/4)14:40 Obstacle on TPE (towards SLE) before Tampines Ave 12. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.291098722473786,
+            "Longitude": 103.8431973175963,
+            "Message": "(3/4)14:34 Obstacle in CTE Tunnel (towards AYE) before Outram Rd. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.3644483495944162,
+            "Longitude": 103.95648989324722,
+            "Message": "(3/4)11:03 Obstacle on TPE (towards PIE) before Loyang Ave. Avoid lanes 3 and 4."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.390536351572013,
+            "Longitude": 103.77164357238877,
+            "Message": "(30/3)05:45 Obstacle on KJE (towards BKE) before BKE. Avoid lane 2."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.3493790244790316,
+            "Longitude": 103.85836547877528,
+            "Message": "(27/3)13:00 Obstacle on CTE (towards AYE) before Braddell Rd. Avoid lanes 3 and 5."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.323570504395733,
+            "Longitude": 103.81264187686847,
+            "Message": "(27/3)10:48 Obstacle on Dunearn Road (City) at Dunearn Underpass. Avoid lane 3."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.4374990944425834,
+            "Longitude": 103.76844866875936,
+            "Message": "(17/3)18:21 Obstacle on BKE (towards W'lands) at Woodlands Crossing Exit."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.281876007878756,
+            "Longitude": 103.83254365904565,
+            "Message": "(14/3)15:08 Obstacle on CTE (towards AYE) before Jalan Bt Merah. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.323058453963953,
+            "Longitude": 103.81378780078788,
+            "Message": "(12/3)13:43 Obstacle on Bukit Timah Road (W'lands) at Dunearn Underpass. Avoid lane 3."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.4376637248663082,
+            "Longitude": 103.76834218350952,
+            "Message": "(12/3)13:27 Obstacle on BKE (towards W'lands) at Woodlands Checkpoint Exit."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.4376637248663082,
+            "Longitude": 103.76834218350952,
+            "Message": "(19/3)10:34 Obstacle on BKE (towards W'lands) at Woodlands Crossing Exit."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.2955860486321993,
+            "Longitude": 103.8788968413518,
+            "Message": "(6/3)13:55 Obstacle on ECP (towards Changi) before Tg Katong Rd. Avoid lane 2."
+        },
+        {
+            "Type": "Obstacle",
+            "Latitude": 1.2716035600015378,
+            "Longitude": 103.80607522115754,
+            "Message": "(3/3)18:10 Obstacle on West Coast Highway (towards West Coast Highway) after West Coast Highway. West Coast Highway closed after West Coast Highway."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.3094133692768106,
+            "Longitude": 103.84354681059361,
+            "Message": "(3/4)16:55 Road Closure in CTE Tunnel (towards AYE) before Cairnhill Circle. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.29746848709215,
+            "Longitude": 103.84382410906359,
+            "Message": "(3/4)16:46 Road Closure in CTE Tunnel (towards AYE) before Havelock. Avoid lanes 1 and 2."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.3080426408624604,
+            "Longitude": 103.93154912127639,
+            "Message": "(3/4)16:26 Road Closure on ECP (towards City) before Still Rd Sth. Avoid lane 1."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(3/4)16:22 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(3/4)16:19 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(3/4)15:58 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(3/4)15:57 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(3/4)14:40 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(3/4)11:31 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(3/4)11:30 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(3/4)11:25 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(3/4)11:24 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(3/4)11:23 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(3/4)11:18 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2909373516524623,
+            "Longitude": 103.84311255260175,
+            "Message": "(3/4)11:17 Road Closure in CTE Tunnel (towards AYE) before Outram Rd. Avoid lane 1."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(3/4)11:17 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(3/4)11:16 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(3/4)11:10 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(3/4)11:09 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(3/4)11:03 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(3/4)11:02 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(3/4)10:57 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(3/4)10:56 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(3/4)10:55 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(3/4)09:32 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)19:34 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)19:31 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)19:18 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)19:17 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)19:15 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)19:14 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)18:57 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)18:56 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)18:55 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)18:00 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)17:52 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)17:51 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)17:48 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)17:47 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)17:36 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)17:33 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)17:18 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)17:17 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)16:36 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)16:35 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)14:38 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)14:34 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)14:26 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)14:16 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)14:10 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)13:57 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)13:56 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)12:28 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)12:26 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)12:23 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)12:22 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)12:21 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)12:19 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)12:16 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)12:15 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)12:13 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)12:09 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)12:08 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)12:01 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)12:00 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)11:54 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)11:53 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)11:46 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(2/4)11:45 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(1/4)18:30 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(1/4)18:28 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(1/4)18:27 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(1/4)18:26 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(1/4)18:16 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(1/4)18:15 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(1/4)18:14 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(1/4)18:13 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(1/4)17:58 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(1/4)17:57 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(1/4)15:30 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(1/4)14:21 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(1/4)13:17 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(1/4)10:57 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(27/3)18:54 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(27/3)17:53 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(27/3)17:14 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(27/3)16:30 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.3006154374507803,
+            "Longitude": 103.84333979491667,
+            "Message": "(27/3)16:14 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(27/3)16:06 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(19/3)17:19 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(19/3)13:57 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(18/3)17:20 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.2973479592807804,
+            "Longitude": 103.84370040012011,
+            "Message": "(18/3)16:50 Road Closure in CTE Tunnel (towards SLE) before Moulmein Rd. Avoid lane 3."
+        },
+        {
+            "Type": "Road Block",
+            "Latitude": 1.3332092726942073,
+            "Longitude": 103.81494271729004,
+            "Message": "(14/3)15:12 Road Closure on PIE (towards Tuas) before Eng Neo Ave. Avoid lanes 3 and 4."
+        },
+        {
+            "Type": "Miscellaneous",
+            "Latitude": 1.3840263346956585,
+            "Longitude": 103.91603440157851,
+            "Message": "(3/4)11:11 Incident on TPE (towards PIE) before Pasir Ris Drive 12. Avoid lane 1."
+        },
+        {
+            "Type": "Unattended Vehicle",
+            "Latitude": 1.2857010052340845,
+            "Longitude": 103.83769856906369,
+            "Message": "(11/4)11:16 Stationary Vehicle in CTE Tunnel (towards SLE) at Chin Swee Road Entrance."
+        },
+        {
+            "Type": "Unattended Vehicle",
+            "Latitude": 1.2857010052340845,
+            "Longitude": 103.83769856906369,
+            "Message": "(11/4)11:18 Stationary Vehicle in CTE Tunnel (towards SLE) at Chin Swee Road Entrance."
+        },
+        {
+            "Type": "Unattended Vehicle",
+            "Latitude": 1.3271463348055375,
+            "Longitude": 103.86167054033452,
+            "Message": "(3/4)11:27 Stationary Vehicle on CTE (towards AYE) before Balestier Rd. Avoid lanes 2 and 3."
+        },
+        {
+            "Type": "Unattended Vehicle",
+            "Latitude": 1.2911754613046875,
+            "Longitude": 103.80082443672188,
+            "Message": "(12/3)13:16 Stationary Vehicle on Queensway (Away from Portsdown/Still Rd S) before Alexandra Road with congestion before Alexandra Road. Avoid lane 2."
+        },
+        {
+            "Type": "Unattended Vehicle",
+            "Latitude": 1.3231670781627396,
+            "Longitude": 103.81615868724363,
+            "Message": "(12/3)13:14 Stationary Vehicle on Dunearn Road (City) at Dunearn Underpass with congestion till Hillcrest Road. Avoid lane 2."
+        },
+        {
+            "Type": "Unattended Vehicle",
+            "Latitude": 1.3220266444164055,
+            "Longitude": 103.8130133855856,
+            "Message": "(12/3)13:13 Stationary Vehicle on Farrer Road (Lornie) at Farrer Flyover with congestion till Empress Road. Avoid lane 2."
+        },
+        {
+            "Type": "Unattended Vehicle",
+            "Latitude": 1.3308197145202263,
+            "Longitude": 103.93436526658431,
+            "Message": "(12/3)13:11 Stationary Vehicle on Bedok North Avenue 3 (towards PIE) before PIE with congestion before PIE. Avoid lane 1."
+        }
+    ]
+}

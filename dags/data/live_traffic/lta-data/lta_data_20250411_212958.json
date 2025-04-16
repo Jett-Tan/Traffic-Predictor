@@ -1,0 +1,11 @@
+{
+    "odata.metadata": "http://datamall2.mytransport.sg/ltaodataservice/$metadata#IncidentSet",
+    "value": [
+        {
+            "Type": "Accident",
+            "Latitude": 1.3778633024219966,
+            "Longitude": 103.9261034353803,
+            "Message": "(12/4)4:54 Accident on TPE (towards PIE) before Pasir Ris Dr 12 Exit. Avoid lanes 3 and 4."
+        }
+    ]
+}
