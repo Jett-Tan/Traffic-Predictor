@@ -86,6 +86,39 @@ def classify_junction(angles):
         return "O Shape"
     return "Unknown"
 
+def extract_road_metadata():
+    gdf = gpd.read_file("/opt/airflow/dags/data/singapore_highways.geojson")
+
+    road_records = []
+
+    for idx, row in gdf.iterrows():
+        geom = row.geometry
+        if not isinstance(geom, LineString):
+            continue
+
+        name = row.get("name", "Unnamed Road")
+        oneway_val = str(row.get("oneway", "no")).lower()
+        is_two_way = not (oneway_val in ("yes", "true", "1"))
+
+        coords = list(geom.coords)
+        start = coords[0]
+        end = coords[-1]
+
+        road_records.append({
+            "road_name": name,
+            "start_lon": start[0],
+            "start_lat": start[1],
+            "end_lon": end[0],
+            "end_lat": end[1],
+            "two_way": is_two_way
+        })
+
+    df = pd.DataFrame(road_records)
+    df.to_csv("/opt/airflow/dags/data/road_metadata.csv", index=False)
+    print("✅ Exported road_metadata.csv")
+
+
+
 def extract_junction_type() :
    # Step 1: Load GeoJSON
   gdf = gpd.read_file("/opt/airflow/dags/data/singapore_highways.geojson")  # replace with your filename
@@ -152,4 +185,10 @@ with DAG("get_road_type_dag",
         python_callable=extract_junction_type,
     )
 
-    download_all_singapore_roads >> extract_junction_type
+    extract_road_metadata = PythonOperator(
+        task_id="extract_road_metadata",
+        python_callable=extract_road_metadata,
+    )
+
+
+    download_all_singapore_roads >> extract_junction_type >> extract_road_metadata
