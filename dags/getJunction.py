@@ -7,6 +7,8 @@ import requests
 import geopandas as gpd
 from shapely.geometry import LineString, Point
 import numpy as np
+import pandas as pd
+
 
 default_args = {
     'owner': 'airflow',
@@ -130,7 +132,7 @@ def extract_junction_type() :
       })
 
   junctions_df = pd.DataFrame(junction_data)
-  junctions_df.to_csv("junctions_from_geojson.csv", index=False)
+  junctions_df.to_csv("/opt/airflow/dags/data/junctions_from_geojson.csv", index=False)
   print("✅ Exported junctions_from_geojson.csv")
 
 with DAG("get_road_type_dag",
