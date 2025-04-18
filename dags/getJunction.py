@@ -47,7 +47,7 @@ def download_all_singapore_roads():
                 "oneway": tags.get("oneway", "no"),
                 "lanes": tags.get("lanes", "unknown"),
                 "maxspeed": tags.get("maxspeed", "unknown"),
-                "ref": tags.get("ref", ""),  # Road reference number
+                # "ref": tags.get("ref", ""),  # Road reference number
                 "surface": tags.get("surface", "unknown")
             }
             
