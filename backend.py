@@ -112,7 +112,7 @@ def classify_junction(angles):
         return "o_shape"
     return "unknown"
 
-def map_to_fit_model(route):
+def map_to_geoJson(route):
     # Extract features from the route data
     # This is a placeholder function. You need to implement the actual feature extraction logic.
     returnValues = []
@@ -163,6 +163,49 @@ def map_to_fit_model(route):
     print("returnValues", returnValues)
     return returnValues
 
+def extract_junction_type(gdf) :
+  # Step 2: Extract all node coordinates from line endpoints
+  point_map = {}  # key = Point(x, y), value = list of road indices
+
+  for idx, geom in gdf.geometry.items():
+      if not isinstance(geom, LineString):
+          continue
+      start = geom.coords[0]
+      end = geom.coords[-1]
+      for pt in [start, end]:
+          pt_key = tuple(np.round(pt, 6))  # rounded for tolerance
+          point_map.setdefault(pt_key, []).append(idx)
+
+  # Step 3: Find candidate junctions (nodes connected to ≥3 roads)
+  junction_coords = [pt for pt, roads in point_map.items() if len(roads) >= 3]
+
+  # Step 5: Build junction DataFrame
+  junction_data = []
+
+  for coord in junction_coords:
+      connected_roads = point_map[coord]
+      angles = []
+
+      for road_idx in connected_roads:
+          line = gdf.geometry[road_idx]
+          coords = line.coords
+          if tuple(np.round(coords[0], 6)) == coord:
+              other = coords[1]
+          else:
+              other = coords[-2]
+          angles.append(angle_between(coord, other))
+
+      jtype = classify_junction(angles)
+      junction_data.append({
+          "junction_type": jtype
+      })
+        #   "connected_road_indices": connected_roads
+
+  junctions_df = pd.DataFrame(junction_data)
+  junctions_df.to_csv("/opt/airflow/dags/data/junctions_from_geojson.csv", index=False)
+  print("✅ Exported junctions_from_geojson.csv")
+
+
 @app.route("/predict", methods=["POST"])
 def predict():
     print("Received request for prediction")
@@ -187,8 +230,10 @@ def predict():
     if not routes:
         return jsonify({"error": "Could not extract route"}), 400
     
-    fitted = map_to_fit_model(routes)
-    return jsonify(fitted)
+    geoJson = map_to_geoJson(routes)
+
+
+    return jsonify(geoJson)
     # input_encoded = {}
     # for key, value in data.items():
     #     if key in encoders:
