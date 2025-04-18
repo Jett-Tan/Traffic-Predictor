@@ -117,8 +117,6 @@ def extract_road_metadata():
     df.to_csv("/opt/airflow/dags/data/road_metadata.csv", index=False)
     print("✅ Exported road_metadata.csv")
 
-
-
 def extract_junction_type() :
    # Step 1: Load GeoJSON
   gdf = gpd.read_file("/opt/airflow/dags/data/singapore_highways.geojson")  # replace with your filename
