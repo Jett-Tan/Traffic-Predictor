@@ -8,11 +8,11 @@ POSTGRES_CONN_ID = "postgres_default"
 
 # Path to CSV file (inside the Airflow container)
 CSV_FILE_PATH_RTA = "/opt/airflow/dags/data/RTA_Dataset.csv"
-CSV_FILE_PATH_CLEAN = "/opt/airflow/dags/data/cleaned.csv"
+# CSV_FILE_PATH_CLEAN = "/opt/airflow/dags/data/cleaned.csv"
 
 
 TABLE_NAME_RTA = "rta"
-TABLE_NAME_CLEAN = "clean_rta"
+# TABLE_NAME_CLEAN = "clean_rta"
 
 default_args = {
     'owner': 'airflow',
@@ -77,7 +77,6 @@ def insert_RTA_data_into_postgres():
     # Read CSV
     df = pd.read_csv(CSV_FILE_PATH_RTA)
 
-   
     conn = get_postgres_conn()
     cur = conn.cursor()
 
@@ -110,64 +109,6 @@ def get_postgres_conn():
         password="airflow"
     )
     return conn
-
-def create_clean_RTA_table():
-    # Database connection
-    conn = get_postgres_conn()
-    cursor = conn.cursor()
-    cursor.execute(f"""
-        CREATE TABLE IF NOT EXISTS {TABLE_NAME_CLEAN} (
-            id SERIAL PRIMARY KEY,
-            Age_band_of_driver VARCHAR,
-            Sex_of_driver VARCHAR,
-            Educational_level VARCHAR,
-            Vehicle_driver_relation VARCHAR,
-            Driving_experience VARCHAR,
-            Lanes_or_Medians VARCHAR,
-            Types_of_Junction VARCHAR,
-            Road_surface_type VARCHAR,
-            Light_conditions VARCHAR,
-            Weather_conditions VARCHAR,
-            Type_of_collision VARCHAR,
-            Vehicle_movement VARCHAR,
-            Pedestrian_movement VARCHAR,
-            Cause_of_accident VARCHAR,
-            Accident_severity INT
-        );  
-    """)
-    conn.commit()
-    cursor.close()
-    conn.close()
-
-def drop_clean_RTA_table():
-    conn = get_postgres_conn()
-    cursor = conn.cursor()
-    cursor.execute(f"""
-        DROP TABLE IF EXISTS {TABLE_NAME_CLEAN};
-    """)
-    conn.commit()
-    cursor.close()
-    conn.close()
-
-def insert_clean_data_into_postgres():
-    # Read CSV
-    df = pd.read_csv(CSV_FILE_PATH_CLEAN)
-
-    
-    conn = get_postgres_conn()
-    cursor = conn.cursor()
-
-    # Insert data
-    for _, row in df.iterrows():
-        cursor.execute(f"""
-            INSERT INTO {TABLE_NAME_CLEAN} (
-                Age_band_of_driver,Sex_of_driver,Educational_level,Vehicle_driver_relation,Driving_experience,Lanes_or_Medians,Types_of_Junction,Road_surface_type,Light_conditions,Weather_conditions,Type_of_collision,Vehicle_movement,Pedestrian_movement,Cause_of_accident,Accident_severity
-            ) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
-        """, tuple(row))
-
-    conn.commit()
-    cursor.close()
-    conn.close()
 
 def print_postgres_data(table_name):
     conn = get_postgres_conn()
@@ -206,34 +147,17 @@ with DAG(
         python_callable=insert_RTA_data_into_postgres,
         # dag=dag,
     )
-    drop_CLEAN_table = PythonOperator(
-        task_id='drop_clean_RTA_table_python',
-        python_callable=drop_clean_RTA_table,
-        # dag=dag,
-    )
-    
-    create_CLEAN_table = PythonOperator(
-        task_id='create_clean_RTA_table_python',
-        python_callable=create_clean_RTA_table,
-        # dag=dag,
-    )
 
-    load_CLEAN_data = PythonOperator(
-        task_id="load_clean_RTA_csv_to_postgres",
-        python_callable=insert_clean_data_into_postgres,
-        # dag=dag,
-    )
-
-    print_CLEAN_data = PythonOperator(
-        task_id="print_clean_data",
-        python_callable=print_postgres_data,
-        op_args=[TABLE_NAME_CLEAN],
-        # dag=dag,
-    )
+    # print_CLEAN_data = PythonOperator(
+    #     task_id="print_clean_data",
+    #     python_callable=print_postgres_data,
+    #     op_args=[TABLE_NAME_RTA],
+    #     # dag=dag,
+    # )
 
     drop_RTA_table >> create_RTA_table >> load_RTA_data
-    drop_CLEAN_table >> create_CLEAN_table >> load_CLEAN_data
-    load_RTA_data >> load_CLEAN_data >> print_CLEAN_data
+    # drop_CLEAN_table >> create_CLEAN_table >> load_CLEAN_data
+    # load_RTA_data >> load_CLEAN_data >> print_CLEAN_data
     
 
 
