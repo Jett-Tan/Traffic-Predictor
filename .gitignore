@@ -4,4 +4,8 @@ __pycache__/
 *.pyc
 .DS_Store
 
+.venv/
+__pycache__/
+*.pyc
+
 /dags/data/singapore_highways.geojson

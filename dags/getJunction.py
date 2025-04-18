@@ -38,10 +38,23 @@ def download_all_singapore_roads():
         if element["type"] == "way" and "geometry" in element:
             coordinates = [(pt["lon"], pt["lat"]) for pt in element["geometry"]]
             line = LineString(coordinates)
+            
+            # Extract road properties
+            tags = element.get("tags", {})
+            road_properties = {
+                "name": tags.get("name", "Unnamed Road"),
+                "highway_type": tags.get("highway", "unknown"),
+                "oneway": tags.get("oneway", "no"),
+                "lanes": tags.get("lanes", "unknown"),
+                "maxspeed": tags.get("maxspeed", "unknown"),
+                "ref": tags.get("ref", ""),  # Road reference number
+                "surface": tags.get("surface", "unknown")
+            }
+            
             features.append({
                 "type": "Feature",
                 "geometry": line.__geo_interface__,
-                "properties": element.get("tags", {})
+                "properties": road_properties
             })
 
     geojson_data = {
@@ -86,54 +99,86 @@ def classify_junction(angles):
         return "O Shape"
     return "Unknown"
 
-def extract_junction_type() :
-   # Step 1: Load GeoJSON
-  gdf = gpd.read_file("/opt/airflow/dags/data/singapore_highways.geojson")  # replace with your filename
+def extract_junction_type():
+    # Step 1: Load GeoJSON
+    gdf = gpd.read_file("/opt/airflow/dags/data/singapore_highways.geojson")
 
-  # Step 2: Extract all node coordinates from line endpoints
-  point_map = {}  # key = Point(x, y), value = list of road indices
+    # Step 2: Extract all node coordinates from line endpoints
+    point_map = {}  # key = Point(x, y), value = list of road indices
 
-  for idx, geom in gdf.geometry.items():
-      if not isinstance(geom, LineString):
-          continue
-      start = geom.coords[0]
-      end = geom.coords[-1]
-      for pt in [start, end]:
-          pt_key = tuple(np.round(pt, 6))  # rounded for tolerance
-          point_map.setdefault(pt_key, []).append(idx)
+    for idx, geom in gdf.geometry.items():
+        if not isinstance(geom, LineString):
+            continue
+        start = geom.coords[0]
+        end = geom.coords[-1]
+        for pt in [start, end]:
+            pt_key = tuple(np.round(pt, 6))  # rounded for tolerance
+            point_map.setdefault(pt_key, []).append(idx)
 
-  # Step 3: Find candidate junctions (nodes connected to ≥3 roads)
-  junction_coords = [pt for pt, roads in point_map.items() if len(roads) >= 3]
+    # Step 3: Find candidate junctions (nodes connected to ≥3 roads)
+    junction_coords = [pt for pt, roads in point_map.items() if len(roads) >= 3]
 
+    # Step 5: Build junction DataFrame
+    junction_data = []
 
-  # Step 5: Build junction DataFrame
-  junction_data = []
+    for coord in junction_coords:
+        connected_roads = point_map[coord]
+        angles = []
+        road_info = []
 
-  for coord in junction_coords:
-      connected_roads = point_map[coord]
-      angles = []
+        for road_idx in connected_roads:
+            line = gdf.geometry[road_idx]
+            coords = line.coords
+            start_coord = coords[0]
+            end_coord = coords[-1]
+            
+            if tuple(np.round(start_coord, 6)) == coord:
+                other = coords[1]
+            else:
+                other = coords[-2]
+            angles.append(angle_between(coord, other))
+            
+            # Get road properties directly from the GeoDataFrame
+            # The properties are stored as columns in the GeoDataFrame, not as a nested "properties" column
+            road_info.append({
+                "name": gdf.iloc[road_idx].get("name", "Unnamed Road"),
+                "type": gdf.iloc[road_idx].get("highway_type", "unknown"),
+                "oneway": gdf.iloc[road_idx].get("oneway", "no"),
+                "lanes": gdf.iloc[road_idx].get("lanes", "unknown"),
+                "maxspeed": gdf.iloc[road_idx].get("maxspeed", "unknown"),
+                "ref": gdf.iloc[road_idx].get("ref", ""),
+                "surface": gdf.iloc[road_idx].get("surface", "unknown"),
+                "start_lon": start_coord[0],
+                "start_lat": start_coord[1],
+                "end_lon": end_coord[0],
+                "end_lat": end_coord[1]
+            })
 
-      for road_idx in connected_roads:
-          line = gdf.geometry[road_idx]
-          coords = line.coords
-          if tuple(np.round(coords[0], 6)) == coord:
-              other = coords[1]
-          else:
-              other = coords[-2]
-          angles.append(angle_between(coord, other))
+        jtype = classify_junction(angles)
+        
+        # Flatten the data structure
+        for road in road_info:
+            junction_data.append({
+                "junction_longitude": coord[0],
+                "junction_latitude": coord[1],
+                "junction_type": jtype,
+                "num_roads": len(connected_roads),
+                "road_name": road["name"],
+                "road_type": road["type"],
+                "oneway": road["oneway"],
+                "lanes": road["lanes"],
+                "maxspeed": road["maxspeed"],
+                "ref": road["ref"],
+                "surface": road["surface"],
+                "road_start_lon": road["start_lon"],
+                "road_start_lat": road["start_lat"],
+                "road_end_lon": road["end_lon"],
+                "road_end_lat": road["end_lat"]
+            })
 
-      jtype = classify_junction(angles)
-      junction_data.append({
-          "longitude": coord[0],
-          "latitude": coord[1],
-          "junction_type": jtype,
-          "num_roads": len(connected_roads),
-          "connected_road_indices": connected_roads
-      })
-
-  junctions_df = pd.DataFrame(junction_data)
-  junctions_df.to_csv("/opt/airflow/dags/data/junctions_from_geojson.csv", index=False)
-  print("✅ Exported junctions_from_geojson.csv")
+    junctions_df = pd.DataFrame(junction_data)
+    junctions_df.to_csv("/opt/airflow/dags/data/junctions_from_geojson.csv", index=False)
+    print("✅ Exported junctions_from_geojson.csv with road information")
 
 with DAG("get_road_type_dag",
          default_args=default_args,
