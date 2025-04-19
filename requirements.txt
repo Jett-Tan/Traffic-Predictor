@@ -4,3 +4,4 @@ numpy
 apache-airflow-providers-postgres
 seaborn
 matplotlib
+seaborn
