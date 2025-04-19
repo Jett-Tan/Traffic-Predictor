@@ -140,17 +140,17 @@ with DAG(
     catchup=False,
     tags=['rta', 'data_cleaning']
 ) as dag:
-    drop_cleaned_table = PythonOperator(
+    drop_cleaned_table_task = PythonOperator(
         task_id='drop_cleaned_RTA_table',
         python_callable=drop_cleaned_RTA_table,
     )
 
-    create_cleaned_table = PythonOperator(
+    create_cleaned_table_task = PythonOperator(
         task_id='create_cleaned_RTA_table',
         python_callable=create_cleaned_RTA_table,
     )
 
-    insert_cleaned_data = PythonOperator(
+    insert_cleaned_data_task = PythonOperator(
         task_id='insert_cleaned_data_into_postgres',
         python_callable=insert_cleaned_data_into_postgres,
     )
@@ -161,4 +161,4 @@ with DAG(
     )
     
     # Task dependencies
-    drop_cleaned_table >> create_cleaned_table >> clean_data_task >> insert_cleaned_data
+    drop_cleaned_table_task >> create_cleaned_table_task >> clean_data_task >> insert_cleaned_data_task

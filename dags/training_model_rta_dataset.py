@@ -164,30 +164,30 @@ with DAG(
     catchup=False,
     tags=['rta', 'encoding_features', 'model_training']
 ) as dag:
-    create_encoded_table = PythonOperator(
+    create_encoded_table_task = PythonOperator(
         task_id='create_encoded_RTA_table',
         python_callable=create_encoded_RTA_table,
     )
 
-    drop_encoded_table = PythonOperator(
+    drop_encoded_table_task = PythonOperator(
         task_id='drop_encoded_RTA_table',
         python_callable=drop_encoded_RTA_table,
     )
 
-    insert_encoded_data = PythonOperator(
+    insert_encoded_data_task = PythonOperator(
         task_id='insert_encoded_data',
         python_callable=insert_encoded_data,
     )
 
-    training_model = PythonOperator(
+    training_model_task = PythonOperator(
         task_id='training_model',
         python_callable=training_model,
     )
 
-    encode_features = PythonOperator(
+    encode_features_task = PythonOperator(
         task_id='encode_features',
         python_callable=encode_features,
     )
 
     # Task dependencies
-    drop_encoded_table >> encode_features >> create_encoded_table >> insert_encoded_data  >> training_model
+    drop_encoded_table_task >> encode_features_task >> create_encoded_table_task >> insert_encoded_data_task >> training_model_task
