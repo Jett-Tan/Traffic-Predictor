@@ -18,6 +18,7 @@ from datetime import datetime, timedelta
 import geopandas as gpd
 from shapely.geometry import LineString, Point
 
+from imblearn.ensemble import BalancedRandomForestClassifier
 
 # Train using Random Forest Classifier
 from sklearn.ensemble import RandomForestClassifier
@@ -30,98 +31,166 @@ default_args = {
 }
 
 def train_model():
-  file_path = "dags/data/RTA_Dataset.csv"
-  df = pd.read_csv(file_path)
-  # Remove unnecessary columns
+        
+    # Load the dataset# Load the dataset
+    file_path = "/opt/airflow/dags/data/RTA_Dataset.csv"
+    df = pd.read_csv(file_path) 
+    # Drop all rows with missing values
+    df = df.dropna()
+    # Select relevant columns
+    columns = [
+        'day_of_week', 'age_band_of_driver', 'type_of_vehicle',
+        'area_accident_occured', 'lanes_or_medians',
+        'types_of_junction', 'weather_conditions', 'accident_severity'
+    ]
+    # Convert all column names to lowercase
+    df.columns = df.columns.str.lower()
+    df = df[columns].copy()
+    # 1. Clean 'day_of_week'
+    valid_days = ['monday', 'sunday', 'friday', 'wednesday', 'saturday', 'thursday', 'tuesday']
+    df['day_of_week'] = df['day_of_week'].str.lower()
+    df = df[df['day_of_week'].isin(valid_days)]
+    # 2. Clean 'age_band_of_driver'
+    df = df[df['age_band_of_driver'] != 'Under 18']
+    df['age_band_of_driver'] = df['age_band_of_driver'].replace({
+        'Over 51': '>51',
+        'Unknown': 'unknown'
+    })
+    # 3. Simplify 'type_of_vehicle'
+    car_types = ['Automobile', 'Taxi', 'Stationwagen']
+    lorry_types = ['Lorry (41?100Q)', 'Lorry (11?40Q)', 'Long lorry', 'Pick up upto 10Q']
+    bus_types = ['Public (> 45 seats)', 'Public (12 seats)', 'Public (13?45 seats)']
+    motorcycle_types = ['Motorcycle', 'Bajaj', 'Motorcycle (below 400cc)']
+    other_types =['Ridden horse','Other','Special vehicle','Turbo','Bicycle']
 
-  # Decision: Remove Defect_of_vehicle, Service_year_of_vehicle, Work_of_casuality, Fitness_of_casuality
-  # Because these attributes are unrelated in our prediction of traffic accidents based on traffic conditions and high percentage of null values
-  df_cleaned = df.drop(columns=['Defect_of_vehicle', 'Service_year_of_vehicle', 'Work_of_casuality', 'Fitness_of_casuality'])
+    def simplify_vehicle_type(v):
+        if v in car_types:
+            return 'car'
+        elif v in lorry_types:
+            return 'lorry'
+        elif v in bus_types:
+            return 'bus'
+        elif v in motorcycle_types:
+            return 'motorcycle'
+        elif v in other_types:
+            return 'other'
+        else:
+            return 'other'
+    df['type_of_vehicle'] = df['type_of_vehicle'].apply(simplify_vehicle_type)
+    # transform categorical features
+    types_of_junction_to_types_of_junction = {
+        "Y Shape":"y_shape",
+        "No junction":"no_junction",
+        "Crossing":  "crossing",
+        "Other":  "other",
+        "Unknown":  "unknown",
+        "O Shape":"o_shape",
+        "T Shape":"t_shape",
+        "X Shape":"x_shape",
+    }
+    df["types_of_junction"] = df["types_of_junction"].map(types_of_junction_to_types_of_junction)
+    # transform 'area_accident_occured'
+    area_to_highway = {
+        "Other": "unknown",
+        "Office areas": "service",
+        "Residential areas": "residential",
+        "Church areas": "service",
+        "Industrial areas": "service",
+        "School areas": "living_street",
+        "Recreational areas": "living_street",
+        "Outside rural areas": "unknown",
+        "Hospital areas": "service",
+        "Market areas": "living_street",
+        "Rural village areas": "living_street",
+        "Unknown": "unknown",
+        "Rural village areasOffice areas": "unknown",  # Inconsistent value
+        # Possible trimmed version to cover any leading/trailing whitespace
+        "  Recreational areas": "living_street",
+        "  Market areas": "living_street"
+    }
+    df["area_accident_occured"] = df["area_accident_occured"].dropna()
+    df["area_accident_occured"] = df["area_accident_occured"].map(area_to_highway)
+    # transform 'lanes_or_medians'
+    df["lanes_or_medians"] = df["lanes_or_medians"].apply(
+        lambda x: "two_way" if 'two way' in x.lower() or 'two-way' in x.lower()
+        else "one_way" if 'double carriageway' in x.lower()
+        else x.strip().replace(" ", "_").lower() 
+    )
+    # transform 'weather_conditions'
+    df["weather_conditions"] = df["weather_conditions"].apply(
+        lambda x: "rain" if "rain" in x.lower() else "no_rain"
+    )
+    # transfrom 'accident_severity' # target
+    df['accident_severity'] = df['accident_severity'].str.lower()
+    df['accident_severity'] = df['accident_severity'].map(lambda x: x.split(' ')[0] if ' ' in x else x)
+    df.describe(include='all')
+    df.info()
+    for col in columns:
+        print(df[col].unique())  # Check unique values before encoding
+    categorical_cols = df.select_dtypes(include="object").columns  
+    # Encode features and target
+    df['accident_severity'] = df['accident_severity'].map({
+        'slight': 0, 'serious': 1, 'fatal': 2
+    })
+    # One-hot encode categorical features
+    filtered_cols = [col for col in categorical_cols if col not in ['accident_severity']]
+    df_encoded = pd.get_dummies(df[filtered_cols]) 
+    # Ensure all features are numeric (convert bools to ints)
+    df_encoded = df_encoded.astype(int)
 
-  # Standardize column values (lowercase, strip spaces, replace underscores)
-  df_cleaned.columns = df_cleaned.columns.str.lower().str.replace(" ", "_")
+    # Define features and target
+    X = df_encoded
+    y = df['accident_severity']
 
-  # Rename the spelling error
-  df_cleaned.rename(columns={"road_allignment": "road_alignment"}, inplace=True)
+    print(X.shape)
+    print(y.shape)
+    print(y.isna().sum())
 
-  # Time column conversion
-  # Convert time to datetime format and extract hour
-  df_cleaned["time"] = pd.to_datetime(df_cleaned["time"], format="%H:%M:%S")
-  df_cleaned["hour"] = df_cleaned["time"].dt.hour # group by the hour
+    # Train-test split
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42)
 
-  # There are many NA values in casualty_class and sex_of_casualty. 
-  # Since these are not directly related to the goal of our prediction, we can drop these columns 
-  df_cleaned.drop(columns=["casualty_class", "sex_of_casualty"], inplace=True)
+    # Apply SMOTE to balance the training set
+    smote = SMOTE(random_state=42)
+    X_resampled, y_resampled = smote.fit_resample(X_train, y_train)
 
-  # Fill missing categorical values with mode
-  categorical_cols = df_cleaned.select_dtypes(include=['object']).columns
-  for col in categorical_cols:
-      df_cleaned[col].fillna(df_cleaned[col].mode()[0], inplace=True)
+    # Train model
+    model = RandomForestClassifier(random_state=42)
+    model.fit(X_resampled, y_resampled)
+    # Initialize Balanced Random Forest
+    brf_model = BalancedRandomForestClassifier(n_estimators=100, random_state=42)
 
-  # Further drop irrelevant columns
-  df_cleaned.drop(columns=["pedestrian_movement", "road_surface_type", "time"], inplace=True)
+    # Fit the model
+    brf_model.fit(X_train, y_train)
 
-  # Strip whitespace from all string columns
-  df_cleaned = df_cleaned.apply(lambda x: x.str.strip() if x.dtype == "object" else x)
+    # Predict and evaluate
+    y_pred = brf_model.predict(X_test)
 
-  categorical_cols = df_cleaned.select_dtypes(include="object").columns  
+    # Evaluate
+    y_pred = model.predict(X_test)
+    print("Classification Report:\n", classification_report(y_test, y_pred))
+    # Feature importance in influencing accident severity
 
-  df_cleaned[categorical_cols].nunique().sort_values(ascending=False)
+    importances = pd.Series(model.feature_importances_, index=X.columns)
+    top_features = importances.sort_values(ascending=False).head(20)
 
-  # Encode the target variable accident_severity
-  print(df_cleaned['accident_severity'].unique())
-  df_cleaned['accident_severity'] = df_cleaned['accident_severity'].map({
-      'Slight Injury': 0, 'Serious Injury': 1, 'Fatal injury': 2
-  })
+    importances = pd.Series(model.feature_importances_, index=X.columns)
+    top_features = importances.sort_values(ascending=False)
+    print(top_features)
 
-  # One-hot encode categorical features
-  filtered_cols = [col for col in categorical_cols if col not in ['accident_severity']]
-  df_encoded = pd.get_dummies(df_cleaned[filtered_cols]) 
-  # Ensure all features are numeric (convert bools to ints)
-  df_encoded = df_encoded.astype(int)
-
-  # Encode the features accident_severity
-  print(df_cleaned['types_of_junction'].unique())
-  df_cleaned['accident_severity'] = df_cleaned['accident_severity'].map({
-      'Slight Injury': 0, 'Serious Injury': 1, 'Fatal injury': 2
-  })
-
-  # One-hot encode categorical features
-  filtered_cols = [col for col in categorical_cols if col not in ['accident_severity']]
-  df_encoded = pd.get_dummies(df_cleaned[filtered_cols]) 
-  # Ensure all features are numeric (convert bools to ints)
-  df_encoded = df_encoded.astype(int)
-
-  # Define features and target
-  X = df_encoded
-  y = df_cleaned['accident_severity']
+    # Save the top features to a CSV file
+    top_features_df = pd.DataFrame({'Feature': top_features.index, 'Importance': top_features.values})
+    csv_filename = '/opt/airflow/dags/data/top_feature_importances.csv'
+    top_features_df.to_csv(csv_filename, index=False)
+    print(f"Top feature importances saved to '{csv_filename}' in the same directory as this notebook.")
 
 
-  # Train-test split
-  X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, test_size=0.2, random_state=42)
-
-  # Imbalance data treatment using SMOTE only to training data
-  smote = SMOTE(random_state=42)
-  X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
-
-  # New class distribution
-  print("Before SMOTE:", Counter(y_train))
-  print("After SMOTE: ", Counter(y_train_resampled))
-
-  model = RandomForestClassifier(n_estimators=100, random_state=42)
-  model.fit(X_train_resampled, y_train_resampled)
-
-  # Evaluate Model Performance
-
-  y_pred = model.predict(X_test)
-
-
-with DAG("get_road_type_dag",
+with DAG("train_model",
          default_args=default_args,
          schedule_interval="@daily",
          start_date=datetime(2025, 1, 1),
          catchup=False,
-         tags=["traffic", "geocoding","IS3107"]) as dag:
+         tags=["traffic", "ml","IS3107"]) as dag:
 
     train_model = PythonOperator(
         task_id="train_model",
