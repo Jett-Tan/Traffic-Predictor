@@ -123,7 +123,7 @@ def print_postgres_data(table_name):
     conn.close()
 
 with DAG(
-    dag_id='postgres_rta_dataset',
+    dag_id="load_rta_dataset",
     default_args=default_args,
     schedule_interval='@once',  
     catchup=False,  # Prevents backfill

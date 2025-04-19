@@ -27,7 +27,7 @@ default_args = {
 }
 
 with DAG(
-    dag_id='extract_rta_dataset',
+    dag_id='train_rta_model',
     default_args=default_args,
     schedule_interval='@once',  
     catchup=False,  # Prevents backfill
