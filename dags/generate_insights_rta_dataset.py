@@ -8,7 +8,8 @@ import matplotlib.pyplot as plt
 import joblib
 import os
 
-from load_rta_dataset import get_postgres_conn
+
+from utils.db import get_postgres_conn
 
 # Paths
 CSV_FILE_PATH_CLEANED = "/opt/airflow/dags/data/RTA_Dataset_Cleaned.csv"
@@ -146,6 +147,87 @@ def suggest_interventions(feature_importance_csv=FEATURE_IMP_CSV, top_n = 5):
 
     pd.DataFrame(interventions, columns=["condition", "recommendation"]).to_csv(f"{INSIGHT_DIR}/suggested_interventions.csv", index=False)
 
+
+def load_cleaned_data():
+    """Return the cleaned RTA dataframe (readable categorical columns)."""
+    conn = get_postgres_conn()
+    df_cleaned = pd.read_sql(f"SELECT * FROM {TABLE_NAME_CLEANED}", conn)
+    conn.close()
+    return df_cleaned
+
+# Insight 5: Road‑surface condition vs accident severity
+def accidents_by_road_surface():
+    df = load_cleaned_data()
+
+    # Count accidents per (surface, severity)
+    pivot = (
+        df.groupby(["road_surface_conditions", "accident_severity"])
+          .size()
+          .unstack(fill_value=0)
+          .sort_index()
+    )
+    csv_path = f"{INSIGHT_DIR}/accidents_by_road_surface.csv"
+    pivot.to_csv(csv_path)
+
+    # Stacked bar chart
+    plt.figure(figsize=(10, 6))
+    pivot.plot(kind="bar", stacked=True)
+    plt.title("Accidents by Road‑Surface Condition & Severity")
+    plt.xlabel("Road‑surface condition")
+    plt.ylabel("Number of accidents")
+    plt.tight_layout()
+    png_path = f"{INSIGHT_DIR}/accidents_by_road_surface.png"
+    plt.savefig(png_path)
+    plt.close()
+
+
+# Insight 6: Weather condition vs accident severity
+def accidents_by_weather():
+    df = load_cleaned_data()
+
+    pivot = (
+        df.groupby(["weather_conditions", "accident_severity"])
+          .size()
+          .unstack(fill_value=0)
+          .sort_index()
+    )
+    csv_path = f"{INSIGHT_DIR}/accidents_by_weather.csv"
+    pivot.to_csv(csv_path)
+
+    plt.figure(figsize=(10, 6))
+    pivot.plot(kind="bar", stacked=True)
+    plt.title("Accidents by Weather Condition & Severity")
+    plt.xlabel("Weather condition")
+    plt.ylabel("Number of accidents")
+    plt.tight_layout()
+    png_path = f"{INSIGHT_DIR}/accidents_by_weather.png"
+    plt.savefig(png_path)
+    plt.close()
+
+
+# Insight 7: Heat‑map of Road‑surface  ×  Weather combos
+def road_weather_heatmap():
+    df = load_cleaned_data()
+
+    heat = (
+        df.groupby(["road_surface_conditions", "weather_conditions"])
+          .size()
+          .unstack(fill_value=0)
+    )
+    # Save matrix
+    heat.to_csv(f"{INSIGHT_DIR}/road_weather_heatmap.csv")
+
+    # Plot heatmap
+    plt.figure(figsize=(12, 8))
+    sns.heatmap(heat, cmap="Reds", annot=False)
+    plt.title("Accident count heat‑map:  road surface  ×  weather")
+    plt.xlabel("Weather condition")
+    plt.ylabel("Road‑surface condition")
+    plt.tight_layout()
+    plt.savefig(f"{INSIGHT_DIR}/road_weather_heatmap.png")
+    plt.close()
+
+
 with DAG(
     dag_id='generate_insights_rta_dataset',
     start_date=datetime(2025, 3, 24),
@@ -177,6 +259,21 @@ with DAG(
         task_id='suggest_interventions',
         python_callable=suggest_interventions,
         op_kwargs={'feature_importance_csv': FEATURE_IMP_CSV, 'top_n': 5}
+    )
+
+    accidents_by_road_surface_task = PythonOperator(
+        task_id='accidents_by_road_surface',
+        python_callable=accidents_by_road_surface,
+    )
+
+    accidents_by_weather_task = PythonOperator(
+        task_id='accidents_by_weather',
+        python_callable=accidents_by_weather,
+    )
+
+    road_weather_heatmap_task = PythonOperator(
+        task_id='road_weather_heatmap',
+        python_callable=road_weather_heatmap,
     )
 
     
