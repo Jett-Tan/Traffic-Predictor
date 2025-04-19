@@ -5,12 +5,19 @@ import pandas as pd
 import psycopg2
 import seaborn as sns
 import matplotlib.pyplot as plt
+import joblib
+import os
 
 from load_rta_dataset import get_postgres_conn, print_postgres_data
 
 # Paths
 CSV_FILE_PATH_CLEANED = "/opt/airflow/dags/data/RTA_Dataset_Cleaned.csv"
 CSV_FILE_PATH_ENCODED = "/opt/airflow/dags/data/RTA_Dataset_Encoded.csv"
+
+# Paths for storing models
+MODEL_DIR = "/opt/airflow/models"
+MODEL_PATH = os.path.join(MODEL_DIR, "random_forest_classifier.pkl")
+os.makedirs(MODEL_DIR, exist_ok=True)
 
 # Postgres Connection
 POSTGRES_CONN_ID = "postgres_default"
@@ -130,7 +137,7 @@ def training_model():
     print("Before SMOTE:", Counter(y_train))
     print("After SMOTE: ", Counter(y_train_resampled))
 
-    model = RandomForestClassifier(n_estimators=100, random_state=42)
+    model = RandomForestClassifier(n_estimators=100, random_state=42, class_weight="balanced")
     model.fit(X_train_resampled, y_train_resampled)
 
     # Evaluate Model Performance
@@ -140,6 +147,15 @@ def training_model():
 
     print("Classification Report:\n", classification_report(y_test, y_pred))
     print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
+
+    # Save model
+    os.makedirs(MODEL_DIR, exist_ok=True)
+    joblib.dump(model, MODEL_PATH)
+    print(f"Model saved at: {MODEL_PATH}")
+
+    # Save feature importance
+    feature_importances = pd.Series(model.feature_importances_, index=X.columns)
+    feature_importances.sort_values(ascending=False).to_csv("/opt/airflow/dags/data/feature_importance.csv")
 
 with DAG(
     dag_id='training_model_rta_dataset',
