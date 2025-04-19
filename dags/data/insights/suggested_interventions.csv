@@ -1,0 +1,6 @@
+condition,recommendation
+id,Review this condition and consider targeted safety measures.
+light_conditions_daylight,Schedule roadworks after dark to mitigate daylight risks.
+vehicle_movement_going_straight,Review this condition and consider targeted safety measures.
+type_of_collision_vehicle_with_vehicle_collision,Review this condition and consider targeted safety measures.
+casualty_severity_3,Review this condition and consider targeted safety measures.

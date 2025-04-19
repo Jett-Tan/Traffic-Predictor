@@ -1,0 +1,6 @@
+road_surface_conditions,light_conditions,area_accident_occured,severity_num,combo,day_of_week,type_of_vehicle,weather_conditions
+Dry,Darkness - no lighting,Rural village areas,3.0,road_surface_conditions & light_conditions & area_accident_occured,,,
+,,,2.0,day_of_week & type_of_vehicle & weather_conditions,Tuesday,Stationwagen,Windy
+,,,2.0,day_of_week & type_of_vehicle & weather_conditions,Thursday,Special vehicle,Fog or mist
+,,,2.0,day_of_week & type_of_vehicle & weather_conditions,Tuesday,Motorcycle,Raining
+,,,2.0,day_of_week & type_of_vehicle & weather_conditions,Tuesday,Motorcycle,Other
