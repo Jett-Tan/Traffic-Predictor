@@ -273,7 +273,6 @@ def train_model2():
             return 'unknown'
         else:
             return x.replace(" ", "_")
-
     df["lanes_or_medians"] = df["lanes_or_medians"].apply(clean_lanes)
     
     # transform 'weather_conditions'
@@ -301,33 +300,107 @@ def train_model2():
 
     # Train regression model
     from sklearn.ensemble import RandomForestRegressor
+    from sklearn.linear_model import LinearRegression
+    from sklearn.linear_model import Ridge
+    from sklearn.tree import DecisionTreeRegressor
+    from sklearn.ensemble import GradientBoostingRegressor
+    from xgboost import XGBRegressor
+
     from sklearn.model_selection import train_test_split
     from sklearn.metrics import mean_squared_error, r2_score
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-    model = RandomForestRegressor(random_state=42)
-    model.fit(X_train, y_train)
-
-    y_pred = model.predict(X_test)
-
-    print("MSE:", mean_squared_error(y_test, y_pred))
-    print("R^2 Score:", r2_score(y_test, y_pred))
-
-    # Feature Importance 
-    importances = pd.Series(model.feature_importances_, index=X.columns)
-    top_features = importances.sort_values(ascending=False)
+    RandomForestRegressor_model = RandomForestRegressor(random_state=42)
+    LinearRegression_model = LinearRegression()
+    Ridge_model = Ridge(alpha=1.0)
+    DecisionTreeRegressor_model = DecisionTreeRegressor(random_state=42)
+    GradientBoostingRegressor_model = GradientBoostingRegressor(random_state=42)
+    XGBRegressor_model = XGBRegressor(random_state=42)
     
+    RandomForestRegressor_model.fit(X_train, y_train)
+    LinearRegression_model.fit(X_train, y_train)
+    Ridge_model.fit(X_train, y_train)
+    DecisionTreeRegressor_model.fit(X_train, y_train)
+    GradientBoostingRegressor_model.fit(X_train, y_train)
+    XGBRegressor_model.fit(X_train, y_train)
+
+    RandomForestRegressor_y_pred = RandomForestRegressor_model.predict(X_test)
+    LinearRegression_y_pred = LinearRegression_model.predict(X_test)
+    Ridge_y_pred = Ridge_model.predict(X_test)
+    DecisionTreeRegressor_y_pred = DecisionTreeRegressor_model.predict(X_test)
+    GradientBoostingRegressor_y_pred = GradientBoostingRegressor_model.predict(X_test)
+    XGBRegressor_y_pred = XGBRegressor_model.predict(X_test)
+
+    print("RandomForestRegressor RMSE:", math.sqrt(mean_squared_error(y_test, RandomForestRegressor_y_pred)))
+    print("LinearRegression RMSE:", math.sqrt(mean_squared_error(y_test, LinearRegression_y_pred)))
+    print("Ridge RMSE:", math.sqrt(mean_squared_error(y_test, Ridge_y_pred)))
+    print("DecisionTreeRegressor RMSE:", math.sqrt(mean_squared_error(y_test, DecisionTreeRegressor_y_pred)))
+    print("GradientBoostingRegressor RMSE:", math.sqrt(mean_squared_error(y_test, GradientBoostingRegressor_y_pred)))
+    print("XGBRegressor RMSE:", math.sqrt(mean_squared_error(y_test, XGBRegressor_y_pred)))
+    print("")
+
+    print("R^2 Score RandomForestRegressor:", r2_score(y_test, RandomForestRegressor_y_pred))
+    print("R^2 Score LinearRegression:", r2_score(y_test, LinearRegression_y_pred))
+    print("R^2 Score Ridge:", r2_score(y_test, Ridge_y_pred))
+    print("R^2 Score DecisionTreeRegressor:", r2_score(y_test, DecisionTreeRegressor_y_pred))
+    print("R^2 Score GradientBoostingRegressor:", r2_score(y_test, GradientBoostingRegressor_y_pred))
+    print("R^2 Score XGBRegressor:", r2_score(y_test, XGBRegressor_y_pred))
+    
+    main_model = RandomForestRegressor_model
+    lowest_rmse = float('inf')
+    highest_r2 = float('-inf')
+    for model, y_pred in zip(
+        [   
+            RandomForestRegressor_model,
+            LinearRegression_model,
+            Ridge_model,
+            DecisionTreeRegressor_model,
+            GradientBoostingRegressor_model,
+            XGBRegressor_model
+        ],        
+        [
+            RandomForestRegressor_y_pred, 
+            LinearRegression_y_pred, 
+            Ridge_y_pred,
+            DecisionTreeRegressor_y_pred, 
+            GradientBoostingRegressor_y_pred, 
+            XGBRegressor_y_pred
+         ]
+    ):
+        mse = mean_squared_error(y_test, y_pred)
+        rmse = math.sqrt(mse)
+        if rmse < lowest_rmse:
+            lowest_rmse = rmse
+            main_model = model
+        r2 = r2_score(y_test, y_pred)
+        if r2 > highest_r2:
+            highest_r2 = r2
+            main_model = model
+    
+    print(f"Best model: {main_model} with RMSE: {lowest_rmse} and R^2: {highest_r2}")
+    # Feature Importance 
+    importances = pd.Series(main_model.feature_importances_, index=X.columns)
+    top_features = importances.sort_values(ascending=False)
 
     # Save top features
     top_features_df = pd.DataFrame({'Feature': top_features.index, 'Importance': top_features.values})
     csv_filename = '/opt/airflow/dags/data/top_incident_rate_features.csv'
     top_features_df.to_csv(csv_filename, index=False)
-    # print(f"Top incident rate features saved to '{csv_filename}'")
+
+    # Save min and max values of target for min-max normalization
+    min_rate = y.min()
+    max_rate = y.max()
+    p95 = y.quantile(0.90)
+    range_path = "/opt/airflow/dags/data/incident_rate_range.json"
+
+    with open(range_path, "w") as f:
+        json.dump({"min": float(min_rate), "max": float(max_rate), "p95": float(p95)}, f)
+        
 
     # --- Save the trained model ---
     model_path = '/opt/airflow/dags/data/models/incident_rate_model.pkl'
-    joblib.dump(model, model_path)
+    joblib.dump(main_model, model_path)
 
     # --- Save the one-hot encoded column names (feature structure) ---
     feature_path = '/opt/airflow/dags/data/models/incident_rate_features.pkl'

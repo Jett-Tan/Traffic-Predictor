@@ -9,6 +9,7 @@ from shapely.geometry import LineString, Point
 import numpy as np
 from sklearn.neighbors import BallTree
 import joblib
+import json
 #
 JUNCTIONS_CSV = "./dags/data/junctions_from_geojson.csv"
 # RAINFALL_CSV = "./dags/data/rainfall/rainfall_data_postgres.csv"
@@ -32,6 +33,8 @@ try:
     importance_df = pd.read_csv(IMPORTANCE_CSV, index_col='Feature')
     model = joblib.load(MODEL_PATH)
     feature_columns = joblib.load(FEATURE_PATH)
+    with open("./dags/data/incident_rate_range.json") as f:
+        rate_range = json.load(f)
 except FileNotFoundError as e:
     print(f"Error: One or both CSV files not found: {e}")
     
@@ -195,7 +198,7 @@ def add_features_to_route(step, max_distance_m=10):
     dist_m = dist[0][0] * 6371000  # convert radians to meters
     
     if dist_m <= max_distance_m:
-        print(f"Processing coordinates: {lat}, {lon}, {junctions_df.iloc[idx[0][0]]['junction_latitude']}, { junctions_df.iloc[idx[0][0]]['junction_longitude']}")
+        # print(f"Processing coordinates: {lat}, {lon}, {junctions_df.iloc[idx[0][0]]['junction_latitude']}, { junctions_df.iloc[idx[0][0]]['junction_longitude']}")
         step['junction'] = types_of_junction_to_types_of_junction[junctions_df.iloc[idx[0][0]]["junction_type"]]
         step['lanes_or_medians'] = "one_way" if junctions_df.iloc[idx[0][0]]["oneway"].lower() == "yes" else "two_way"
         step['area_accident_occured'] = highway_classification[junctions_df.iloc[idx[0][0]]["road_type"]]
@@ -218,7 +221,7 @@ def get_nearest_rainfall_score(step, max_distance_m=2500):
     dist_m = dist[0][0] * 6371000  # convert radians to meters
     
     if dist_m <= max_distance_m:
-        print(f"Processing coordinates: {lat}, {lon}, {rainfall_df.iloc[idx[0][0]]['latitude']}, { rainfall_df.iloc[idx[0][0]]['longitude']}, { rainfall_df.iloc[idx[0][0]]['station']}")
+        # print(f"Processing coordinates: {lat}, {lon}, {rainfall_df.iloc[idx[0][0]]['latitude']}, { rainfall_df.iloc[idx[0][0]]['longitude']}, { rainfall_df.iloc[idx[0][0]]['station']}")
         if rainfall_df.iloc[idx[0][0]]["rainfall"] > 0 :
             step["rainfall"] = "rain"
         else:
@@ -267,6 +270,16 @@ def preprocess_route(route_dict, feature_columns):
 
     return df_encoded
 
+def compute_weighted_risk(route_segments):
+    total_weighted_score = 0
+    total_weight = 0
+    for segment in route_segments:
+        score = segment["predicted_safety_rate"]
+        weight = segment["normalized_safety_score"]
+        total_weighted_score += score * weight
+        total_weight += weight
+    return total_weighted_score / total_weight if total_weight > 0 else 0
+
 @app.route("/predict", methods=["POST"])
 def predict():
 
@@ -279,7 +292,7 @@ def predict():
     vehicle_type = data.get("vehicle_type")
     driver_age = data.get("driver_age")
     day_of_week = datetime.now().strftime("%A").lower()
-
+ 
     if not start:
         return jsonify({"error": "Missing start"}), 400
     if not end:
@@ -314,22 +327,38 @@ def predict():
     
     # Preprocess the route for prediction
     for i in range(len(routes)):
-        tempRoute = preprocess_route(routes[i], feature_columns)
-        routes[i]["predicted_safety_rate"] = model.predict(tempRoute)[0]
-    print(routes)
-    return jsonify({"routes": routes}), 200
+        tempRoute = preprocess_route(routes[i], feature_columns)  
+        raw_score = float(model.predict(tempRoute)[0])
+        min_rate = rate_range['min']
+        max_rate = rate_range['max']
+        p95 = rate_range["p95"]
 
-
-    # Include safety scores from junctions
-    scores_included = compute_score(routes)
+        # Avoid divide-by-zero
+        if p95 > min_rate:
+            norm_score = (raw_score - min_rate) / (p95 - min_rate)
+            norm_score = min(norm_score, 1.0)  # cap at 1.0
+        else:
+            norm_score = 0.0
+        print(f"Raw score: {raw_score}, Normalized score: {norm_score}")    
+        routes[i]['predicted_safety_rate'] = round(raw_score,6)
+        routes[i]['normalized_safety_score'] =round(norm_score,6)
+        
+     
+        if norm_score < 0.33:
+            routes[i]['risk_label'] = "Low"
+        elif norm_score < 0.66:
+            routes[i]['risk_label'] = "Medium"
+        else:
+            routes[i]['risk_label'] = "High"
     
     # Averaging the safety scores for the routes
     total_score = 0
-    for score in scores_included:
-        total_score += score["safety_rate"]
-    
-    avg_score = round(total_score / len(scores_included), 6)
-    return jsonify({"routes": routes,"scores": {"average_score" : avg_score,"total_score":total_score}}), 200
+    for score in routes:
+        total_score += score["predicted_safety_rate"]
+    weighted_score = compute_weighted_risk(routes)
+    avg_score = round(total_score / len(routes), 6)
+    return jsonify({"routes": routes,"scores": {"average_score" : avg_score,"total_score":total_score, "weighted_score": weighted_score}}), 200
+
 
 if __name__ == "__main__":
     app.run(debug=True)
