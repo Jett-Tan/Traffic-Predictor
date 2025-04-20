@@ -72,9 +72,10 @@ def get_lat_lon_from_location(location_name):
     }
     response = requests.get(url, params=params, headers=headers)
     data = response.json()
-    if not data:
-        return None, None
-    return float(data["results"][0]["LATITUDE"]), float(data["results"][0]["LONGITUDE"])
+    try:
+        return float(data["results"][0]["LATITUDE"]), float(data["results"][0]["LONGITUDE"])
+    except (IndexError, KeyError):
+        raise Exception("Failed to extract latitude and longitude from response")
 
 def extract_route_from_start_and_end(start_lat:float, start_lon:float, end_lat:float, end_lon:float):
     print("Running extract_route_from_start_and_end")
@@ -245,7 +246,6 @@ def compute_score(routes):
         step["safety_rate"] += importance_df.loc[f"day_of_week_{step['day_of_week']}", "Importance"]
     return routes
 
-
 def preprocess_route(route_dict, feature_columns):
     cleaned = {
         'types_of_junction': route_dict['junction'],
@@ -284,81 +284,84 @@ def compute_weighted_risk(route_segments):
 def predict():
 
     # Check if the request contains JSON data
-    if not request.json:
-        return jsonify({"error": "Invalid input"}), 400
-    data = request.json
-    start = data.get("start")
-    end = data.get("end")
-    vehicle_type = data.get("vehicle_type")
-    driver_age = data.get("driver_age")
-    day_of_week = datetime.now().strftime("%A").lower()
- 
-    if not start:
-        return jsonify({"error": "Missing start"}), 400
-    if not end:
-        return jsonify({"error": "Missing end"}), 400
-    if not driver_age:
-        return jsonify({"error": "Missing driver_age"}), 400
-    if not vehicle_type:
-        return jsonify({"error": "Missing vehicle_type "}), 400
-    if vehicle_type not in ['lorry', 'car', 'bus', 'other', 'motorcycle']:
-        return jsonify({"error": "Invalid vehicle_type"}), 400
-    if not isinstance(driver_age, int) or driver_age < 18 or driver_age > 100:
-        return jsonify({"error": "Invalid driver_age"}), 400
-    if driver_age < 30:
-        driver_age = "18-30"
-    elif driver_age < 50:
-        driver_age = '31-50'
-    else:
-        driver_age = '>51'
+    try:
+        if not request.json:
+            return jsonify({"error": "Invalid input"}), 400
+        data = request.json
+        start = data.get("start")
+        end = data.get("end")
+        vehicle_type = data.get("vehicle_type")
+        driver_age = data.get("driver_age")
+        day_of_week = datetime.now().strftime("%A").lower()
     
-    # Convert start and end to lat/lon
-    start_lat, start_lon = get_lat_lon_from_location(start)
-    end_lat, end_lon = get_lat_lon_from_location(end)
-    if None in (start_lat, start_lon, end_lat, end_lon):
-        return jsonify({"error": "Could not geocode one or both locations"}), 400
-    
-    # Extract route from start and end
-    routes = extract_route_from_start_and_end(start_lat, start_lon, end_lat, end_lon)
-    if not routes:
-        return jsonify({"error": "Could not extract route"}), 400
-    # add features to the routes
-    routes = add_features_to_routes(routes, driver_age, vehicle_type, day_of_week)
-    
-    # Preprocess the route for prediction
-    for i in range(len(routes)):
-        tempRoute = preprocess_route(routes[i], feature_columns)  
-        raw_score = float(model.predict(tempRoute)[0])
-        min_rate = rate_range['min']
-        max_rate = rate_range['max']
-        p95 = rate_range["p95"]
-
-        # Avoid divide-by-zero
-        if p95 > min_rate:
-            norm_score = (raw_score - min_rate) / (p95 - min_rate)
-            norm_score = min(norm_score, 1.0)  # cap at 1.0
+        if not start:
+            return jsonify({"error": "Missing start"}), 400
+        if not end:
+            return jsonify({"error": "Missing end"}), 400
+        if not driver_age:
+            return jsonify({"error": "Missing driver_age"}), 400
+        if not vehicle_type:
+            return jsonify({"error": "Missing vehicle_type "}), 400
+        if vehicle_type not in ['lorry', 'car', 'bus', 'other', 'motorcycle']:
+            return jsonify({"error": "Invalid vehicle_type"}), 400
+        if not isinstance(driver_age, int) or driver_age < 18 or driver_age > 100:
+            return jsonify({"error": "Invalid driver_age"}), 400
+        if driver_age < 30:
+            driver_age = "18-30"
+        elif driver_age < 50:
+            driver_age = '31-50'
         else:
-            norm_score = 0.0
-        print(f"Raw score: {raw_score}, Normalized score: {norm_score}")    
-        routes[i]['predicted_safety_rate'] = round(raw_score,6)
-        routes[i]['normalized_safety_score'] =round(norm_score,6)
+            driver_age = '>51'
         
-     
-        if norm_score < 0.33:
-            routes[i]['risk_label'] = "Low"
-        elif norm_score < 0.66:
-            routes[i]['risk_label'] = "Medium"
-        else:
-            routes[i]['risk_label'] = "High"
-    
-    # Averaging the safety scores for the routes
-    total_score = 0
-    for score in routes:
-        total_score += score["predicted_safety_rate"]
-    weighted_score = compute_weighted_risk(routes)
-    avg_score = round(total_score / len(routes), 6)
-    return jsonify({"routes": routes,"scores": {"average_score" : avg_score,"total_score":total_score, "weighted_score": weighted_score}}), 200
+        # Convert start and end to lat/lon
+        start_lat, start_lon = get_lat_lon_from_location(start)
+        end_lat, end_lon = get_lat_lon_from_location(end)
+        if None in (start_lat, start_lon, end_lat, end_lon):
+            return jsonify({"error": "Could not geocode one or both locations"}), 400
+        
+        # Extract route from start and end
+        routes = extract_route_from_start_and_end(start_lat, start_lon, end_lat, end_lon)
+        if not routes:
+            return jsonify({"error": "Could not extract route"}), 400
+        # add features to the routes
+        routes = add_features_to_routes(routes, driver_age, vehicle_type, day_of_week)
+        
+        # Preprocess the route for prediction
+        for i in range(len(routes)):
+            tempRoute = preprocess_route(routes[i], feature_columns)  
+            raw_score = float(model.predict(tempRoute)[0])
+            min_rate = rate_range['min']
+            max_rate = rate_range['max']
+            p95 = rate_range["p95"]
 
+            # Avoid divide-by-zero
+            if p95 > min_rate:
+                norm_score = (raw_score - min_rate) / (p95 - min_rate)
+                norm_score = min(norm_score, 1.0)  # cap at 1.0
+            else:
+                norm_score = 0.0
+            print(f"Raw score: {raw_score}, Normalized score: {norm_score}")    
+            routes[i]['predicted_safety_rate'] = round(raw_score,6)
+            routes[i]['normalized_safety_score'] =round(norm_score,6)
+            
+        
+            if norm_score < 0.33:
+                routes[i]['risk_label'] = "Low"
+            elif norm_score < 0.66:
+                routes[i]['risk_label'] = "Medium"
+            else:
+                routes[i]['risk_label'] = "High"
+        
+        # Averaging the safety scores for the routes
+        total_score = 0
+        for score in routes:
+            total_score += score["predicted_safety_rate"]
+        weighted_score = compute_weighted_risk(routes)
+        avg_score = round(total_score / len(routes), 6)
+        return jsonify({"routes": routes,"scores": {"average_score" : avg_score,"total_score":total_score, "weighted_score": weighted_score}}), 200
+    except Exception as e:
+        print(f"Error: {e}")
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
     app.run(debug=True)
