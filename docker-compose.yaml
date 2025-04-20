@@ -75,7 +75,6 @@ x-airflow-common: &airflow-common
     - ${AIRFLOW_PROJ_DIR:-.}/logs:/opt/airflow/logs
     - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/airflow/config
     - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
-    - shared_insights:/opt/airflow/dags/data/insights
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on: &airflow-common-depends-on
     redis:
@@ -295,9 +294,8 @@ services:
     ports:
       - "8501:8501"
     volumes:
-      - shared_insights:/app/data/insights
+      - ./dags/data/insights:/app/data/insights
     restart: always
 
 volumes:
   postgres-db-volume:
-  shared_insights:
