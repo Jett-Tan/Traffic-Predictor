@@ -1,0 +1,8 @@
+service_year_of_vehicle,accident_count
+1-2yr,827
+2-5yrs,1792
+5-10yrs,1280
+Above 10yr,1324
+Below 1yr,282
+NaN,3928
+Unknown,2883

@@ -1,0 +1,9 @@
+lanes_or_medians,1,2,3,4,6,7
+Double carriageway (median),166,706,113,32,3,0
+NaN,68,255,51,10,1,0
+One way,123,588,103,28,1,2
+Two-way (divided with broken lines road marking),705,2982,577,128,18,1
+Two-way (divided with solid lines road marking),19,95,25,3,0,0
+Undivided Two way,617,2578,482,105,12,2
+Unknown,8,43,4,2,0,0
+other,290,1093,213,55,7,2

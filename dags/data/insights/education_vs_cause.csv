@@ -1,0 +1,9 @@
+educational_level,Changing lane to the left,Changing lane to the right,Driving at high speed,Driving carelessly,Driving to the left,Driving under the influence of drugs,Drunk driving,Getting off the vehicle improperly,Improper parking,Moving Backward,No distancing,No priority to pedestrian,No priority to vehicle,Other,Overloading,Overspeed,Overtaking,Overturning,Turnover,Unknown
+Above high school,47,47,6,35,10,6,1,8,1,36,63,20,42,20,2,0,14,0,4,0
+Elementary school,243,319,21,253,63,55,5,34,6,193,411,122,211,77,8,7,86,28,17,4
+High school,150,169,21,128,26,32,0,22,1,96,207,58,104,34,5,3,32,16,2,4
+Illiterate,5,7,2,2,1,0,0,0,0,2,11,5,2,4,1,0,2,1,0,0
+Junior high school,890,1126,109,879,166,219,17,114,14,719,1394,461,737,281,35,43,259,95,48,13
+NaN,104,103,11,77,13,17,4,11,3,59,130,40,79,34,7,6,27,8,6,2
+Unknown,9,14,0,12,2,3,0,3,0,12,21,6,12,3,0,0,2,0,1,0
+Writing & reading,25,23,4,16,3,8,0,5,0,20,26,9,20,3,1,2,8,1,0,2
