@@ -172,7 +172,7 @@ def train_model():
     # Feature importance in influencing accident severity
 
     importances = pd.Series(model.feature_importances_, index=X.columns)
-    top_features = importances.sort_values(ascending=False).head(20)
+    top_features = importances.sort_values(ascending=False)
 
     importances = pd.Series(model.feature_importances_, index=X.columns)
     top_features = importances.sort_values(ascending=False)
