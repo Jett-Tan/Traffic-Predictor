@@ -17,7 +17,7 @@ from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
 import geopandas as gpd
 from shapely.geometry import LineString, Point
-
+import joblib
 from imblearn.ensemble import BalancedRandomForestClassifier
 
 # Train using Random Forest Classifier
@@ -30,32 +30,38 @@ default_args = {
     'start_date': datetime(2025, 3, 24),
 }
 
-def train_model():
+def train_model1():
         
     # Load the dataset# Load the dataset
     file_path = "/opt/airflow/dags/data/RTA_Dataset.csv"
     df = pd.read_csv(file_path) 
+
     # Drop all rows with missing values
     df = df.dropna()
+
     # Select relevant columns
     columns = [
         'day_of_week', 'age_band_of_driver', 'type_of_vehicle',
         'area_accident_occured', 'lanes_or_medians',
         'types_of_junction', 'weather_conditions', 'accident_severity'
     ]
+
     # Convert all column names to lowercase
     df.columns = df.columns.str.lower()
     df = df[columns].copy()
+
     # 1. Clean 'day_of_week'
     valid_days = ['monday', 'sunday', 'friday', 'wednesday', 'saturday', 'thursday', 'tuesday']
     df['day_of_week'] = df['day_of_week'].str.lower()
     df = df[df['day_of_week'].isin(valid_days)]
+
     # 2. Clean 'age_band_of_driver'
     df = df[df['age_band_of_driver'] != 'Under 18']
     df['age_band_of_driver'] = df['age_band_of_driver'].replace({
         'Over 51': '>51',
         'Unknown': 'unknown'
     })
+
     # 3. Simplify 'type_of_vehicle'
     car_types = ['Automobile', 'Taxi', 'Stationwagen']
     lorry_types = ['Lorry (41?100Q)', 'Lorry (11?40Q)', 'Long lorry', 'Pick up upto 10Q']
@@ -77,6 +83,7 @@ def train_model():
         else:
             return 'other'
     df['type_of_vehicle'] = df['type_of_vehicle'].apply(simplify_vehicle_type)
+
     # transform categorical features
     types_of_junction_to_types_of_junction = {
         "Y Shape":"y_shape",
@@ -110,6 +117,7 @@ def train_model():
     }
     df["area_accident_occured"] = df["area_accident_occured"].dropna()
     df["area_accident_occured"] = df["area_accident_occured"].map(area_to_highway)
+
     # transform 'lanes_or_medians'
     df["lanes_or_medians"] = df["lanes_or_medians"].apply(
         lambda x: "two_way" if 'two way' in x.lower() or 'two-way' in x.lower()
@@ -120,6 +128,7 @@ def train_model():
     df["weather_conditions"] = df["weather_conditions"].apply(
         lambda x: "rain" if "rain" in x.lower() else "no_rain"
     )
+    
     # transfrom 'accident_severity' # target
     df['accident_severity'] = df['accident_severity'].str.lower()
     df['accident_severity'] = df['accident_severity'].map(lambda x: x.split(' ')[0] if ' ' in x else x)
@@ -174,8 +183,6 @@ def train_model():
     importances = pd.Series(model.feature_importances_, index=X.columns)
     top_features = importances.sort_values(ascending=False)
 
-    importances = pd.Series(model.feature_importances_, index=X.columns)
-    top_features = importances.sort_values(ascending=False)
     print(top_features)
 
     # Save the top features to a CSV file
@@ -184,6 +191,147 @@ def train_model():
     top_features_df.to_csv(csv_filename, index=False)
     print(f"Top feature importances saved to '{csv_filename}' in the same directory as this notebook.")
 
+def train_model2():
+    # Load and clean dataset
+    file_path = "/opt/airflow/dags/data/RTA_Dataset.csv"
+    df = pd.read_csv(file_path)
+    
+    # Select relevant columns
+    columns = [
+        'day_of_week', 'age_band_of_driver', 'type_of_vehicle',
+        'area_accident_occured', 'lanes_or_medians',
+        'types_of_junction', 'weather_conditions'
+    ]
+
+    # Convert all column names to lowercase
+    df.columns = df.columns.str.lower()
+    df = df[columns].copy()
+
+    # 1. Clean 'day_of_week'
+    valid_days = ['monday', 'sunday', 'friday', 'wednesday', 'saturday', 'thursday', 'tuesday']
+    df['day_of_week'] = df['day_of_week'].str.lower()
+    df = df[df['day_of_week'].isin(valid_days)]
+
+    # 2. Clean 'age_band_of_driver'
+    df = df[df['age_band_of_driver'] != 'Under 18']
+    df['age_band_of_driver'] = df['age_band_of_driver'].replace({
+        'Over 51': '>51', 'Unknown': 'unknown'
+    })
+
+    # 3. Simplify 'type_of_vehicle'
+    car_types = ['Automobile', 'Taxi', 'Stationwagen']
+    lorry_types = ['Lorry (41?100Q)', 'Lorry (11?40Q)', 'Long lorry', 'Pick up upto 10Q']
+    bus_types = ['Public (> 45 seats)', 'Public (12 seats)', 'Public (13?45 seats)']
+    motorcycle_types = ['Motorcycle', 'Bajaj', 'Motorcycle (below 400cc)']
+    other_types = ['Ridden horse', 'Other', 'Special vehicle', 'Turbo', 'Bicycle']
+
+    def simplify_vehicle_type(v):
+        if v in car_types:
+            return 'car'
+        elif v in lorry_types:
+            return 'lorry'
+        elif v in bus_types:
+            return 'bus'
+        elif v in motorcycle_types:
+            return 'motorcycle'
+        elif v in other_types:
+            return 'other'
+        else:
+            return 'other'
+    
+    df['type_of_vehicle'] = df['type_of_vehicle'].apply(simplify_vehicle_type)
+
+    
+    # 4. Transform 'types_of_junction'
+    junction_map = {
+        "Y Shape": "y_shape", "No junction": "no_junction", "Crossing": "crossing",
+        "Other": "other", "Unknown": "unknown", "O Shape": "o_shape",
+        "T Shape": "t_shape", "X Shape": "x_shape"
+    }
+    df["types_of_junction"] = df["types_of_junction"].map(junction_map)
+
+    # 5. Transform 'area_accident_occured'
+    area_map = {
+        "Other": "unknown", "Office areas": "service", "Residential areas": "residential",
+        "Church areas": "service", "Industrial areas": "service", "School areas": "living_street",
+        "Recreational areas": "living_street", "Outside rural areas": "unknown",
+        "Hospital areas": "service", "Market areas": "living_street",
+        "Rural village areas": "living_street", "Unknown": "unknown",
+        "Rural village areasOffice areas": "unknown", "  Recreational areas": "living_street",
+        "  Market areas": "living_street"
+    }
+    df["area_accident_occured"] = df["area_accident_occured"].map(area_map)
+
+    # transform 'lanes_or_medians'
+    def clean_lanes(x):
+        x = str(x).lower().strip()
+        if 'two way' in x or 'two-way' in x:
+            return 'two_way'
+        elif 'double carriageway' in x:
+            return 'one_way'
+        elif x == '' or x == 'nan' or x == 'unknown':
+            return 'unknown'
+        else:
+            return x.replace(" ", "_")
+
+    df["lanes_or_medians"] = df["lanes_or_medians"].apply(clean_lanes)
+    
+    # transform 'weather_conditions'
+    df["weather_conditions"] = df["weather_conditions"].apply(
+        lambda x: "rain" if "rain" in x.lower() else "no_rain"
+    )
+
+    # Group and create 'incident_count'
+    group_cols = ['types_of_junction', 'area_accident_occured', 'lanes_or_medians','weather_conditions','day_of_week','age_band_of_driver','type_of_vehicle']
+
+    # Drop rows with missing values in the specified columns
+    df = df.dropna(subset=group_cols)
+    
+    grouped = df.groupby(group_cols).size().reset_index(name='incident_count')
+    
+
+
+    # Merge back features (aggregated view)
+    df_grouped = grouped.copy()
+    # Merge back the original features to the grouped DataFrame
+    # One-hot encode all categorical features
+    encoded_features = pd.get_dummies(df_grouped[group_cols])
+    X = encoded_features
+    y = df_grouped['incident_count']
+
+    # Train regression model
+    from sklearn.ensemble import RandomForestRegressor
+    from sklearn.model_selection import train_test_split
+    from sklearn.metrics import mean_squared_error, r2_score
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+    model = RandomForestRegressor(random_state=42)
+    model.fit(X_train, y_train)
+
+    y_pred = model.predict(X_test)
+
+    print("MSE:", mean_squared_error(y_test, y_pred))
+    print("R^2 Score:", r2_score(y_test, y_pred))
+
+    # Feature Importance 
+    importances = pd.Series(model.feature_importances_, index=X.columns)
+    top_features = importances.sort_values(ascending=False)
+    
+
+    # Save top features
+    top_features_df = pd.DataFrame({'Feature': top_features.index, 'Importance': top_features.values})
+    csv_filename = '/opt/airflow/dags/data/top_incident_rate_features.csv'
+    top_features_df.to_csv(csv_filename, index=False)
+    # print(f"Top incident rate features saved to '{csv_filename}'")
+
+    # --- Save the trained model ---
+    model_path = '/opt/airflow/dags/data/models/incident_rate_model.pkl'
+    joblib.dump(model, model_path)
+
+    # --- Save the one-hot encoded column names (feature structure) ---
+    feature_path = '/opt/airflow/dags/data/models/incident_rate_features.pkl'
+    joblib.dump(list(X.columns), feature_path)
 
 with DAG("train_model",
          default_args=default_args,
@@ -194,7 +342,9 @@ with DAG("train_model",
 
     train_model = PythonOperator(
         task_id="train_model",
-        python_callable=train_model,
+        # python_callable=train_model1,
+        python_callable=train_model2,
     )
+
 
     train_model 

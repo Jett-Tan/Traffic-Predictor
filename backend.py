@@ -8,10 +8,14 @@ import geopandas as gpd
 from shapely.geometry import LineString, Point
 import numpy as np
 from sklearn.neighbors import BallTree
+import joblib
 #
 JUNCTIONS_CSV = "./dags/data/junctions_from_geojson.csv"
 # RAINFALL_CSV = "./dags/data/rainfall/rainfall_data_postgres.csv"
-IMPORTANCE_CSV = "./dags/data/top_feature_importances.csv"
+IMPORTANCE_CSV = "./dags/data/top_incident_rate_features.csv"
+# IMPORTANCE_CSV = "./dags/data/top_feature_importances.csv"
+MODEL_PATH = './dags/data/models/incident_rate_model.pkl'
+FEATURE_PATH = './dags/data/models/incident_rate_features.pkl'
 # URLS
 GETTOKEN_URL = "https://www.onemap.gov.sg/api/auth/post/getToken"
 
@@ -26,6 +30,8 @@ try:
     junctions_df = pd.read_csv(JUNCTIONS_CSV)
     # rainfall_df = pd.read_csv(RAINFALL_CSV)
     importance_df = pd.read_csv(IMPORTANCE_CSV, index_col='Feature')
+    model = joblib.load(MODEL_PATH)
+    feature_columns = joblib.load(FEATURE_PATH)
 except FileNotFoundError as e:
     print(f"Error: One or both CSV files not found: {e}")
     
@@ -236,6 +242,31 @@ def compute_score(routes):
         step["safety_rate"] += importance_df.loc[f"day_of_week_{step['day_of_week']}", "Importance"]
     return routes
 
+
+def preprocess_route(route_dict, feature_columns):
+    cleaned = {
+        'types_of_junction': route_dict['junction'],
+        'area_accident_occured': route_dict['area_accident_occured'].lower().strip().replace(" ", "_"),
+        'lanes_or_medians': 'two_way' if 'two' in route_dict['lanes_or_medians'].lower()
+                             else 'one_way' if 'double' in route_dict['lanes_or_medians'].lower()
+                             else route_dict['lanes_or_medians'].lower().strip().replace(" ", "_"),\
+        'weather_conditions': route_dict['rainfall'].lower().strip().replace(" ", "_"),
+        'age_band_of_driver': route_dict['driver_age'].lower().strip().replace(" ", "_"),
+        'type_of_vehicle': route_dict['vehicle_type'].lower().strip().replace(" ", "_"),
+        'day_of_week': route_dict['day_of_week'].lower().strip().replace(" ", "_"),
+    }
+
+    df = pd.DataFrame([cleaned])
+    df_encoded = pd.get_dummies(df)
+
+    # Add missing columns
+    for col in feature_columns:
+        if col not in df_encoded.columns:
+            df_encoded[col] = 0
+    df_encoded = df_encoded[feature_columns]  # ensure correct order
+
+    return df_encoded
+
 @app.route("/predict", methods=["POST"])
 def predict():
 
@@ -281,6 +312,14 @@ def predict():
     # add features to the routes
     routes = add_features_to_routes(routes, driver_age, vehicle_type, day_of_week)
     
+    # Preprocess the route for prediction
+    for i in range(len(routes)):
+        tempRoute = preprocess_route(routes[i], feature_columns)
+        routes[i]["predicted_safety_rate"] = model.predict(tempRoute)[0]
+    print(routes)
+    return jsonify({"routes": routes}), 200
+
+
     # Include safety scores from junctions
     scores_included = compute_score(routes)
     
@@ -288,10 +327,9 @@ def predict():
     total_score = 0
     for score in scores_included:
         total_score += score["safety_rate"]
-
     
     avg_score = round(total_score / len(scores_included), 6)
-    return jsonify({"routes": routes,"average_score" : avg_score,"total_score":total_score}), 200
+    return jsonify({"routes": routes,"scores": {"average_score" : avg_score,"total_score":total_score}}), 200
 
 if __name__ == "__main__":
     app.run(debug=True)
