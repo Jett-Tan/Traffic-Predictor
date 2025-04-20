@@ -195,7 +195,7 @@ def train_model2():
     # Load and clean dataset
     file_path = "/opt/airflow/dags/data/RTA_Dataset.csv"
     df = pd.read_csv(file_path)
-    
+
     # Select relevant columns
     columns = [
         'day_of_week', 'age_band_of_driver', 'type_of_vehicle',
@@ -238,10 +238,10 @@ def train_model2():
             return 'other'
         else:
             return 'other'
-    
+
     df['type_of_vehicle'] = df['type_of_vehicle'].apply(simplify_vehicle_type)
 
-    
+
     # 4. Transform 'types_of_junction'
     junction_map = {
         "Y Shape": "y_shape", "No junction": "no_junction", "Crossing": "crossing",
@@ -275,7 +275,7 @@ def train_model2():
             return x.replace(" ", "_")
 
     df["lanes_or_medians"] = df["lanes_or_medians"].apply(clean_lanes)
-    
+
     # transform 'weather_conditions'
     df["weather_conditions"] = df["weather_conditions"].apply(
         lambda x: "rain" if "rain" in x.lower() else "no_rain"
@@ -286,9 +286,14 @@ def train_model2():
 
     # Drop rows with missing values in the specified columns
     df = df.dropna(subset=group_cols)
-    
+
     grouped = df.groupby(group_cols).size().reset_index(name='incident_count')
-    
+    print("incident counter:", grouped)
+
+    # Export the incident counter dataframe to CSV
+    incident_counter_csv_filename = '/opt/airflow/dags/data/incident_counts.csv'
+    grouped.to_csv(incident_counter_csv_filename, index=False)
+    print(f"Incident counter data saved to '{incident_counter_csv_filename}'")
 
 
     # Merge back features (aggregated view)
@@ -314,10 +319,10 @@ def train_model2():
     print("MSE:", mean_squared_error(y_test, y_pred))
     print("R^2 Score:", r2_score(y_test, y_pred))
 
-    # Feature Importance 
+    # Feature Importance
     importances = pd.Series(model.feature_importances_, index=X.columns)
     top_features = importances.sort_values(ascending=False)
-    
+
 
     # Save top features
     top_features_df = pd.DataFrame({'Feature': top_features.index, 'Importance': top_features.values})
