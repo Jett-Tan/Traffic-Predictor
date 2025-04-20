@@ -1,3 +1,7 @@
 streamlit
 pandas
 matplotlib
+plotly
+transformers
+torch
+sentencepiece

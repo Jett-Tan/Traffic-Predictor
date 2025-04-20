@@ -1,6 +1,6 @@
-road_surface_conditions,light_conditions,area_accident_occured,severity_num,combo,day_of_week,type_of_vehicle,weather_conditions
-Dry,Darkness - no lighting,Rural village areas,3.0,road_surface_conditions & light_conditions & area_accident_occured,,,
-,,,2.0,day_of_week & type_of_vehicle & weather_conditions,Tuesday,Stationwagen,Windy
-,,,2.0,day_of_week & type_of_vehicle & weather_conditions,Thursday,Special vehicle,Fog or mist
-,,,2.0,day_of_week & type_of_vehicle & weather_conditions,Tuesday,Motorcycle,Raining
-,,,2.0,day_of_week & type_of_vehicle & weather_conditions,Tuesday,Motorcycle,Other
+combo_name,severity_num,support,combo
+Darkness - lights lit & Stopping & NaN,3.0,1,light_conditions + vehicle_movement + types_of_junction
+Darkness - no lighting & Going straight & Rural village areas,3.0,1,light_conditions + vehicle_movement + area_accident_occured
+Darkness - no lighting & Y Shape & Above high school,3.0,1,light_conditions + types_of_junction + educational_level
+Darkness - no lighting & Y Shape & Rural village areas,3.0,1,light_conditions + types_of_junction + area_accident_occured
+Darkness - no lighting & 18-30 & Above high school,3.0,1,light_conditions + age_band_of_driver + educational_level
