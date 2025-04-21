@@ -258,12 +258,6 @@ with DAG(
         }
     )
 
-    suggest_interventions_task = PythonOperator(
-        task_id='suggest_interventions',
-        python_callable=suggest_interventions,
-        op_kwargs={'feature_importance_csv': FEATURE_IMP_CSV, 'top_n': 5}
-    )
-
     accidents_by_road_surface_task = PythonOperator(
         task_id='accidents_by_road_surface',
         python_callable=accidents_by_road_surface,
