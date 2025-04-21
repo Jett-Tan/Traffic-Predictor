@@ -198,14 +198,19 @@ def train_model2():
 
     # Select relevant columns
     columns = [
-        'day_of_week', 'age_band_of_driver', 'type_of_vehicle',
+        "hour",'day_of_week', 'age_band_of_driver', 'type_of_vehicle',
         'area_accident_occured', 'lanes_or_medians',
-        'types_of_junction', 'weather_conditions'
+        'types_of_junction', 'weather_conditions','vehicle_driver_relation','accident_severity'
     ]
 
     # Convert all column names to lowercase
     df.columns = df.columns.str.lower()
+    # 1.1 Clean 'time'
+    df["time"] = pd.to_datetime(df["time"], format="%H:%M:%S")
+    df["hour"] = df["time"].dt.hour # group by the hour
+    df["hour"] = df["hour"].astype(str).str.zfill(2)  # Ensure two digits for hour
     df = df[columns].copy()
+
 
     # 1. Clean 'day_of_week'
     valid_days = ['monday', 'sunday', 'friday', 'wednesday', 'saturday', 'thursday', 'tuesday']
@@ -270,7 +275,7 @@ def train_model2():
     }
     df["area_accident_occured"] = df["area_accident_occured"].map(area_map)
 
-    # transform 'lanes_or_medians'
+    # 6. transform 'lanes_or_medians'
     def clean_lanes(x):
         x = str(x).lower().strip()
         if 'two way' in x or 'two-way' in x:
@@ -283,18 +288,43 @@ def train_model2():
             return x.replace(" ", "_")
     df["lanes_or_medians"] = df["lanes_or_medians"].apply(clean_lanes)
 
-    # transform 'weather_conditions'
+    # 7. transform 'weather_conditions'
     df["weather_conditions"] = df["weather_conditions"].apply(
         lambda x: "rain" if "rain" in x.lower() else "no_rain"
     )
 
+    # 8. transform 'vehicle_driver_relation'
+    df["vehicle_driver_relation"] = df["vehicle_driver_relation"].str.lower()
+    df["vehicle_driver_relation"] = df["vehicle_driver_relation"].apply(
+        lambda x: "unknown" if x == "other" else x
+    )
+
+    # 9. transform 'accident_severity' # target
+    severity_weights = {
+        'Slight Injury': 1,
+        'Serious Injury': 1.1,
+        'Fatal Injury': 1.2
+    }
+    df['severity_score'] = df['accident_severity'].map(severity_weights)
+
     # Group and create 'incident_count'
-    group_cols = ['types_of_junction', 'area_accident_occured', 'lanes_or_medians','weather_conditions','day_of_week','age_band_of_driver','type_of_vehicle']
+    group_cols = [
+        'hour',
+        'types_of_junction',
+        'area_accident_occured', 
+        'lanes_or_medians',
+        'weather_conditions',
+        'day_of_week',
+        'age_band_of_driver',
+        'type_of_vehicle', 
+        # 'vehicle_driver_relation'
+        ]
 
     # Drop rows with missing values in the specified columns
     df = df.dropna(subset=group_cols)
 
-    grouped = df.groupby(group_cols).size().reset_index(name='incident_count')
+    # grouped = df.groupby(group_cols).size().reset_index(name='incident_count')
+    grouped = df.groupby(group_cols)['severity_score'].sum().reset_index(name='incident_count')
     print("incident counter:", grouped)
 
     # Export the incident counter dataframe to CSV
@@ -324,13 +354,15 @@ def train_model2():
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
+    # Models to evaluate
     RandomForestRegressor_model = RandomForestRegressor(random_state=42)
     LinearRegression_model = LinearRegression()
     Ridge_model = Ridge(alpha=1.0)
     DecisionTreeRegressor_model = DecisionTreeRegressor(random_state=42)
     GradientBoostingRegressor_model = GradientBoostingRegressor(random_state=42)
     XGBRegressor_model = XGBRegressor(random_state=42)
-    
+
+    # Fit models
     RandomForestRegressor_model.fit(X_train, y_train)
     LinearRegression_model.fit(X_train, y_train)
     Ridge_model.fit(X_train, y_train)
@@ -338,75 +370,44 @@ def train_model2():
     GradientBoostingRegressor_model.fit(X_train, y_train)
     XGBRegressor_model.fit(X_train, y_train)
 
-    RandomForestRegressor_y_pred = RandomForestRegressor_model.predict(X_test)
-    LinearRegression_y_pred = LinearRegression_model.predict(X_test)
-    Ridge_y_pred = Ridge_model.predict(X_test)
-    DecisionTreeRegressor_y_pred = DecisionTreeRegressor_model.predict(X_test)
-    GradientBoostingRegressor_y_pred = GradientBoostingRegressor_model.predict(X_test)
-    XGBRegressor_y_pred = XGBRegressor_model.predict(X_test)
+    models = {
+        "RandomForestRegressor": RandomForestRegressor_model,
+        "LinearRegression": LinearRegression_model,
+        "Ridge": Ridge_model,
+        "DecisionTreeRegressor": DecisionTreeRegressor_model,
+        "GradientBoostingRegressor": GradientBoostingRegressor_model,
+        "XGBRegressor": XGBRegressor_model
+    }
 
-    print("RandomForestRegressor RMSE:", math.sqrt(mean_squared_error(y_test, RandomForestRegressor_y_pred)))
-    print("LinearRegression RMSE:", math.sqrt(mean_squared_error(y_test, LinearRegression_y_pred)))
-    print("Ridge RMSE:", math.sqrt(mean_squared_error(y_test, Ridge_y_pred)))
-    print("DecisionTreeRegressor RMSE:", math.sqrt(mean_squared_error(y_test, DecisionTreeRegressor_y_pred)))
-    print("GradientBoostingRegressor RMSE:", math.sqrt(mean_squared_error(y_test, GradientBoostingRegressor_y_pred)))
-    print("XGBRegressor RMSE:", math.sqrt(mean_squared_error(y_test, XGBRegressor_y_pred)))
-    print("")
+    # Store results
+    model_performance = []
 
-    print("R^2 Score RandomForestRegressor:", r2_score(y_test, RandomForestRegressor_y_pred))
-    print("R^2 Score LinearRegression:", r2_score(y_test, LinearRegression_y_pred))
-    print("R^2 Score Ridge:", r2_score(y_test, Ridge_y_pred))
-    print("R^2 Score DecisionTreeRegressor:", r2_score(y_test, DecisionTreeRegressor_y_pred))
-    print("R^2 Score GradientBoostingRegressor:", r2_score(y_test, GradientBoostingRegressor_y_pred))
-    print("R^2 Score XGBRegressor:", r2_score(y_test, XGBRegressor_y_pred))
-    
-    main_model = RandomForestRegressor_model
-    lowest_rmse = float('inf')
-    highest_r2 = float('-inf')
-    for model, y_pred in zip(
-        [   
-            RandomForestRegressor_model,
-            LinearRegression_model,
-            Ridge_model,
-            DecisionTreeRegressor_model,
-            GradientBoostingRegressor_model,
-            XGBRegressor_model
-        ],        
-        [
-            RandomForestRegressor_y_pred, 
-            LinearRegression_y_pred, 
-            Ridge_y_pred,
-            DecisionTreeRegressor_y_pred, 
-            GradientBoostingRegressor_y_pred, 
-            XGBRegressor_y_pred
-         ]
-    ):
-        mse = mean_squared_error(y_test, y_pred)
-        rmse = math.sqrt(mse)
-        if rmse < lowest_rmse:
-            lowest_rmse = rmse
-            main_model = model
+    # Loop through each model and evaluate
+    for name, model in models.items():
+        y_pred = model.predict(X_test)
+        rmse = math.sqrt(mean_squared_error(y_test, y_pred))
         r2 = r2_score(y_test, y_pred)
-        if r2 > highest_r2:
-            highest_r2 = r2
-            main_model = model
+        model_performance.append({
+            "Model": name,
+            "RMSE": rmse,
+            "R2": r2
+        })
+
+    performance_df = pd.DataFrame(model_performance)
+
+    # Find the best model
+    # Sort by lowest RMSE and then highest R2
+    performance_df = performance_df.sort_values(by=["RMSE", "R2"], ascending=[True, False])
+    best_model_name = performance_df.iloc[0]["Model"]
+    best_model = models[best_model_name]
     
-    print(f"Best model: {main_model} with RMSE: {lowest_rmse} and R^2: {highest_r2}")
+    print(f"Best model: {best_model} with RMSE: {performance_df.iloc[0]['RMSE']} and R^2: {performance_df.iloc[0]['R2']}")
+    csv_filename = '/opt/airflow/dags/data/models/model_performance.csv'
+    
+    performance_df.to_csv(csv_filename, index=False)
     # Feature Importance 
-    importances = pd.Series(main_model.feature_importances_, index=X.columns)
+    importances = pd.Series(best_model.feature_importances_, index=X.columns)
     top_features = importances.sort_values(ascending=False)
-    # model = RandomForestRegressor(random_state=42)
-    # model.fit(X_train, y_train)
-
-    # y_pred = model.predict(X_test)
-
-    # print("MSE:", mean_squared_error(y_test, y_pred))
-    # print("R^2 Score:", r2_score(y_test, y_pred))
-
-    # # Feature Importance
-    # importances = pd.Series(model.feature_importances_, index=X.columns)
-    # top_features = importances.sort_values(ascending=False)
-
 
     # Save top features
     top_features_df = pd.DataFrame({'Feature': top_features.index, 'Importance': top_features.values})
@@ -425,7 +426,7 @@ def train_model2():
 
     # --- Save the trained model ---
     model_path = '/opt/airflow/dags/data/models/incident_rate_model.pkl'
-    joblib.dump(main_model, model_path)
+    joblib.dump(best_model, model_path)
 
     # --- Save the one-hot encoded column names (feature structure) ---
     feature_path = '/opt/airflow/dags/data/models/incident_rate_features.pkl'

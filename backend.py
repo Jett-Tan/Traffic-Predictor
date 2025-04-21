@@ -10,6 +10,7 @@ import numpy as np
 from sklearn.neighbors import BallTree
 import joblib
 import json
+from functools import reduce
 #
 JUNCTIONS_CSV = "./dags/data/junctions_from_geojson.csv"
 # RAINFALL_CSV = "./dags/data/rainfall/rainfall_data_postgres.csv"
@@ -175,11 +176,13 @@ def add_features_to_routes(routes,driver_age, vehicle_type, day_of_week):
     for step in routes:
         newStep = add_features_to_route(step)
         scores_included.append(newStep)
-
+    datetime_now = datetime.now()
+    hour = datetime_now.hour
     for step in scores_included:
         step["driver_age"] = driver_age
         step["vehicle_type"] = vehicle_type
         step["day_of_week"] = day_of_week
+        step["hour"] = str(hour).zfill(2)  # Ensure hour is two digits
     scores_included_return = []   
 
     for step in scores_included:
@@ -263,7 +266,6 @@ def get_nearest_rainfall_score(step, max_distance_m=2500):
         step["rainfall"] = "no_rain"
     return step
 
-
 def get_nearest_traffic_incident_type(step, max_distance_m=1000):
     traffic_df = get_traffic_incidents()
     
@@ -288,19 +290,16 @@ def get_nearest_traffic_incident_type(step, max_distance_m=1000):
     
     return step
 
-
-
 def compute_score(routes):
     for i in range(len(routes)):
         tempRoute = preprocess_route(routes[i], feature_columns)  
         raw_score = float(model.predict(tempRoute)[0])
         min_rate = rate_range['min']
         max_rate = rate_range['max']
-        p95 = rate_range["p95"]
 
         # Avoid divide-by-zero
-        if p95 > min_rate:
-            norm_score = (raw_score - min_rate) / (p95 - min_rate)
+        if max_rate > min_rate:
+            norm_score = (raw_score - min_rate) / (max_rate - min_rate)
             norm_score = min(norm_score, 1.0)  # cap at 1.0
         else:
             norm_score = 0.0
@@ -308,7 +307,6 @@ def compute_score(routes):
         routes[i]['predicted_safety_rate'] = round(raw_score,6)
         routes[i]['normalized_safety_score'] =round(norm_score,6)
         
-    
         if norm_score < 0.33:
             routes[i]['risk_label'] = "Low"
         elif norm_score < 0.66:
@@ -328,6 +326,7 @@ def preprocess_route(route_dict, feature_columns):
         'age_band_of_driver': route_dict['driver_age'].lower().strip().replace(" ", "_"),
         'type_of_vehicle': route_dict['vehicle_type'].lower().strip().replace(" ", "_"),
         'day_of_week': route_dict['day_of_week'].lower().strip().replace(" ", "_"),
+        'hour': route_dict['hour'].lower().strip().replace(" ", "_"),
     }
 
     df = pd.DataFrame([cleaned])
@@ -351,6 +350,17 @@ def compute_weighted_risk(route_segments):
         total_weight += weight
     return total_weighted_score / total_weight if total_weight > 0 else 0
 
+def cumulative_risk(route_segments):
+    """
+    Calculate the cumulative risk (probability of at least one incident)
+    along a route, assuming risks are independent.
+    """
+    safe_probability = 1.0  # Start with 100% safe
+    for segment in route_segments:
+        safe_probability *= (1 - segment['normalized_safety_score'])  # Multiply by probability of no incident at each junction
+
+    cumulative_risk = 1 - safe_probability  # Probability that at least one incident occurs
+    return cumulative_risk
 @app.route("/predict", methods=["POST"])
 def predict():
 
@@ -406,7 +416,11 @@ def predict():
             total_score += score["predicted_safety_rate"]
         weighted_score = compute_weighted_risk(routes)
         avg_score = round(total_score / len(routes), 6)
-        return jsonify({"routes": routes,"scores": {"average_score" : avg_score,"total_score":total_score, "weighted_score": weighted_score}}), 200
+
+        # Compute cumulative risk
+        cumulative_risk_value = cumulative_risk(routes)
+        # print(f"Cumulative risk: {cumulative_risk_value}")
+        return jsonify({"routes": routes,"scores": {"average_score" : avg_score,"total_score":total_score, "weighted_score": weighted_score,"cumulative_score":cumulative_risk_value}}), 200
     except Exception as e:
         print(f"Error: {e}")
         return jsonify({"error": str(e)}), 500
