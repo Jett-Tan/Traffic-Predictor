@@ -19,6 +19,7 @@ import geopandas as gpd
 from shapely.geometry import LineString, Point
 import joblib
 from imblearn.ensemble import BalancedRandomForestClassifier
+import psycopg2
 
 # Train using Random Forest Classifier
 from sklearn.ensemble import RandomForestClassifier
@@ -191,10 +192,31 @@ def train_model1():
     top_features_df.to_csv(csv_filename, index=False)
     print(f"Top feature importances saved to '{csv_filename}' in the same directory as this notebook.")
 
+def get_postgres_conn():
+    conn = psycopg2.connect(
+        host="postgres",
+        database="airflow",
+        user="airflow",
+        password="airflow"
+    )
+    return conn
+
 def train_model2():
     # Load and clean dataset
-    file_path = "/opt/airflow/dags/data/RTA_Dataset.csv"
-    df = pd.read_csv(file_path)
+    conn = get_postgres_conn()
+    cursor = conn.cursor()
+    cursor.execute(f"""
+        SELECT * FROM rta;
+    """)
+    rows = cursor.fetchall()
+    # Get column names from cursor
+    colnames = [desc[0] for desc in cursor.description]
+
+    # Load into Pandas DataFrame
+    df = pd.DataFrame(rows, columns=colnames)
+    
+    # file_path = "/opt/airflow/dags/data/RTA_Dataset.csv"
+    # df = pd.read_csv(file_path)
 
     # Select relevant columns
     columns = [
@@ -205,32 +227,31 @@ def train_model2():
 
     # Convert all column names to lowercase
     df.columns = df.columns.str.lower()
-    # 1.1 Clean 'time'
+    # 1 Clean 'time'
     df["time"] = pd.to_datetime(df["time"], format="%H:%M:%S")
     df["hour"] = df["time"].dt.hour # group by the hour
     df["hour"] = df["hour"].astype(str).str.zfill(2)  # Ensure two digits for hour
     df = df[columns].copy()
 
 
-    # 1. Clean 'day_of_week'
+    # 2. Clean 'day_of_week'
     valid_days = ['monday', 'sunday', 'friday', 'wednesday', 'saturday', 'thursday', 'tuesday']
     df['day_of_week'] = df['day_of_week'].str.lower()
     df = df[df['day_of_week'].isin(valid_days)]
 
-    # 2. Clean 'age_band_of_driver'
+    # 3. Clean 'age_band_of_driver'
     df = df[df['age_band_of_driver'] != 'Under 18']
     df['age_band_of_driver'] = df['age_band_of_driver'].replace({
         'Over 51': '>51', 'Unknown': 'unknown'
     })
 
-    # 3. Simplify 'type_of_vehicle'
-    car_types = ['Automobile', 'Taxi', 'Stationwagen']
-    lorry_types = ['Lorry (41?100Q)', 'Lorry (11?40Q)', 'Long lorry', 'Pick up upto 10Q']
-    bus_types = ['Public (> 45 seats)', 'Public (12 seats)', 'Public (13?45 seats)']
-    motorcycle_types = ['Motorcycle', 'Bajaj', 'Motorcycle (below 400cc)']
-    other_types = ['Ridden horse', 'Other', 'Special vehicle', 'Turbo', 'Bicycle']
-
+    # 4. Simplify 'type_of_vehicle'
     def simplify_vehicle_type(v):
+        car_types = ['Automobile', 'Taxi', 'Stationwagen']
+        lorry_types = ['Lorry (41?100Q)', 'Lorry (11?40Q)', 'Long lorry', 'Pick up upto 10Q']
+        bus_types = ['Public (> 45 seats)', 'Public (12 seats)', 'Public (13?45 seats)']
+        motorcycle_types = ['Motorcycle', 'Bajaj', 'Motorcycle (below 400cc)']
+        other_types = ['Ridden horse', 'Other', 'Special vehicle', 'Turbo', 'Bicycle']
         if v in car_types:
             return 'car'
         elif v in lorry_types:
@@ -243,11 +264,9 @@ def train_model2():
             return 'other'
         else:
             return 'other'
-
     df['type_of_vehicle'] = df['type_of_vehicle'].apply(simplify_vehicle_type)
 
-
-    # 4. Transform 'types_of_junction'
+    # 5. Transform 'types_of_junction'
     junction_map = {
         "Y Shape": "y_shape", "No junction": "no_junction", "Crossing": "crossing",
         "Other": "other", "Unknown": "unknown", "O Shape": "o_shape",
@@ -255,7 +274,7 @@ def train_model2():
     }
     df["types_of_junction"] = df["types_of_junction"].map(junction_map)
 
-    # 5. Transform 'area_accident_occured'
+    # 6. Transform 'area_accident_occured'
     area_map = {
         "Other": "unknown", 
         "Office areas": "service", 
@@ -275,7 +294,7 @@ def train_model2():
     }
     df["area_accident_occured"] = df["area_accident_occured"].map(area_map)
 
-    # 6. transform 'lanes_or_medians'
+    # 7. transform 'lanes_or_medians'
     def clean_lanes(x):
         x = str(x).lower().strip()
         if 'two way' in x or 'two-way' in x:
@@ -288,26 +307,26 @@ def train_model2():
             return x.replace(" ", "_")
     df["lanes_or_medians"] = df["lanes_or_medians"].apply(clean_lanes)
 
-    # 7. transform 'weather_conditions'
+    # 8. transform 'weather_conditions'
     df["weather_conditions"] = df["weather_conditions"].apply(
         lambda x: "rain" if "rain" in x.lower() else "no_rain"
     )
 
-    # 8. transform 'vehicle_driver_relation'
+    # 9. transform 'vehicle_driver_relation'
     df["vehicle_driver_relation"] = df["vehicle_driver_relation"].str.lower()
     df["vehicle_driver_relation"] = df["vehicle_driver_relation"].apply(
         lambda x: "unknown" if x == "other" else x
     )
 
-    # 9. transform 'accident_severity' # target
-    severity_weights = {
+    # 10. transform 'accident_severity' # target
+    severity_weights = { # Change to  1, 2, 3 for slight, serious, fatal
         'Slight Injury': 1,
-        'Serious Injury': 1.1,
-        'Fatal Injury': 1.2
+        'Serious Injury': 2,
+        'Fatal Injury': 3
     }
     df['severity_score'] = df['accident_severity'].map(severity_weights)
 
-    # 10. transform 'peak_hour'
+    # 11. transform 'peak_hour'
     def get_peak(hour, day_of_week):
         if day_of_week in ["saturday", "sunday"]:
             return 'peak' if 7 <= int(hour) < 15 else "off_peak"
@@ -318,7 +337,7 @@ def train_model2():
 
     # Group and create 'incident_count'
     group_cols = [
-        # 'peak_hour',
+        # 'peak_hour', # Decided to remove this for now
         'types_of_junction',
         'area_accident_occured', 
         'lanes_or_medians',
@@ -326,7 +345,7 @@ def train_model2():
         'day_of_week',
         'age_band_of_driver',
         'type_of_vehicle', 
-        # 'vehicle_driver_relation'
+        # 'vehicle_driver_relation' # Decided to remove this for now
         ]
 
     # Drop rows with missing values in the specified columns
@@ -340,7 +359,6 @@ def train_model2():
     incident_counter_csv_filename = '/opt/airflow/dags/data/incident_counts.csv'
     grouped.to_csv(incident_counter_csv_filename, index=False)
     print(f"Incident counter data saved to '{incident_counter_csv_filename}'")
-
 
     # Merge back features (aggregated view)
     df_grouped = grouped.copy()

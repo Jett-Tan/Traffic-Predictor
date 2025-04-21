@@ -398,7 +398,6 @@ def cumulative_score(route_segments, total_distance):
     Calculate the cumulative risk (probability of at least one incident)
     along a route, assuming risks are independent.
     """
-    return route_segments, total_distance
     safe_probability = 1.0  # Start with 100% safe
     for segment in route_segments:
         safe_probability *= (1 - (segment['scores']['normalized_score']/100) )  # Multiply by probability of no incident at each junction
@@ -459,7 +458,7 @@ def predict():
             return jsonify({"error": "Could not extract route"}), 400
         # add features to the routes
         routes = add_features_to_routes(routes, driver_age, vehicle_type, day_of_week)
-        trafficCounter = calculate_traffic_incident_counts(routes, driver_age, vehicle_type, day_of_week)
+        trafficCounter = calculate_traffic_incident_counts(routes)
         
         # Compute scores for routes
         routes = compute_score(routes)
@@ -482,7 +481,7 @@ def predict():
                 "average_score": avg_score,
                 "total_score": total_score,
                 "weighted_score": weighted_score,
-                "cumulative_score": cumulative_score_value
+                # "cumulative_score": cumulative_score_value
             },
             "traffic_summary": trafficCounter  # Added traffic_summary here
         }), 200    

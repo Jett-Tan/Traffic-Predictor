@@ -203,7 +203,7 @@ def upload_csv_to_postgres():
         # Save to PostgreSQL
         save_to_postgres_live_traffic(df)
         print(f"📦 Saved to PostgreSQL table live_traffic_incidents")
-
+    
 def postgres_to_csv():
     # Connect to PostgreSQL
     conn = get_postgres_conn()
