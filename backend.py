@@ -22,8 +22,8 @@ FEATURE_PATH = './dags/data/models/incident_rate_features.pkl'
 GETTOKEN_URL = "https://www.onemap.gov.sg/api/auth/post/getToken"
 
 GETTOKEN_PAYLOAD = {
-  "email": "e1122898@u.nus.edu",
-  "password": "P@ssw0rd1234"
+  "email": "brendanteo269@gmail.com",
+  "password": "Kuimmbn90123!!"
 }
 
 global token
@@ -185,12 +185,41 @@ def add_features_to_routes(routes,driver_age, vehicle_type, day_of_week):
         step["hour"] = str(hour).zfill(2)  # Ensure hour is two digits
     scores_included_return = []   
 
+
+
     for step in scores_included:
         step = get_nearest_rainfall_score(step)
         scores_included_return.append(step)
-        # step2 = get_nearest_traffic_incident_type(step)
-        # scores_included_return.append(step2)
+
     return scores_included_return
+
+def calculate_traffic_incident_counts(routes, driver_age, vehicle_type, day_of_week):
+    scores_included = []
+    for step in routes:
+        newStep = add_features_to_route(step)
+        scores_included.append(newStep)
+
+    traffic_incidents = []
+    for step in scores_included:
+        step = get_nearest_traffic_incident_type(step)
+        incident_type = step.get('traffic_incident')
+        if incident_type and incident_type != 'none':
+            traffic_incidents.append(incident_type)
+
+    print(traffic_incidents)
+
+    incident_counts = {}
+    for incident in traffic_incidents:
+        incident_counts[incident] = incident_counts.get(incident, 0) + 1
+
+    summary_parts = []
+    for incident_type, count in incident_counts.items():
+        summary_parts.append(f"there are {count} number of {incident_type}s")
+
+    final_summary = " and ".join(summary_parts) if summary_parts else "there are no traffic incidents"
+
+    print("Traffic Incident Summary:", final_summary)
+    return final_summary
 
 def add_features_to_route(step, max_distance_m=10): 
     types_of_junction_to_types_of_junction = {
@@ -406,6 +435,7 @@ def predict():
             return jsonify({"error": "Could not extract route"}), 400
         # add features to the routes
         routes = add_features_to_routes(routes, driver_age, vehicle_type, day_of_week)
+        trafficCounter = calculate_traffic_incident_counts(routes, driver_age, vehicle_type, day_of_week)
         
         # Compute scores for routes
         routes = compute_score(routes)
@@ -420,10 +450,19 @@ def predict():
         # Compute cumulative risk
         cumulative_risk_value = cumulative_risk(routes)
         # print(f"Cumulative risk: {cumulative_risk_value}")
-        return jsonify({"routes": routes,"scores": {"average_score" : avg_score,"total_score":total_score, "weighted_score": weighted_score,"cumulative_score":cumulative_risk_value}}), 200
+        return jsonify({
+            "routes": routes,
+            "scores": {
+                "average_score": avg_score,
+                "total_score": total_score,
+                "weighted_score": weighted_score,
+                "cumulative_score": cumulative_risk_value
+            },
+            "traffic_summary": trafficCounter  # Added traffic_summary here
+        }), 200    
     except Exception as e:
         print(f"Error: {e}")
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5001, debug=True)
