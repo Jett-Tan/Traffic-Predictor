@@ -186,6 +186,8 @@ def add_features_to_routes(routes,driver_age, vehicle_type, day_of_week):
     for step in scores_included:
         step = get_nearest_rainfall_score(step)
         scores_included_return.append(step)
+        # step2 = get_nearest_traffic_incident_type(step)
+        # scores_included_return.append(step2)
     return scores_included_return
 
 def add_features_to_route(step, max_distance_m=10): 
