@@ -318,7 +318,7 @@ def train_model2():
 
     # Group and create 'incident_count'
     group_cols = [
-        'peak_hour',
+        # 'peak_hour',
         'types_of_junction',
         'area_accident_occured', 
         'lanes_or_medians',
