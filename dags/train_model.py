@@ -307,9 +307,18 @@ def train_model2():
     }
     df['severity_score'] = df['accident_severity'].map(severity_weights)
 
+    # 10. transform 'peak_hour'
+    def get_peak(hour, day_of_week):
+        if day_of_week in ["saturday", "sunday"]:
+            return 'peak' if 7 <= int(hour) < 15 else "off_peak"
+        else: 
+            return "peak" if 7 <= int(hour) < 19 else "off_peak"
+    for row in df.itertuples():
+        df.at[row.Index, "peak_hour"] = get_peak(row.hour, row.day_of_week)
+
     # Group and create 'incident_count'
     group_cols = [
-        'hour',
+        'peak_hour',
         'types_of_junction',
         'area_accident_occured', 
         'lanes_or_medians',

@@ -102,9 +102,10 @@ def extract_route_from_start_and_end(start_lat:float, start_lon:float, end_lat:f
             "road_name":data["route_instructions"][i][1],
             "latitude":data["route_instructions"][i][3].split(",")[0],
             "longitude":data["route_instructions"][i][3].split(",")[1],
+            "distance":data["route_instructions"][i][2],            
         })
-    print(instructions[0])
-    return instructions
+    total_distance = data['route_summary']['total_distance']
+    return instructions , total_distance
 
 def get_weather_data():
     
@@ -173,23 +174,31 @@ def get_traffic_incidents():
 def add_features_to_routes(routes,driver_age, vehicle_type, day_of_week):
     # Load the CSV file into a DataFrame
     scores_included = []
+    def get_peak(hour, day_of_week):
+        if day_of_week in ["saturday", "sunday"]:
+            return 'peak' if 7 <= int(hour) < 15 else "off_peak"
+        else: 
+            return "peak" if 7 <= int(hour) < 19 else "off_peak"
+        
+    datetime_now = datetime.now()
+    hour = datetime_now.hour
+    for step in routes:
+        step['features'] = {
+            "driver_age": driver_age,
+            "vehicle_type": vehicle_type,
+            "day_of_week": day_of_week,        
+            "peak_hour": get_peak(hour, day_of_week)
+        }   
+
     for step in routes:
         newStep = add_features_to_route(step)
         scores_included.append(newStep)
-    datetime_now = datetime.now()
-    hour = datetime_now.hour
-    for step in scores_included:
-        step["driver_age"] = driver_age
-        step["vehicle_type"] = vehicle_type
-        step["day_of_week"] = day_of_week
-        step["hour"] = str(hour).zfill(2)  # Ensure hour is two digits
+    
     scores_included_return = []   
 
     for step in scores_included:
         step = get_nearest_rainfall_score(step)
         scores_included_return.append(step)
-        # step2 = get_nearest_traffic_incident_type(step)
-        # scores_included_return.append(step2)
     return scores_included_return
 
 def add_features_to_route(step, max_distance_m=10): 
@@ -235,13 +244,13 @@ def add_features_to_route(step, max_distance_m=10):
     
     if dist_m <= max_distance_m:
         # print(f"Processing coordinates: {lat}, {lon}, {junctions_df.iloc[idx[0][0]]['junction_latitude']}, { junctions_df.iloc[idx[0][0]]['junction_longitude']}")
-        step['junction'] = types_of_junction_to_types_of_junction[junctions_df.iloc[idx[0][0]]["junction_type"]]
-        step['lanes_or_medians'] = "one_way" if junctions_df.iloc[idx[0][0]]["oneway"].lower() == "yes" else "two_way"
-        step['area_accident_occured'] = highway_classification[junctions_df.iloc[idx[0][0]]["road_type"]]
+        step["features"]['junction'] = types_of_junction_to_types_of_junction[junctions_df.iloc[idx[0][0]]["junction_type"]]
+        step["features"]['lanes_or_medians'] = "one_way" if junctions_df.iloc[idx[0][0]]["oneway"].lower() == "yes" else "two_way"
+        step["features"]['area_accident_occured'] = highway_classification[junctions_df.iloc[idx[0][0]]["road_type"]]
     else:
-        step['junction'] = "unknown"
-        step['lanes_or_medians'] = "unknown"
-        step['area_accident_occured'] = "unknown"
+        step["features"]['junction'] = "unknown"
+        step["features"]['lanes_or_medians'] = "unknown"
+        step["features"]['area_accident_occured'] = "unknown"
 
     return step
 
@@ -259,11 +268,11 @@ def get_nearest_rainfall_score(step, max_distance_m=2500):
     if dist_m <= max_distance_m:
         # print(f"Processing coordinates: {lat}, {lon}, {rainfall_df.iloc[idx[0][0]]['latitude']}, { rainfall_df.iloc[idx[0][0]]['longitude']}, { rainfall_df.iloc[idx[0][0]]['station']}")
         if rainfall_df.iloc[idx[0][0]]["rainfall"] > 0 :
-            step["rainfall"] = "rain"
+            step["features"]["rainfall"] = "rain"
         else:
-            step["rainfall"] = "no_rain"
+            step["features"]["rainfall"] = "no_rain"
     else:
-        step["rainfall"] = "no_rain"
+        step["features"]["rainfall"] = "no_rain"
     return step
 
 def get_nearest_traffic_incident_type(step, max_distance_m=1000):
@@ -296,6 +305,7 @@ def compute_score(routes):
         raw_score = float(model.predict(tempRoute)[0])
         min_rate = rate_range['min']
         max_rate = rate_range['max']
+        p95 = rate_range['p95']
 
         # Avoid divide-by-zero
         if max_rate > min_rate:
@@ -304,29 +314,31 @@ def compute_score(routes):
         else:
             norm_score = 0.0
         # print(f"Raw score: {raw_score}, Normalized score: {norm_score}")    
-        routes[i]['predicted_safety_rate'] = round(raw_score,6)
-        routes[i]['normalized_safety_score'] =round(norm_score,6)
+        routes[i]['scores']={
+            'predicted_score': round(raw_score,6),
+            'normalized_score' :round(norm_score,6) * 100 ,  # Convert to percentage
+        }
         
         if norm_score < 0.33:
-            routes[i]['risk_label'] = "Low"
+            routes[i]['scores']['risk_label'] = "Low"
         elif norm_score < 0.66:
-            routes[i]['risk_label'] = "Medium"
+            routes[i]['scores']['risk_label'] = "Medium"
         else:
-            routes[i]['risk_label'] = "High"
+            routes[i]['scores']['risk_label'] = "High"
     return routes
 
 def preprocess_route(route_dict, feature_columns):
     cleaned = {
-        'types_of_junction': route_dict['junction'],
-        'area_accident_occured': route_dict['area_accident_occured'].lower().strip().replace(" ", "_"),
-        'lanes_or_medians': 'two_way' if 'two' in route_dict['lanes_or_medians'].lower()
-                             else 'one_way' if 'double' in route_dict['lanes_or_medians'].lower()
-                             else route_dict['lanes_or_medians'].lower().strip().replace(" ", "_"),\
-        'weather_conditions': route_dict['rainfall'].lower().strip().replace(" ", "_"),
-        'age_band_of_driver': route_dict['driver_age'].lower().strip().replace(" ", "_"),
-        'type_of_vehicle': route_dict['vehicle_type'].lower().strip().replace(" ", "_"),
-        'day_of_week': route_dict['day_of_week'].lower().strip().replace(" ", "_"),
-        'hour': route_dict['hour'].lower().strip().replace(" ", "_"),
+        'types_of_junction': route_dict['features']['junction'],
+        'area_accident_occured': route_dict['features']['area_accident_occured'].lower().strip().replace(" ", "_"),
+        'lanes_or_medians': 'two_way' if 'two' in route_dict['features']['lanes_or_medians'].lower()
+                             else 'one_way' if 'double' in route_dict['features']['lanes_or_medians'].lower()
+                             else route_dict['features']['lanes_or_medians'].lower().strip().replace(" ", "_"),\
+        'weather_conditions': route_dict['features']['rainfall'].lower().strip().replace(" ", "_"),
+        'age_band_of_driver': route_dict['features']['driver_age'].lower().strip().replace(" ", "_"),
+        'type_of_vehicle': route_dict['features']['vehicle_type'].lower().strip().replace(" ", "_"),
+        'day_of_week': route_dict['features']['day_of_week'].lower().strip().replace(" ", "_"),
+        'peak_hour': route_dict['features']['peak_hour'].lower().strip().replace(" ", "_"),
     }
 
     df = pd.DataFrame([cleaned])
@@ -344,23 +356,33 @@ def compute_weighted_risk(route_segments):
     total_weighted_score = 0
     total_weight = 0
     for segment in route_segments:
-        score = segment["predicted_safety_rate"]
-        weight = segment["normalized_safety_score"]
+        score = segment['scores']["predicted_score"]
+        weight = segment['scores']["normalized_score"]
         total_weighted_score += score * weight
         total_weight += weight
     return total_weighted_score / total_weight if total_weight > 0 else 0
 
-def cumulative_risk(route_segments):
+def cumulative_score(route_segments, total_distance):
     """
     Calculate the cumulative risk (probability of at least one incident)
     along a route, assuming risks are independent.
     """
+    return route_segments, total_distance
     safe_probability = 1.0  # Start with 100% safe
     for segment in route_segments:
-        safe_probability *= (1 - segment['normalized_safety_score'])  # Multiply by probability of no incident at each junction
+        safe_probability *= (1 - (segment['scores']['normalized_score']/100) )  # Multiply by probability of no incident at each junction
 
-    cumulative_risk = 1 - safe_probability  # Probability that at least one incident occurs
-    return cumulative_risk
+    cumulative_score = 1 - safe_probability  # Probability that at least one incident occurs
+    
+    # Normalize cumulative risk to a scale of 0-1
+    cumulative_score = min(cumulative_score, 1.0)  # Cap at 1.0
+    # Convert cumulative risk to a percentage
+    cumulative_score = round(cumulative_score * 100, 2)  # Convert to percentage
+    cumulative_score_per_meter = cumulative_score / total_distance  # Normalize by distance
+    for segment in route_segments:
+        segment['scores']['cumulative_score'] = cumulative_score_per_meter * segment['distance'] 
+
+    return route_segments, cumulative_score
 @app.route("/predict", methods=["POST"])
 def predict():
 
@@ -401,7 +423,7 @@ def predict():
             return jsonify({"error": "Could not geocode one or both locations"}), 400
         
         # Extract route from start and end
-        routes = extract_route_from_start_and_end(start_lat, start_lon, end_lat, end_lon)
+        routes, total_distance = extract_route_from_start_and_end(start_lat, start_lon, end_lat, end_lon)
         if not routes:
             return jsonify({"error": "Could not extract route"}), 400
         # add features to the routes
@@ -413,14 +435,14 @@ def predict():
         # Averaging the safety scores for the routes
         total_score = 0
         for score in routes:
-            total_score += score["predicted_safety_rate"]
+            total_score += score['scores']["predicted_score"]
         weighted_score = compute_weighted_risk(routes)
         avg_score = round(total_score / len(routes), 6)
 
         # Compute cumulative risk
-        cumulative_risk_value = cumulative_risk(routes)
-        # print(f"Cumulative risk: {cumulative_risk_value}")
-        return jsonify({"routes": routes,"scores": {"average_score" : avg_score,"total_score":total_score, "weighted_score": weighted_score,"cumulative_score":cumulative_risk_value}}), 200
+        routes,cumulative_score_value = cumulative_score(routes,total_distance)
+        # print(f"Cumulative risk: {cumulative_score_value}")
+        return jsonify({"routes": routes,"scores": {"average_score" : avg_score,"total_score":total_score, "weighted_score": weighted_score }}), 200
     except Exception as e:
         print(f"Error: {e}")
         return jsonify({"error": str(e)}), 500
