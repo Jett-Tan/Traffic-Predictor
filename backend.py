@@ -138,6 +138,37 @@ def get_weather_data():
 
     return df
 
+def get_traffic_incidents():
+    print("Fetching traffic incidents...")
+    url = "https://datamall2.mytransport.sg/ltaodataservice/TrafficIncidents"
+    headers = {
+        "AccountKey": "tLB/oJ67QO+OA992i/dU7Q==",
+        "accept": "application/json"
+    }
+
+    response = requests.get(url, headers=headers)
+
+    if response.status_code != 200:
+        print("Error:", response.status_code)
+        return None
+
+    data = response.json()
+    incidents = data.get("value", [])
+    timestamp = datetime.now().isoformat()
+
+    processed = []
+    for incident in incidents:
+        processed.append({
+            "latitude": incident.get("Latitude"),
+            "longitude": incident.get("Longitude"),
+            "message": incident.get("Message"),
+            "type": incident.get("Type"),
+            "retrieved_at": timestamp
+        })
+
+    df = pd.DataFrame(processed)
+    return df
+
 def add_features_to_routes(routes,driver_age, vehicle_type, day_of_week):
     print("Running get_all_scores")
     # Load the CSV file into a DataFrame
@@ -230,6 +261,33 @@ def get_nearest_rainfall_score(step, max_distance_m=2500):
     else:
         step["rainfall"] = "no_rain"
     return step
+
+
+def get_nearest_traffic_incident_type(step, max_distance_m=1000):
+    traffic_df = get_traffic_incidents()
+    
+    if traffic_df is None or traffic_df.empty:
+        step["traffic_incident"] = "none"
+        return step
+
+    coords_rad_incidents = np.radians(traffic_df[["latitude", "longitude"]].values)
+    traffic_tree = BallTree(coords_rad_incidents, metric="haversine")
+    
+    lat = round(float(step["latitude"]), 4)
+    lon = round(float(step["longitude"]), 4)
+    point_rad = np.radians([[lat, lon]])
+    
+    dist, idx = traffic_tree.query(point_rad, k=1)
+    dist_m = dist[0][0] * 6371000  # Convert radians to meters
+
+    if dist_m <= max_distance_m:
+        step["traffic_incident"] = traffic_df.iloc[idx[0][0]]["type"]
+    else:
+        step["traffic_incident"] = "none"
+    
+    return step
+
+
 
 def compute_score(routes):
     for step in routes:
