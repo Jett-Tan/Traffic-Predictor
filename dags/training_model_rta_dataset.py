@@ -114,7 +114,7 @@ def training_model():
     df_encoded = pd.read_sql(f"SELECT * FROM {TABLE_NAME_ENCODED}", conn)
 
     # Define features and target
-    X = df_encoded.drop(columns=['accident_severity'])
+    X = df_encoded.drop(columns=['accident_severity', 'id'])
     y = df_encoded['accident_severity']
     print(X.shape)
     print(y.shape)
@@ -155,7 +155,9 @@ def training_model():
 
     # Save feature importance
     feature_importances = pd.Series(model.feature_importances_, index=X.columns)
-    feature_importances.sort_values(ascending=False).to_csv("/opt/airflow/dags/data/feature_importance.csv")
+    feature_importances = feature_importances.rename("importance").reset_index()
+    feature_importances.columns = ["feature", "importance"]
+    feature_importances.sort_values(by="importance", ascending=False).to_csv("/opt/airflow/dags/data/feature_importance.csv", index=False)
 
 with DAG(
     dag_id='training_model_rta_dataset',

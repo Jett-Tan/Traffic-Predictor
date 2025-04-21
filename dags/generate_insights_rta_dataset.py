@@ -7,6 +7,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import joblib
 import os
+from itertools import combinations
 
 
 from utils.db import get_postgres_conn
@@ -24,12 +25,6 @@ MODEL_PATH = os.path.join(MODEL_DIR, "random_forest_classifier.pkl")
 INSIGHT_DIR = "/opt/airflow/dags/data/insights"
 os.makedirs(INSIGHT_DIR, exist_ok=True)
 
-# Inputs
-COMBO_COLS = [
-    ['road_surface_conditions', 'light_conditions', 'area_accident_occured'],
-    ['day_of_week', 'type_of_vehicle', 'weather_conditions']
-    ]
-
 # Postgres Connection
 POSTGRES_CONN_ID = "postgres_default"
 TABLE_NAME_CLEANED = "cleaned_rta"
@@ -44,13 +39,9 @@ def load_encoded_data():
     return df_encoded
 
 def load_feature_importances(path=FEATURE_IMP_CSV):
-    df = pd.read_csv(path, index_col=0, header=None)
-    fi = df.iloc[:, 0]  # Get the first (and only) column as a Series
-    
-    fi.index.name = 'feature'
-    fi.name = 'importance'
-    print(fi.head())
-    return fi
+    df = pd.read_csv(path, header=0, index_col=False)
+
+    return pd.Series(df["importance"].values, index=df["feature"])
 
 # Insight 1: Top Risk Conditions
 def top_risk_conditions(feature_importance_csv=FEATURE_IMP_CSV, n = 10):
@@ -90,7 +81,7 @@ def severity_by_time():
     plt.close()
 
 # Insight 3: Risky Condition Combinations
-def risky_condition_combos(combo_cols, top_k=5):
+def risky_condition_combos(max_combo_size=3, top_k=5):
     # Load cleaned data
     conn = get_postgres_conn()
     df = pd.read_sql("SELECT * FROM cleaned_rta", conn)
@@ -99,53 +90,147 @@ def risky_condition_combos(combo_cols, top_k=5):
     severity_map = {'Slight Injury': 1, 'Serious Injury': 2, 'Fatal injury': 3}
     df['severity_num'] = df['accident_severity'].map(severity_map)
 
+    # Top raw categorical features from our model insights
+    top_categorical_features = [
+        "light_conditions", "vehicle_movement", "types_of_junction",
+        "age_band_of_driver", "educational_level", "lanes_or_medians",
+        "area_accident_occured", "type_of_collision", "vehicle_driver_relation"
+    ]
+
     all_results = []
-    for cols in combo_cols:
-        grp = (
-            df
-            .groupby(cols)['severity_num']
-            .mean()
-            .reset_index()
-            .assign(combo=' & '.join(cols))
-        )
-        all_results.append(grp)
-    
+    for combo in combinations(top_categorical_features, max_combo_size):
+        try:
+            group = (
+                df
+                .groupby(list(combo))
+                .agg(severity_num=('severity_num', 'mean'), support=('severity_num', 'count'))
+                .reset_index()
+            )
+
+            group["combo_name"] = (
+                group[list(combo)].astype(str).agg(" & ".join, axis=1)
+            )
+            group["combo"] = " + ".join(combo)
+            all_results.append(group[["combo_name", "severity_num", "support", "combo"]])
+        except KeyError as e:
+            print(f"Skipped combo {combo} due to missing column: {e}")
+
+    if not all_results:
+        print("⚠️ No valid combos generated.")
+        return
+
+    # Combine all results and sort
     results = pd.concat(all_results, ignore_index=True)
-    top = results.sort_values('severity_num', ascending=False).head(top_k)
+    top = results.sort_values(["severity_num", "support"], ascending=[False, False]).head(top_k)
+
+    # Save to CSV
     top.to_csv(f"{INSIGHT_DIR}/risky_condition_combos.csv", index=False)
 
-    # Simple bar chart on mean severity
+    # Plot bar chart
     plt.figure(figsize=(10, 6))
-    plt.barh(top['combo'] + ': ' + top[cols[0]].astype(str), top['severity_num'])
+    bars = plt.barh(top['combo_name'], top['severity_num'], color='crimson')
     plt.gca().invert_yaxis()
-    plt.title("Top Risky Condition Combos")
-    plt.xlabel("Avg. Severity Score")
+    plt.title("Top Risky Condition Combos (Severity & Frequency)")
+    plt.xlabel("Average Severity Score")
+
+    # Add support count as annotation
+    for bar, support in zip(bars, top['support']):
+        plt.text(bar.get_width() + 0.01, bar.get_y() + bar.get_height() / 2,
+                 f"{support} cases", va='center', fontsize=8)
+
     plt.tight_layout()
     plt.savefig(f"{INSIGHT_DIR}/risky_condition_combos.png")
     plt.close()
 
-# Insight 4: Suggested Interventions (TODO: refine recommendations)
-def suggest_interventions(feature_importance_csv=FEATURE_IMP_CSV, top_n = 5):
-    fi = load_feature_importances(feature_importance_csv)
+# Insight 4: Uses the feature importance CSV to derive top features + Hugging Face to output recommendations
+# Refer to dashboard code
 
-    top_factors = fi.sort_values(ascending=False).head(top_n).index.tolist()
-    interventions = []
+def load_cleaned_data():
+    """Return the cleaned RTA dataframe (readable categorical columns)."""
+    conn = get_postgres_conn()
+    df_cleaned = pd.read_sql(f"SELECT * FROM {TABLE_NAME_CLEANED}", conn)
+    conn.close()
+    return df_cleaned
 
-    for factor in top_factors:
-        if "junction" in factor.lower():
-            interventions.append((factor, 
-                "Redesign junctions with clearer signage or smart lights."))
-        elif "daylight" in factor.lower():
-            interventions.append((factor, 
-                "Schedule roadworks after dark to mitigate daylight risks."))
-        elif "office" in factor.lower():
-            interventions.append((factor, 
-                "Install speed bumps or traffic patrols in office areas at peak times."))
-        else:
-            interventions.append((factor, 
-                "Review this condition and consider targeted safety measures."))
+# Insight 5: Road‑surface condition vs accident severity
+def accidents_by_road_surface():
+    df = load_cleaned_data()
 
-    pd.DataFrame(interventions, columns=["condition", "recommendation"]).to_csv(f"{INSIGHT_DIR}/suggested_interventions.csv", index=False)
+    # Count accidents per (surface, severity)
+    pivot = (
+        df.groupby(["road_surface_conditions", "accident_severity"])
+          .size()
+          .unstack(fill_value=0)
+          .sort_index()
+    )
+    csv_path = f"{INSIGHT_DIR}/accidents_by_road_surface.csv"
+    pivot.to_csv(csv_path)
+
+    # Stacked bar chart
+    plt.figure(figsize=(10, 6))
+    pivot.plot(kind="bar", stacked=True)
+    plt.title("Accidents by Road‑Surface Condition & Severity")
+    plt.xlabel("Road‑surface condition")
+    plt.ylabel("Number of accidents")
+    plt.tight_layout()
+    png_path = f"{INSIGHT_DIR}/accidents_by_road_surface.png"
+    plt.savefig(png_path)
+
+    print(f"Saved image to: {png_path}")
+    print(f"Exists: {os.path.exists(png_path)}")
+    plt.close()
+
+
+# Insight 6: Weather condition vs accident severity
+def accidents_by_weather():
+    df = load_cleaned_data()
+
+    pivot = (
+        df.groupby(["weather_conditions", "accident_severity"])
+          .size()
+          .unstack(fill_value=0)
+          .sort_index()
+    )
+    csv_path = f"{INSIGHT_DIR}/accidents_by_weather.csv"
+    pivot.to_csv(csv_path)
+
+    plt.figure(figsize=(10, 6))
+    pivot.plot(kind="bar", stacked=True)
+    plt.title("Accidents by Weather Condition & Severity")
+    plt.xlabel("Weather condition")
+    plt.ylabel("Number of accidents")
+    plt.tight_layout()
+    png_path = f"{INSIGHT_DIR}/accidents_by_weather.png"
+    plt.savefig(png_path)
+
+    print(f"Saved image to: {png_path}")
+    print(f"Exists: {os.path.exists(png_path)}")
+    plt.close()
+
+
+# Insight 7: Heat‑map of Road‑surface  ×  Weather combos
+def road_weather_heatmap():
+    df = load_cleaned_data()
+
+    heat = (
+        df.groupby(["road_surface_conditions", "weather_conditions"])
+          .size()
+          .unstack(fill_value=0)
+    )
+    # Save matrix
+    heat.to_csv(f"{INSIGHT_DIR}/road_weather_heatmap.csv")
+
+    # Plot heatmap
+    plt.figure(figsize=(12, 8))
+    sns.heatmap(heat, cmap="Reds", annot=False)
+    plt.title("Accident count heat‑map:  road surface  ×  weather")
+    plt.xlabel("Weather condition")
+    plt.ylabel("Road‑surface condition")
+    plt.tight_layout()
+    plt.savefig(f"{INSIGHT_DIR}/road_weather_heatmap.png")
+
+    plt.close()
+
 
 
 def load_cleaned_data():
@@ -250,7 +335,7 @@ with DAG(
         task_id='risky_condition_combos',
         python_callable=risky_condition_combos,
         op_kwargs={
-            'combo_cols': COMBO_COLS,
+            "max_combo_size": 3,
             'top_k': 5
         }
     )

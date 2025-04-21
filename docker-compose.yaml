@@ -287,5 +287,15 @@ services:
       airflow-init:
         condition: service_completed_successfully
 
+  streamlit:
+    build:
+      context: ./streamlit_dashboard
+    container_name: streamlit_dashboard
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./dags/data/insights:/app/data/insights
+    restart: always
+
 volumes:
   postgres-db-volume:
