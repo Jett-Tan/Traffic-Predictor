@@ -139,7 +139,6 @@ def get_weather_data():
     return df
 
 def add_features_to_routes(routes,driver_age, vehicle_type, day_of_week):
-    print("Running get_all_scores")
     # Load the CSV file into a DataFrame
     scores_included = []
     for step in routes:
@@ -232,18 +231,30 @@ def get_nearest_rainfall_score(step, max_distance_m=2500):
     return step
 
 def compute_score(routes):
-    for step in routes:
-        # Initialize safety_rate to 0
-        step["safety_rate"] = 0
+    for i in range(len(routes)):
+        tempRoute = preprocess_route(routes[i], feature_columns)  
+        raw_score = float(model.predict(tempRoute)[0])
+        min_rate = rate_range['min']
+        max_rate = rate_range['max']
+        p95 = rate_range["p95"]
 
-        # Add scores based on features
-        step["safety_rate"] += importance_df.loc[f"types_of_junction_{step['junction']}", "Importance"]
-        step["safety_rate"] += importance_df.loc[f"lanes_or_medians_{step['lanes_or_medians']}", "Importance"]
-        step["safety_rate"] += importance_df.loc[f"area_accident_occured_{step['area_accident_occured']}", "Importance"]
-        step["safety_rate"] += importance_df.loc[f"weather_conditions_{step['rainfall']}", "Importance"]
-        step["safety_rate"] += importance_df.loc[f"age_band_of_driver_{step['driver_age']}", "Importance"]
-        step["safety_rate"] += importance_df.loc[f"type_of_vehicle_{step['vehicle_type']}", "Importance"]
-        step["safety_rate"] += importance_df.loc[f"day_of_week_{step['day_of_week']}", "Importance"]
+        # Avoid divide-by-zero
+        if p95 > min_rate:
+            norm_score = (raw_score - min_rate) / (p95 - min_rate)
+            norm_score = min(norm_score, 1.0)  # cap at 1.0
+        else:
+            norm_score = 0.0
+        # print(f"Raw score: {raw_score}, Normalized score: {norm_score}")    
+        routes[i]['predicted_safety_rate'] = round(raw_score,6)
+        routes[i]['normalized_safety_score'] =round(norm_score,6)
+        
+    
+        if norm_score < 0.33:
+            routes[i]['risk_label'] = "Low"
+        elif norm_score < 0.66:
+            routes[i]['risk_label'] = "Medium"
+        else:
+            routes[i]['risk_label'] = "High"
     return routes
 
 def preprocess_route(route_dict, feature_columns):
@@ -326,32 +337,9 @@ def predict():
         # add features to the routes
         routes = add_features_to_routes(routes, driver_age, vehicle_type, day_of_week)
         
-        # Preprocess the route for prediction
-        for i in range(len(routes)):
-            tempRoute = preprocess_route(routes[i], feature_columns)  
-            raw_score = float(model.predict(tempRoute)[0])
-            min_rate = rate_range['min']
-            max_rate = rate_range['max']
-            p95 = rate_range["p95"]
-
-            # Avoid divide-by-zero
-            if p95 > min_rate:
-                norm_score = (raw_score - min_rate) / (p95 - min_rate)
-                norm_score = min(norm_score, 1.0)  # cap at 1.0
-            else:
-                norm_score = 0.0
-            print(f"Raw score: {raw_score}, Normalized score: {norm_score}")    
-            routes[i]['predicted_safety_rate'] = round(raw_score,6)
-            routes[i]['normalized_safety_score'] =round(norm_score,6)
-            
-        
-            if norm_score < 0.33:
-                routes[i]['risk_label'] = "Low"
-            elif norm_score < 0.66:
-                routes[i]['risk_label'] = "Medium"
-            else:
-                routes[i]['risk_label'] = "High"
-        
+        # Compute scores for routes
+        routes = compute_score(routes)
+       
         # Averaging the safety scores for the routes
         total_score = 0
         for score in routes:

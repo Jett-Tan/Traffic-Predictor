@@ -252,12 +252,20 @@ def train_model2():
 
     # 5. Transform 'area_accident_occured'
     area_map = {
-        "Other": "unknown", "Office areas": "service", "Residential areas": "residential",
-        "Church areas": "service", "Industrial areas": "service", "School areas": "living_street",
-        "Recreational areas": "living_street", "Outside rural areas": "unknown",
-        "Hospital areas": "service", "Market areas": "living_street",
-        "Rural village areas": "living_street", "Unknown": "unknown",
-        "Rural village areasOffice areas": "unknown", "  Recreational areas": "living_street",
+        "Other": "unknown", 
+        "Office areas": "service", 
+        "Residential areas": "residential",
+        "Church areas": "service", 
+        "Industrial areas": "service", 
+        "School areas": "living_street",
+        "Recreational areas": "living_street", 
+        "Outside rural areas": "unknown",
+        "Hospital areas": "service", 
+        "Market areas": "living_street",
+        "Rural village areas": "living_street", 
+        "Unknown": "unknown",
+        "Rural village areasOffice areas": "unknown", 
+        "  Recreational areas": "living_street",
         "  Market areas": "living_street"
     }
     df["area_accident_occured"] = df["area_accident_occured"].map(area_map)
