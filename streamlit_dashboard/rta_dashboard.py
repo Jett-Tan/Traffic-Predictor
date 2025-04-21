@@ -3,8 +3,6 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
-from transformers import T5Tokenizer, T5ForConditionalGeneration
-
 # Paths to your saved insight files
 INSIGHT_DIR = "/app/data/insights"
 
@@ -54,35 +52,43 @@ combo_df = pd.read_csv(f"{INSIGHT_DIR}/risky_condition_combos.csv")
 st.subheader("Risky Condition Combinations Data")
 st.dataframe(combo_df)
 
-# Section 4: Suggested Interventions using Hugging Face
-# Load pre-trained model and tokenizer
-model_name = "google/flan-t5-small"
-tokenizer = T5Tokenizer.from_pretrained(model_name)
-model = T5ForConditionalGeneration.from_pretrained(model_name)
+# Section 4: Suggested Interventions 
 
-def generate_recommendation(risk_factor):
-    # Prepare the prompt for the model
-    prompt = f"Suggest a road safety intervention for the risk factor: {risk_factor}"
-
-    # Tokenize the input
-    inputs = tokenizer(prompt, return_tensors="pt", truncation=True, padding=True)
-
-    # Generate the recommendation using the model
-    outputs = model.generate(inputs['input_ids'], max_length=50, num_beams=3, early_stopping=True)
-
-    # Decode and return the generated recommendation
-    recommendation = tokenizer.decode(outputs[0], skip_special_tokens=True)
-    
-    return recommendation
+# Define rule-based recommendations per group
+recommendation_rules = {
+    "day": "Monitor daily patterns and target high-accident days with alerts and police patrols.",
+    "age": "Customize road safety training and licensing programs for different age groups.",
+    "sex": "Use data to inform inclusive policy and outreach campaigns for drivers by gender.",
+    "educational": "Create visual safety materials and campaigns for drivers with lower education levels.",
+    "vehicle": "Enforce maintenance checks and create awareness around high-risk vehicle types.",
+    "owner": "Strengthen policies for fleet owners and institutional drivers.",
+    "area": "Design interventions specific to high-risk zones such as schools, markets, or residential areas.",
+    "lanes": "Improve lane markings and signage, especially for undivided or poorly marked roads.",
+    "road": "Install warning signs and make structural improvements on hazardous alignments.",
+    "types": "Redesign common junction types and ensure proper visibility at intersections.",
+    "light": "Improve nighttime lighting and ensure drivers use lights properly. Ensure efficient route planning to accommodate day-time crowds.",
+    "weather": "Implement dynamic warnings and adjust speed limits during bad weather.",
+    "type": "Introduce road features to reduce frequent collision types (e.g., bumpers, barriers).",
+    "vehicle": "Monitor vehicle behavior and enforce penalties for reckless movements.",
+    "casualty": "Improve post-crash emergency response based on severity levels.",
+    "cause": "Run awareness campaigns and strict monitoring of frequent accident causes."
+}
 
 # Load the top features 
 top_features_df = pd.read_csv(f"{INSIGHT_DIR}/top_risk_conditions.csv", index_col=0)
 top_factors = top_features_df.head(5).index.tolist()
 
-# Generate recommendations for each risk factor and store them in a dictionary
+# Match the rules to the top 5 risk factors based on their group
 recommendations = {}
 for factor in top_factors:
-    recommendations[factor] = generate_recommendation(factor)
+    # Extract the root category of the feature (before the first underscore)
+    group = factor.split("_")[0]
+    
+    # Retrieve the appropriate recommendation rule for that group
+    rule = recommendation_rules.get(group, "Investigate and tailor specific interventions for this group.")
+    
+    # Store the recommendation in the dictionary
+    recommendations[factor] = rule
 
 # Prepare the interventions data for the dashboard
 interventions = [(factor, recommendation) for factor, recommendation in recommendations.items()]
