@@ -414,7 +414,7 @@ def cumulative_score(route_segments, total_distance):
     return route_segments, cumulative_score
 @app.route("/predict", methods=["POST"])
 def predict():
-
+    print("Running predict")
     # Check if the request contains JSON data
     try:
         if not request.json:
