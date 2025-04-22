@@ -347,7 +347,7 @@ def compute_score(routes):
         # print(f"Raw score: {raw_score}, Normalized score: {norm_score}")    
         routes[i]['scores']={
             'predicted_score': round(raw_score,6),
-            'normalized_score' :round(norm_score,6) * 100 ,  # Convert to percentage
+            'normalized_score' :round(norm_score,6)
         }
         
         if norm_score < 0.33:
@@ -369,7 +369,7 @@ def preprocess_route(route_dict, feature_columns):
         'age_band_of_driver': route_dict['features']['driver_age'].lower().strip().replace(" ", "_"),
         'type_of_vehicle': route_dict['features']['vehicle_type'].lower().strip().replace(" ", "_"),
         'day_of_week': route_dict['features']['day_of_week'].lower().strip().replace(" ", "_"),
-        'peak_hour': route_dict['features']['peak_hour'].lower().strip().replace(" ", "_"),
+        # 'peak_hour': route_dict['features']['peak_hour'].lower().strip().replace(" ", "_"),
     }
 
     df = pd.DataFrame([cleaned])
@@ -400,14 +400,13 @@ def cumulative_score(route_segments, total_distance):
     """
     safe_probability = 1.0  # Start with 100% safe
     for segment in route_segments:
-        safe_probability *= (1 - (segment['scores']['normalized_score']/100) )  # Multiply by probability of no incident at each junction
+        safe_probability *= (1 - (segment['scores']['normalized_score']) )  # Multiply by probability of no incident at each junction
 
     cumulative_score = 1 - safe_probability  # Probability that at least one incident occurs
     
     # Normalize cumulative risk to a scale of 0-1
     cumulative_score = min(cumulative_score, 1.0)  # Cap at 1.0
     # Convert cumulative risk to a percentage
-    cumulative_score = round(cumulative_score * 100, 2)  # Convert to percentage
     cumulative_score_per_meter = cumulative_score / total_distance  # Normalize by distance
     for segment in route_segments:
         segment['scores']['cumulative_score'] = cumulative_score_per_meter * segment['distance'] 
@@ -465,22 +464,44 @@ def predict():
        
         # Averaging the safety scores for the routes
         total_score = 0
+        total_normalized_score = 0
         for score in routes:
             total_score += score['scores']["predicted_score"]
+            total_normalized_score += score['scores']["normalized_score"]
         weighted_score = compute_weighted_risk(routes)
         avg_score = round(total_score / len(routes), 6)
-
+        avg_normalized_score = round(total_normalized_score / len(routes), 6)
+        if avg_normalized_score < 0.33:
+            risk_label = "Low"
+        elif avg_normalized_score < 0.66:
+            risk_label =  "Medium"
+        else:
+            risk_label = "High"
         # Compute cumulative risk
         routes,cumulative_score_value = cumulative_score(routes,total_distance)
         # print(f"Cumulative risk: {cumulative_score_value}")
         # return jsonify({"routes": routes,"scores": {"average_score" : avg_score,"total_score":total_score, "weighted_score": weighted_score }}), 200
         # print(f"Cumulative risk: {cumulative_risk_value}")
+        cleaned_routes = []
+        for route in routes:
+            cleaned_route = {
+                "direction": route["direction"],
+                "distance": route["distance"],
+                "latitude": route["latitude"],
+                "longitude": route["longitude"],
+                "road_name": route["road_name"],
+                "traffic_incident": route["traffic_incident"],
+                # "features": route["features"]
+            }
+            cleaned_routes.append(cleaned_route)
         return jsonify({
-            "routes": routes,
+            "routes": cleaned_routes,
             "scores": {
-                "average_score": avg_score,
-                "total_score": total_score,
-                "weighted_score": weighted_score,
+                # "average_score": avg_score,
+                # "total_score": total_score,
+                # "weighted_score": weighted_score,
+                "incident_risk": avg_normalized_score,
+                "risk_label": risk_label,
                 # "cumulative_score": cumulative_score_value
             },
             "traffic_summary": trafficCounter  # Added traffic_summary here
