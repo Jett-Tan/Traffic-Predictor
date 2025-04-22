@@ -6,7 +6,7 @@ import psycopg2
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-from utils.db import get_postgres_conn
+from load_rta_dataset import get_postgres_conn
 
 # Paths
 CSV_FILE_PATH_RAW = "/opt/airflow/dags/data/RTA_Dataset.csv"

@@ -9,8 +9,7 @@ import joblib
 import os
 from itertools import combinations
 
-
-from utils.db import get_postgres_conn
+from load_rta_dataset import get_postgres_conn
 
 # Paths
 CSV_FILE_PATH_CLEANED = "/opt/airflow/dags/data/RTA_Dataset_Cleaned.csv"
