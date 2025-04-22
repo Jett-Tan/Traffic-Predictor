@@ -321,8 +321,8 @@ def train_model2():
     # 10. transform 'accident_severity' # target
     severity_weights = { # Change to  1, 2, 3 for slight, serious, fatal
         'Slight Injury': 1,
-        'Serious Injury': 2,
-        'Fatal Injury': 3
+        'Serious Injury': 1,
+        'Fatal Injury': 1
     }
     df['severity_score'] = df['accident_severity'].map(severity_weights)
 

@@ -182,7 +182,8 @@ def extract_junction_type():
 
 with DAG("generate_junctions_from_geojson",
          default_args=default_args,
-         schedule_interval=None,
+         schedule_interval="@daily",
+         start_date=datetime(2025, 3, 24),
          catchup=False,
          tags=["traffic", "geocoding","IS3107"]) as dag:
 
