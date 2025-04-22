@@ -11,7 +11,7 @@ st.set_page_config(page_title="RTA Insights Dashboard", layout="wide")
 st.title("🚦 Road Traffic Accident Insights Dashboard")
 
 # Define Tabs
-tab1, tab2, tab3 = st.tabs(["📊 Overview", "🧠 Risky Patterns", "🔍 Deep Dive"])
+tab1, tab2, tab3 = st.tabs(["📊 Overview", "🧠 Risky Patterns", "🔍 Detailed Feature Analysis"])
 
 with tab1: 
     # Section: Suggested Interventions 
@@ -74,11 +74,14 @@ with tab2:
 
     # Section 2: Severity by Hour
     st.header("🕐 Severity by Time of Day")
-    severity_df = pd.read_csv(f"{INSIGHT_DIR}/severity_by_hour.csv", index_col=0)
+    severity_df = pd.read_csv(f"{INSIGHT_DIR}/severity_by_hour.csv")
 
-    # Streamlit slider to select a time range
-    min_hour = int(severity_df.index.min())
-    max_hour = int(severity_df.index.max())
+    # Ensure correct data types
+    severity_df["hour"] = severity_df["hour"].astype(int)
+
+    # Slider: Select time range
+    min_hour = int(severity_df["hour"].min())
+    max_hour = int(severity_df["hour"].max())
     selected_range = st.slider(
         "Select Hour Range",
         min_value=min_hour,
@@ -86,18 +89,93 @@ with tab2:
         value=(min_hour, max_hour)
     )
 
-    # Filter dataframe based on the selected hour range
-    filtered_df = severity_df.loc[selected_range[0]:selected_range[1]]
+    # Filter by slider selection
+    filtered_df = severity_df[
+        (severity_df["hour"] >= selected_range[0]) &
+        (severity_df["hour"] <= selected_range[1])
+    ]
 
-    # Show as stacked bar chart (using matplotlib for stacked bar look)
-    st.subheader("Stacked Bar Chart of Accident Severity")
-    st.bar_chart(filtered_df)
+    # Plotly animation chart
+    fig = px.bar(
+        filtered_df,
+        x="accident_severity",
+        y="count",
+        color="accident_severity",
+        animation_frame="hour",
+        animation_group="accident_severity",
+        title="Accident Severity Over Time (Animated by Hour)",
+        labels={"count": "Number of Accidents", "accident_severity": "Severity"},
+        color_discrete_sequence=px.colors.qualitative.Set2,
+    )
 
-    # Section 3: Risky Combinations
-    st.header("⚠️ Risky Condition Combinations")
-    # Load data for risky conditions
-    combo_df = pd.read_csv(f"{INSIGHT_DIR}/risky_condition_combos.csv")
+    fig.update_layout(
+        xaxis_title="Severity Level",
+        yaxis_title="Number of Accidents",
+        legend_title="Severity",
+        height=500,
+        margin=dict(l=40, r=40, t=60, b=40),
+    )
 
-    # Display the data
-    st.dataframe(combo_df)
+    # Display the animated plot
+    st.plotly_chart(fig, use_container_width=True)
 
+    # Static stacked bar plot
+    # Pivot the data to get accident counts by hour and severity
+    pivot_df = severity_df.pivot_table(
+        index="hour", columns="accident_severity", values="count", aggfunc="sum"
+    ).fillna(0)
+
+    # Show as stacked bar chart 
+    st.subheader("📊 Accident Severity by Hour (over 24 hours)")
+    st.bar_chart(pivot_df)
+
+with tab3:
+    st.header("🔍 Detailed Feature Analysis")
+    st.markdown("Explore specific factors that influence accident severity and frequency.")
+
+    # Section 1: Accident Severity by Driver Age Band
+    st.subheader("👶 Accident Severity by Driver Age Band")
+    age_df = pd.read_csv(f"{INSIGHT_DIR}/age_band_vs_severity.csv")
+    age_df = age_df.set_index("age_band_of_driver")
+    age_df = age_df.reset_index().melt(id_vars="age_band_of_driver", var_name="Severity", value_name="Count")
+    
+    fig1 = px.bar(
+        age_df, x="age_band_of_driver", y="Count", color="Severity",
+        title="Accident Severity by Driver Age Band",
+        barmode="stack", height=450, color_discrete_sequence=px.colors.sequential.Reds
+    )
+    st.plotly_chart(fig1, use_container_width=True)
+
+    # Section 2: Accidents by Lane Type
+    st.subheader("🛣 Accidents by Lane Type")
+    lane_df = pd.read_csv(f"{INSIGHT_DIR}/accidents_by_lane.csv")
+    fig2 = px.bar(
+        lane_df, x="Lane Type", y="Number of Accidents",
+        title="Accidents by Lane Type", color="Number of Accidents",
+        color_continuous_scale="Blues", height=450
+    )
+    st.plotly_chart(fig2, use_container_width=True)
+
+    # Section 3: Number of Accidents by Cause
+    st.subheader("⚠️ Accidents by Cause")
+    cause_df = pd.read_csv(f"{INSIGHT_DIR}/accidents_by_cause.csv")
+    cause_df = cause_df.reset_index().rename(columns={"index": "Cause"})
+    fig3 = px.bar(
+        cause_df.sort_values("count"), x="count", y="Cause",
+        orientation="h", title="Number of Accidents by Cause",
+        color="count", color_continuous_scale="Sunset"
+    )
+    st.plotly_chart(fig3, use_container_width=True)
+
+    # Section 4: Driver Experience vs Severity
+    st.subheader("🧓 Accident Severity by Driver Experience")
+    exp_df = pd.read_csv(f"{INSIGHT_DIR}/driver_experience_vs_severity.csv")
+    exp_df = exp_df.set_index("driving_experience")
+    exp_df = exp_df.reset_index().melt(id_vars="driving_experience", var_name="Severity", value_name="Count")
+    
+    fig5 = px.bar(
+        exp_df, x="driving_experience", y="Count", color="Severity",
+        title="Accident Severity by Driver Experience",
+        barmode="stack", color_discrete_sequence=px.colors.sequential.Aggrnyl
+    )
+    st.plotly_chart(fig5, use_container_width=True)
