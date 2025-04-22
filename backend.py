@@ -224,7 +224,7 @@ def calculate_traffic_incident_counts(routes):
 
     summary_parts = []
     for incident_type, count in incident_counts.items():
-        summary_parts.append(f"there are {count} number of {incident_type}s")
+        summary_parts.append(f"there are {count} {incident_type}s")
 
     final_summary = " and ".join(summary_parts) if summary_parts else "there are no traffic incidents"
 
@@ -511,4 +511,4 @@ def predict():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port=5001, debug=True)
