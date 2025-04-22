@@ -203,7 +203,7 @@ def upload_csv_to_postgres():
         # Save to PostgreSQL
         save_to_postgres_live_traffic(df)
         print(f"📦 Saved to PostgreSQL table live_traffic_incidents")
-
+    
 def postgres_to_csv():
     # Connect to PostgreSQL
     conn = get_postgres_conn()
@@ -270,7 +270,7 @@ with DAG(
     schedule_interval='@once',  # Run once
     catchup=False,  # Prevents backfill
     description='fetch live traffic incidents from LTA API',
-    tags=['rta', 'traffic', 'api'],
+    tags=['rta', 'traffic', 'api',"IS3107"],
 ) as dag:
     
     upload_csv_to_postgres_python = PythonOperator(
