@@ -180,11 +180,11 @@ def extract_junction_type():
     junctions_df.to_csv("/opt/airflow/dags/data/junctions_from_geojson.csv", index=False)
     print("✅ Exported junctions_from_geojson.csv with road information")
 
-with DAG("get_road_type_dag",
+with DAG("generate_junctions_from_geojson",
          default_args=default_args,
          schedule_interval=None,
          catchup=False,
-         tags=["traffic", "geocoding"]) as dag:
+         tags=["traffic", "geocoding","IS3107"]) as dag:
 
     download_all_singapore_roads = PythonOperator(
         task_id="download_all_singapore_roads",

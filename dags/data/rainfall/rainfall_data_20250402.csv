@@ -1,4 +1,4 @@
-Station,Latitude,Longitude,Rainfall (mm),Collected_At
+station,latitude,longitude,rainfall,collected_at
 Airport Boulevard,1.34392,103.98409,0.0,2025-04-02T00:05:00+08:00
 Alexandra Road,1.2937,103.8125,0.0,2025-04-02T00:05:00+08:00
 Ang Mo Kio Avenue 10,1.36019,103.85335,0.0,2025-04-02T00:05:00+08:00

@@ -138,7 +138,7 @@ with DAG(
     start_date=datetime(2025, 3, 24),
     schedule_interval='@once',
     catchup=False,
-    tags=['rta', 'data_cleaning']
+    tags=['rta', 'data_cleaning', "IS3107"],
 ) as dag:
     drop_cleaned_table_task = PythonOperator(
         task_id='drop_cleaned_RTA_table',

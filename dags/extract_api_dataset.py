@@ -122,7 +122,6 @@ def save_to_postgres_rainfall(df):
             collected_at TIMESTAMP
         )
     """)
-
     # Insert data into the table
     for _, row in df.iterrows():
         hasExist = cursor.execute(f"""

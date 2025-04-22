@@ -14,7 +14,7 @@ from functools import reduce
 #
 JUNCTIONS_CSV = "./dags/data/junctions_from_geojson.csv"
 # RAINFALL_CSV = "./dags/data/rainfall/rainfall_data_postgres.csv"
-IMPORTANCE_CSV = "./dags/data/top_incident_rate_features.csv"
+# IMPORTANCE_CSV = "./dags/data/top_incident_rate_features.csv"
 # IMPORTANCE_CSV = "./dags/data/top_feature_importances.csv"
 MODEL_PATH = './dags/data/models/incident_rate_model.pkl'
 FEATURE_PATH = './dags/data/models/incident_rate_features.pkl'
@@ -31,7 +31,7 @@ global token
 try:
     junctions_df = pd.read_csv(JUNCTIONS_CSV)
     # rainfall_df = pd.read_csv(RAINFALL_CSV)
-    importance_df = pd.read_csv(IMPORTANCE_CSV, index_col='Feature')
+    # importance_df = pd.read_csv(IMPORTANCE_CSV, index_col='Feature')
     model = joblib.load(MODEL_PATH)
     feature_columns = joblib.load(FEATURE_PATH)
     with open("./dags/data/incident_rate_range.json") as f:

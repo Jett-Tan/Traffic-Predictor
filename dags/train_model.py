@@ -357,7 +357,7 @@ def train_model2():
 
     # Export the incident counter dataframe to CSV
     incident_counter_csv_filename = '/opt/airflow/dags/data/incident_counts.csv'
-    grouped.to_csv(incident_counter_csv_filename, index=False)
+    # grouped.to_csv(incident_counter_csv_filename, index=False)
     print(f"Incident counter data saved to '{incident_counter_csv_filename}'")
 
     # Merge back features (aggregated view)
@@ -439,7 +439,7 @@ def train_model2():
     # Save top features
     top_features_df = pd.DataFrame({'Feature': top_features.index, 'Importance': top_features.values})
     csv_filename = '/opt/airflow/dags/data/top_incident_rate_features.csv'
-    top_features_df.to_csv(csv_filename, index=False)
+    # top_features_df.to_csv(csv_filename, index=False)
 
     # Save min and max values of target for min-max normalization
     min_rate = y.min()
