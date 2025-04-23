@@ -129,6 +129,14 @@ with tab2:
     st.subheader("📊 Accident Severity by Hour (over 24 hours)")
     st.bar_chart(pivot_df)
 
+    # Section 3: Risky Combinations
+    st.header("⚠️ Risky Condition Combinations")
+    # Load data for risky conditions
+    combo_df = pd.read_csv(f"{INSIGHT_DIR}/risky_condition_combos.csv")
+
+    # Display the data
+    st.dataframe(combo_df)
+
 with tab3:
     st.header("🔍 Detailed Feature Analysis")
     st.markdown("Explore specific factors that influence accident severity and frequency.")
