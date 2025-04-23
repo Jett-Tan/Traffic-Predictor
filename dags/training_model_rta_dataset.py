@@ -7,6 +7,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import joblib
 import os
+import time
 
 from load_rta_dataset import get_postgres_conn
 
@@ -138,12 +139,20 @@ def training_model():
     print("After SMOTE: ", Counter(y_train_resampled))
 
     model = RandomForestClassifier(n_estimators=100, random_state=42, class_weight="balanced")
+    start_time = time.time()
     model.fit(X_train_resampled, y_train_resampled)
+    training_duration = time.time() - start_time
+    print(f"Training Time: {training_duration:.2f} seconds")
 
     # Evaluate Model Performance
     from sklearn.metrics import classification_report, confusion_matrix
 
-    y_pred = model.predict(X_test)
+    start_time = time.time()
+    y_pred = model.predict(X_test)  
+
+    inference_duration = time.time() - start_time
+    print(f"Inference Time (on {len(X_test)} samples): {inference_duration:.4f} seconds")
+    print(f"Average Inference Time per sample: {inference_duration / len(X_test):.6f} seconds")
 
     print("Classification Report:\n", classification_report(y_test, y_pred))
     print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
